@@ -3,7 +3,7 @@ class About extends Component {
   render() {
 
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+         About Me
         </p>
 };
 }

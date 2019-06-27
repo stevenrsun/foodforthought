@@ -12,30 +12,34 @@ class Navbar extends React.Component{
         return (
             <div>
               <ul id="nav">
-<Router>
-    <div>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/food">Food</Link>
-        </li>
-        <li>
-          <Link to="/disease">Disease</Link>
-        </li>
-        <li>
-          <Link to="/restaurants">Restaurants</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-      </ul>
-
+                <Router>
+                  <div>
+                    <ul>
+                      <li>
+                        <Link to="/">Home</Link>
+                      </li>
+                      <li>
+                        <Link to="/food">Food</Link>
+                      </li>
+                      <li>
+                        <Link to="/disease">Disease</Link>
+                      </li>
+                      <li>
+                        <Link to="/restaurants">Restaurants</Link>
+                      </li>
+                      <li>
+                        <Link to="/about">About</Link>
+                      </li>
+                    </ul>
       <hr />
 
       <Route exact path="/" component={Home} />
+      <Route exact path="/Food" component={Food}/>
+      <Route exact path="/Disease" component={Disease} />
+      <Route exact path="/Restaurants" component={Restaurants} />
       <Route exact path="/About" component={About} />
+
+
 
     </div>
   </Router>
