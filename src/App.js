@@ -35,7 +35,7 @@ class Navbar extends React.Component{
       <hr />
 
       <Route exact path="/" component={Home} />
-
+      <Route exact path="/About" component={About} />
 
     </div>
   </Router>
