@@ -5,13 +5,13 @@
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1"
   },
   "scripts": {
-    "start": "PORT=3000 react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "deploy": "aws s3 sync build s3://www.foodforthoughtt.com",
-
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
