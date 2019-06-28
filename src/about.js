@@ -172,7 +172,7 @@ render() {
       <br></br>
       <a href = "https://gitlab.com/williamsuh123/foodforthoughts">Link to our GitLab</a>
       <br></br>
-      <a href = "https://documenter.getpostman.com/view/7931049/S1a5zQtg?version=latest">Link to our RESTful API</a>
+      <a href = "http://api.www.foodforthoughtt.me/">Link to our RESTful API</a>
     </div>
 
 	)
