@@ -5,6 +5,12 @@ import { Jumbotron, Container, Card, Button, CardImg, CardTitle, CardText,
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import ReactDOM from 'react-dom';
 
+styles = {
+  image: {
+    width: 200,
+    height: 150
+  }
+};
 
 class Restaurant extends React.Component {
   render() {
