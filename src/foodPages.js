@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {NavLink} from "react-router-dom";
 
 export class Blueberry extends Component {
 
@@ -24,9 +25,13 @@ export class Blueberry extends Component {
                 <p>Sugars: 15 g</p>
                 <p>Sodium: 1 mg</p>
                 <h5>Related Diseases:</h5>
+                <NavLink to="/Diabetes">
                 <p>Diabetes</p>
+                </NavLink>
                 <h5>Restaurants:</h5>
+                <NavLink to="/IHOP">
                 <p>IHOP</p>
+                </NavLink>
             </div>
         );
     }
@@ -57,9 +62,13 @@ export class Seaweed extends Component {
                 <p>Sugars: 3 g</p>
                 <p>Sodium: 102 mg</p>
                 <h5>Related Diseases:</h5>
+                <NavLink to="/HypoThy">
                 <p>Hypothyroidism</p>
+                </NavLink>
                 <h5>Restaurants:</h5>
+                <NavLink to="/SushiJanai">
                 <p>Sushi Janai</p>
+                </NavLink>
             </div>
         );
     }
@@ -89,9 +98,13 @@ export class Cranberry extends Component {
                 <p>Sugars: 2.35 g</p>
                 <p>Sodium: 1 mg</p>
                 <h5>Related Diseases:</h5>
-                <p>Urinary Tract Infection</p>
+                <NavLink to="/UTI">
+                <p>Urinary Tract Infection (UTI)</p>
+                </NavLink>
                 <h5>Restaurants:</h5>
+                <NavLink to="/IHOP">
                 <p>IHOP</p>
+                </NavLink>
             </div>
         );
     }
