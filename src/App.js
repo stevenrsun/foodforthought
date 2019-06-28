@@ -3,10 +3,15 @@ import About from './about';
 import Food from './food';
 import Disease from './disease';
 import Restaurant from './restaurant';
-import logo from './index.jpeg';
+import logo from './thumb16.jpg';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
+var sectionStyle = {
+  width: "100%",
+  height: "320px",
+  backgroundImage: `url(${logo})`
+};
 class Navbar extends Component {
   render() {
     return (
@@ -36,10 +41,11 @@ class Navbar extends Component {
 }
 
 const Home = () => (
+  
   <div>
-    <h2>Food For Thoughts</h2>
+    <section style={ sectionStyle }></section>
     <div>
-      <img src={logo} className="App-logo" alt="logo" />
+    <center><h2>Food For Thought</h2></center>
     </div>
   </div>
   
