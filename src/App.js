@@ -49,7 +49,7 @@ class Navbar extends Component {
 
 const Home = () => (
   <div>
-    <h2>Food For Thoughts</h2>
+    <h2>Food For Thought</h2>
     <div>
       <img src={logo} className="App-logo" alt="logo" />
     </div>
