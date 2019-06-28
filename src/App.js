@@ -4,6 +4,7 @@ import Food from './food';
 import Disease from './disease';
 import Restaurant from './restaurant';
 import {Blueberry, Seaweed, Cranberry} from './foodPages';
+import {Ihop, SushiJanai, Chipotle} from './restaurantPages';
 import logo from './index.jpeg';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch, Link, NavLink } from "react-router-dom";
@@ -32,6 +33,9 @@ class Navbar extends Component {
               <Route path='/Blueberry' component={Blueberry} />
               <Route path='/Seaweed' component={Seaweed} />
               <Route path='/Cranberry' component={Cranberry} />
+              <Route path='/IHOP' component={Ihop} />
+              <Route path='/SushiJanai' component={SushiJanai} />
+              <Route path='/Chipotle' component={Chipotle} />
           </Switch>
         </div>
       </Router>
