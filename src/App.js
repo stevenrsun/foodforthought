@@ -3,15 +3,13 @@ import About from './about';
 import Food from './food';
 import Disease from './disease';
 import Restaurant from './restaurant';
-import logo from './thumb16.jpg';
+import {Blueberry, Seaweed, Cranberry} from './foodPages';
+import {Ihop, SushiJanai, Chipotle} from './restaurantPages';
+import {Diabetes, UTI, HypoThy} from './diseasePages';
+import logo from './index.jpeg';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link, NavLink } from "react-router-dom";
 
-var sectionStyle = {
-  width: "100%",
-  height: "320px",
-  backgroundImage: `url(${logo})`
-};
 class Navbar extends Component {
   render() {
     return (
@@ -20,10 +18,10 @@ class Navbar extends Component {
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <ul className="navbar-nav mr-auto">
             <li><Link to={'/'} className="nav-link"> Home </Link></li>
-            <li><Link to={'/Food'} className="nav-link">Food</Link></li>
+            <li><NavLink to={'/Food'} className="nav-link">Food</NavLink></li>
             <li><Link to={'/Disease'} className="nav-link">Disease</Link></li>
-            <li><Link to={'/Restaurant'} className="nav-link">Restaurant</Link></li>
-            <li><Link to={'/About'} className="nav-link">About</Link></li>
+            <li><NavLink to='/Restaurant' className="nav-link">Restaurant</NavLink></li>
+            <li><NavLink to={'/About'} className="nav-link">About</NavLink></li>
           </ul>
           </nav>
           <hr />
@@ -33,6 +31,15 @@ class Navbar extends Component {
               <Route exact path='/Disease' component={Disease} />
               <Route exact path='/Restaurant' component={Restaurant} />
               <Route exact path='/About' component={About} />
+              <Route path='/Blueberry' component={Blueberry} />
+              <Route path='/Seaweed' component={Seaweed} />
+              <Route path='/Cranberry' component={Cranberry} />
+              <Route path='/IHOP' component={Ihop} />
+              <Route path='/SushiJanai' component={SushiJanai} />
+              <Route path='/Chipotle' component={Chipotle} />
+              <Route path='/Diabetes' component={Diabetes} />
+              <Route path='/UTI' component={UTI} />
+              <Route path='/HypoThy' component={HypoThy} />
           </Switch>
         </div>
       </Router>
@@ -41,11 +48,10 @@ class Navbar extends Component {
 }
 
 const Home = () => (
-  
   <div>
-    <section style={ sectionStyle }></section>
+    <h2>Food For Thoughts</h2>
     <div>
-    <center><h2>Food For Thought</h2></center>
+      <img src={logo} className="App-logo" alt="logo" />
     </div>
   </div>
   
