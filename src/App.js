@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import About from './about';
-import Food from './food';
-import Disease from './disease';
-import Restaurant from './restaurant';
-import {Blueberry, Seaweed, Cranberry} from './foodPages';
-import {Ihop, SushiJanai, Chipotle} from './restaurantPages';
-import {Diabetes, UTI, HypoThy} from './diseasePages';
+import Food from './pages/food';
+import Disease from './pages/disease';
+import Restaurant from './pages/restaurant';
+import {Blueberry, Seaweed, Cranberry} from './pages/foodPages';
+import {Ihop, SushiJanai, Chipotle} from './pages/restaurantPages';
+import {Diabetes, UTI, HypoThy} from './pages/diseasePages';
 import logo from './home_image.jpg';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch, Link, NavLink } from "react-router-dom";

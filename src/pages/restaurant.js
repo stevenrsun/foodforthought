@@ -1,26 +1,45 @@
-import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
-import { Jumbotron, Container, Card, Button, CardImg, CardTitle, CardText,
-   CardDeck, CardSubtitle, CardBody } from 'reactstrap';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import ReactDOM from 'react-dom';
+import React from 'react';
+import {NavLink} from "react-router-dom";
+import '../App.css';
 
-styles = {
-  image: {
-    width: 200,
-    height: 150
-  }
-};
+class restaurant extends React.Component {
 
-class Restaurant extends React.Component {
+  styles = {
+    image: {
+      width: 200,
+      height: 150
+    }
+  };
+
   render() {
     return (
       <div>
-        <h1>Restaurant</h1>
-        <p>kasdhfksajhdlfka</p>
+        <h1>Restaurants</h1>
+
+        <div class = "border">
+          <img class = "img-thumbnail" src = {require("../restaurant_photos/ihop.jpg")} style = {this.styles.image}/>
+          <NavLink to='/IHOP'>
+          <h2>IHOP</h2>
+          </NavLink>
+        </div>
+
+        <div class = "border">
+          <img class = "img-thumbnail" src = {require("../restaurant_photos/sushijanai.jpg")} style = {this.styles.image}/>
+          <NavLink to='/SushiJanai'>
+          <h2>Sushi Janai</h2>
+          </NavLink>
+        </div>
+
+        <div class = "border">
+          <img class = "img-thumbnail" src = {require("../restaurant_photos/chipotle.jpg")} style = {this.styles.image}/>
+          <NavLink to='/Chipotle'>
+          <h2>Chipotle</h2>
+          </NavLink>
+        </div>
+
       </div>
     )
   }
 }
 
-export default Restaurant
+export default restaurant
