@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardText, CardBody, CardLink,
-    CardTitle, CardSubtitle, Button, CardHeader, ListGroup, ListGroupItem } from 'reactstrap';
-import { Container, Row, Col } from 'reactstrap';
 
 export class InfoCard extends Component {
     state = { 
@@ -11,25 +8,25 @@ export class InfoCard extends Component {
      }
     render() { 
         return ( 
-        <Card>
-            <CardHeader>{this.props.info.header}</CardHeader>
-            <CardImg variant="top" src={this.props.info.image} style={this.state.style} />
-            <CardBody>
-                <CardText>
+        <div class="card bg-light">
+            <div class="card-header">{this.props.info.header}</div>
+            <img class="card-img-top" src={this.props.info.image} style={this.state.style} />
+            <div class="card-body">
+                <div class="card-text">
                     {this.props.info.text}
-                </CardText>
+                </div>
 
-                <ListGroup>
-                    <ListGroupItem>{this.props.info.point1}</ListGroupItem>
-                    <ListGroupItem>{this.props.info.point2}</ListGroupItem>
-                    <ListGroupItem>{this.props.info.point3}</ListGroupItem>
-                    <ListGroupItem>{this.props.info.point4}</ListGroupItem>
-                    <ListGroupItem>{this.props.info.point5}</ListGroupItem>
-                </ListGroup>
-                <CardText><p></p></CardText>
-                <CardLink href={this.props.info.link}>More Info</CardLink>
-            </CardBody>
-        </Card> 
+                <div class="list-group">
+                    <div class="list-group-item">{this.props.info.point1}</div>
+                    <div class="list-group-item">{this.props.info.point2}</div>
+                    <div class="list-group-item">{this.props.info.point3}</div>
+                    <div class="list-group-item">{this.props.info.point4}</div>
+                    <div class="list-group-item">{this.props.info.point5}</div>
+                </div>
+                <div class="card-text"><p></p></div>
+                <a href={this.props.info.link} class="card-link">More Info</a>
+            </div>
+        </div> 
         );
     }
 }
@@ -37,13 +34,18 @@ export class InfoCard extends Component {
 export class InfoCardGrid extends Component {
     state = {}
     render() { 
-        return ( <Container>
-            <Row>
-                <Col> <InfoCard info = {this.props.elements[0]} /></Col>
-                <Col> <InfoCard info = {this.props.elements[1]} /></Col>
-                <Col> <InfoCard info = {this.props.elements[2]} /></Col>
-            </Row>
-        </Container> );
+        return ( <div class="container">
+            <div class="row">
+                <div class="col"> <InfoCard info = {this.props.elements[0]} /></div>
+                <div class="col"> <InfoCard info = {this.props.elements[1]} /></div>
+                <div class="col"> <InfoCard info = {this.props.elements[2]} /></div>
+            </div>
+            <div class="row mt-4">
+                <div class="col"> <InfoCard info = {this.props.elements[3]} /></div>
+                <div class="col"> <InfoCard info = {this.props.elements[4]} /></div>
+                <div class="col"> <InfoCard info = {this.props.elements[5]} /></div>
+            </div>
+        </div> );
     }
 }
 
