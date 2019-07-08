@@ -40,7 +40,12 @@ export class InfoCardGrid extends Component {
                 <div class="col"> <InfoCard info = {this.props.elements[1]} /></div>
                 <div class="col"> <InfoCard info = {this.props.elements[2]} /></div>
             </div>
-            <div class="row mt-4">
+            <div class="row mt-5">
+                <div class="col"> <InfoCard info = {this.props.elements[3]} /></div>
+                <div class="col"> <InfoCard info = {this.props.elements[4]} /></div>
+                <div class="col"> <InfoCard info = {this.props.elements[5]} /></div>
+            </div>
+            <div class="row mt-5">
                 <div class="col"> <InfoCard info = {this.props.elements[3]} /></div>
                 <div class="col"> <InfoCard info = {this.props.elements[4]} /></div>
                 <div class="col"> <InfoCard info = {this.props.elements[5]} /></div>

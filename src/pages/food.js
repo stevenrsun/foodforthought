@@ -24,6 +24,15 @@ class food extends React.Component {
     point5: 'data point 5', link: '/Seaweed'},
     {header: 'Cranberries', image: require('../food_photos/cranberries.jpg'), text: 'delicious and red', point1: 'data point 1',
     point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
+    point5: 'data point 5', link: '/Cranberry'},
+    {header: 'Blueberries', image: require('../food_photos/blueberries.jpg'), text: 'it\'s blue!', point1: 'data point 1',
+    point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
+    point5: 'data point 5', link: '/Blueberry'},
+    {header: 'Seaweed', image: require('../food_photos/seaweed.jpg'), text: 'its a plant', point1: 'data point 1',
+    point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
+    point5: 'data point 5', link: '/Seaweed'},
+    {header: 'Cranberries', image: require('../food_photos/cranberries.jpg'), text: 'delicious and red', point1: 'data point 1',
+    point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
     point5: 'data point 5', link: '/Cranberry'}
   ];
 
@@ -35,12 +44,13 @@ class food extends React.Component {
 
     background:{
       backgroundImage: `url(${backImage}`,
-      height: '100vh',
+      height: '220vh',
       width: '100vw',
       overflow: 'hidden',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
-      backgroundSize: 'cover'
+      backgroundSize: 'cover',
+      backgroundAttachment: 'fixed'
     },
 
     header: {
@@ -58,7 +68,7 @@ class food extends React.Component {
         <h1 class="display-1" style={this.styles.header}>Food</h1>
 
         <InfoCardGrid elements={this.elements}/>
-
+        <p>a<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></p>
       </div> 
     )
   }
