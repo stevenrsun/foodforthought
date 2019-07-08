@@ -36,19 +36,19 @@ export class InfoCardGrid extends Component {
     render() { 
         return ( <div class="container">
             <div class="row">
-                <div class="col"> <InfoCard info = {this.props.elements[0]} /></div>
-                <div class="col"> <InfoCard info = {this.props.elements[1]} /></div>
-                <div class="col"> <InfoCard info = {this.props.elements[2]} /></div>
+                <div class="col"> <InfoCard info = {this.props.elements[0 + this.props.currentPage*9]} /></div>
+                <div class="col"> <InfoCard info = {this.props.elements[1 + this.props.currentPage*9]} /></div>
+                <div class="col"> <InfoCard info = {this.props.elements[2 + this.props.currentPage*9]} /></div>
             </div>
             <div class="row mt-5">
-                <div class="col"> <InfoCard info = {this.props.elements[3]} /></div>
-                <div class="col"> <InfoCard info = {this.props.elements[4]} /></div>
-                <div class="col"> <InfoCard info = {this.props.elements[5]} /></div>
+                <div class="col"> <InfoCard info = {this.props.elements[3 + this.props.currentPage*9]} /></div>
+                <div class="col"> <InfoCard info = {this.props.elements[4 + this.props.currentPage*9]} /></div>
+                <div class="col"> <InfoCard info = {this.props.elements[5 + this.props.currentPage*9]} /></div>
             </div>
             <div class="row mt-5">
-                <div class="col"> <InfoCard info = {this.props.elements[3]} /></div>
-                <div class="col"> <InfoCard info = {this.props.elements[4]} /></div>
-                <div class="col"> <InfoCard info = {this.props.elements[5]} /></div>
+                <div class="col"> <InfoCard info = {this.props.elements[6 + this.props.currentPage*9]} /></div>
+                <div class="col"> <InfoCard info = {this.props.elements[7 + this.props.currentPage*9]} /></div>
+                <div class="col"> <InfoCard info = {this.props.elements[8 + this.props.currentPage*9]} /></div>
             </div>
         </div> );
     }
