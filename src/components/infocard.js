@@ -35,25 +35,13 @@ export class InfoCard extends Component {
 }
  
 export class InfoCardGrid extends Component {
-    state = { 
-        elements: [
-            {header: 'Blueberries', image: require('./food_photos/blueberries.jpg'), text: 'it\'s blue!', point1: 'data point 1',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Blueberry'},
-            {header: 'Seaweed', image: require('./food_photos/seaweed.jpg'), text: 'its a plant', point1: 'data point 1',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Seaweed'},
-            {header: 'Cranberries', image: require('./food_photos/cranberries.jpg'), text: 'delicious and red', point1: 'data point 1',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Cranberry'}
-        ]
-     }
+    state = {}
     render() { 
         return ( <Container>
             <Row>
-                <Col> <InfoCard info = {this.state.elements[0]} /></Col>
-                <Col> <InfoCard info = {this.state.elements[1]} /></Col>
-                <Col> <InfoCard info = {this.state.elements[2]} /></Col>
+                <Col> <InfoCard info = {this.props.elements[0]} /></Col>
+                <Col> <InfoCard info = {this.props.elements[1]} /></Col>
+                <Col> <InfoCard info = {this.props.elements[2]} /></Col>
             </Row>
         </Container> );
     }

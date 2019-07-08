@@ -6,9 +6,10 @@ import Restaurant from './restaurant';
 import {Blueberry, Seaweed, Cranberry} from './foodPages';
 import {Ihop, SushiJanai, Chipotle} from './restaurantPages';
 import {Diabetes, UTI, HypoThy} from './diseasePages';
-import logo from './index.jpeg';
+import logo from './home_image.jpg';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch, Link, NavLink } from "react-router-dom";
+import { Container, Row, Col } from 'reactstrap';
 
 class Navbar extends Component {
   render() {
@@ -48,15 +49,56 @@ class Navbar extends Component {
 }
 
 const Home = () => (
-  <div>
-    <h2>Food For Thought</h2>
-    <div>
-      <img src={logo} className="App-logo" alt="logo" />
+  <div className="img-fluid" style={styles.image}>
+
+    <div class="container-fluid">
+        <Row>
+          <h1 class="display-1" style = {styles.header}>
+            &nbsp;Food 
+            <small style={{color:'orange'}}> for Thought</small>
+          </h1>
+        </Row>
+        <Row>
+          <p class="lead text-left" style={styles.text}><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bringing people closer to health and great food, 
+          <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;one click at a time.</p>
+        </Row>
+        <Row>
+          <p class="lead text-left" style={styles.text}><br/>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Begin your journey with a category you're interested in:</p>
+        </Row>
+        <Row>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+          <a class="btn btn-warning ml-5 mt-2" href="/Food" role="button">Foods</a>
+          <a class="btn btn-warning ml-4 mt-2" href="/Restaurant" role="button">Restaurants</a>
+          <a class="btn btn-warning ml-4 mt-2" href="/Disease" role="button">Diseases</a>
+          <a class="btn btn-warning ml-4 mt-2" href="/About" role="button">About Us</a>
+        </Row>
     </div>
   </div>
   
 );
 
+var styles = {
+  image: {
+    backgroundImage: `url(${logo}`,
+    height: '100vh',
+    width: '100vw',
+    overflow: 'hidden',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover'
+  },
+
+  header: {
+    textAlign: 'left',
+    color: 'aliceblue',
+    fontSize: 150
+  },
+
+  text: {
+    color: 'aliceblue',
+    fontSize: 30
+  }
+}
 
 class App extends React.Component {
   render () {
