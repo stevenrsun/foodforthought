@@ -17,21 +17,21 @@ class restaurant extends React.Component {
         <h1>Restaurants</h1>
 
         <div class = "border">
-          <img class = "img-thumbnail" src = {require("./components/restaurant_photos/ihop.jpg")} style = {this.styles.image}/>
+          <img class = "img-thumbnail" src = {require("./restaurant_photos/ihop.jpg")} style = {this.styles.image}/>
           <NavLink to='/IHOP'>
           <h2>IHOP</h2>
           </NavLink>
         </div>
 
         <div class = "border">
-          <img class = "img-thumbnail" src = {require("./components/restaurant_photos/sushijanai.jpg")} style = {this.styles.image}/>
+          <img class = "img-thumbnail" src = {require("./restaurant_photos/sushijanai.jpg")} style = {this.styles.image}/>
           <NavLink to='/SushiJanai'>
           <h2>Sushi Janai</h2>
           </NavLink>
         </div>
 
         <div class = "border">
-          <img class = "img-thumbnail" src = {require("./components/restaurant_photos/chipotle.jpg")} style = {this.styles.image}/>
+          <img class = "img-thumbnail" src = {require("./restaurant_photos/chipotle.jpg")} style = {this.styles.image}/>
           <NavLink to='/Chipotle'>
           <h2>Chipotle</h2>
           </NavLink>

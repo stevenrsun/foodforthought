@@ -14,7 +14,7 @@ export class Blueberry extends Component {
         return (  
             <div>
                 <h1>Blueberries</h1>
-                <img class = "img-thumbnail" src = {require("./components/food_photos/blueberries.jpg")} style = {this.styles.image}/>
+                <img class = "img-thumbnail" src = {require("./food_photos/blueberries.jpg")} style = {this.styles.image}/>
                 <h5>Kcal:</h5>
                 <p>85 per 1 cup (185 g)</p>
                 <h5>Macronutrients:</h5>
@@ -51,7 +51,7 @@ export class Seaweed extends Component {
         return (  
             <div>
                 <h1>Seaweed</h1>
-                <img class = "img-thumbnail" src = {require("./components/food_photos/seaweed.jpg")} style = {this.styles.image}/>
+                <img class = "img-thumbnail" src = {require("./food_photos/seaweed.jpg")} style = {this.styles.image}/>
                 <h5>Kcal:</h5>
                 <p>306 per 100 g</p>
                 <h5>Macronutrients:</h5>
@@ -87,7 +87,7 @@ export class Cranberry extends Component {
         return (
             <div>
                 <h1>Cranberries</h1>
-                <img class = "img-thumbnail" src = {require("./components/food_photos/cranberries.jpg")} style = {this.styles.image}/>
+                <img class = "img-thumbnail" src = {require("./food_photos/cranberries.jpg")} style = {this.styles.image}/>
                 <h5>Kcal:</h5>
                 <p>25 per 1/2 cup (55 g)</p>
                 <h5>Macronutrients:</h5>
