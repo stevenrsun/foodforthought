@@ -4,6 +4,7 @@ import {FoodCardGrid} from "../components/infocard.js";
 import {PageNav} from '../components/pageNav.js';
 import '../App.css';
 
+
 class food extends React.Component {
   state = {
     elements: [
@@ -97,6 +98,18 @@ class food extends React.Component {
     link: '/FoodPage'
   }
   
+  componentDidMount() {
+    let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/food';
+    console.log("first");
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      const elements = data;
+      this.setState({elements});
+    })
+  }
+  
   incrementPage = () => {
     const page = this.state.page + 1;
     this.setState({page});
@@ -120,7 +133,7 @@ class food extends React.Component {
   styles = {
     image: {
       width: 200,
-      height: 150
+      height: 150,
     },
 
     background:{

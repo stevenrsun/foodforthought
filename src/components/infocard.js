@@ -12,15 +12,15 @@ export class FoodCard extends Component {
     render() { 
         return ( 
         <div class="card bg-light">
-            <div class="card-header font-weight-bold">{this.props.info.header}</div>
-            <img class="card-img-top" src={this.props.info.image} style={this.state.style} alt/>
+            <div class="card-header font-weight-bold">{this.props.info.name}</div>
+            <img class="card-img-top" src={this.props.info.images} style={this.state.style} alt="Card image cap"/>
             <div class="card-body">
                 <div class="list-group">
-                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Protein:</Text>&nbsp;{this.props.info.point1}</div>
-                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Fat:</Text>&nbsp;{this.props.info.point2}</div>
-                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Carbs:</Text>&nbsp;{this.props.info.point3}</div>
-                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Sodium:</Text>&nbsp;{this.props.info.point4}</div>
-                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Calories:</Text>&nbsp;{this.props.info.point5}</div>
+                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Protein:</Text>&nbsp;{this.props.info.protein}</div>
+                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Fat:</Text>&nbsp;{this.props.info.fat}</div>
+                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Carbs:</Text>&nbsp;{this.props.info.carbs}</div>
+                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Sodium:</Text>&nbsp;{this.props.info.sodium}</div>
+                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Calories:</Text>&nbsp;{this.props.info.calories}</div>
                 </div>
                 <div class="card-text"><p></p></div>
                 <NavLink to={{pathname: this.props.link, state: {index: this.props.index}}} class="card-link">More Info</NavLink>
