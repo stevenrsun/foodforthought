@@ -146,7 +146,7 @@ render() {
           </tr>
           <tr>
             <td><img src={William} alt="Photo" height="150" /></td>
-            <td>Willaim Suh</td>
+            <td>William Suh</td>
             <td>Enjoys riding the bus to class everyday</td>
             <td>Phase 1: AWS and API</td>
             <td>{this.state['William Suh'].commits}</td>
