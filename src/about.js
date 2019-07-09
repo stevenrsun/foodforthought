@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import Alex from './photos/Alex.jpeg';
 import Huylar from './photos/Huylar.png';
 import Kelvin from './photos/Kelvin.jpeg';
 import Murray from './photos/Murray.png';
 import Steven from './photos/Steven.jpeg';
 import William from './photos/William.jpeg';
-import Jumbotron from 'reactstrap';
+import {Jumbotron, Table, Container} from 'reactstrap';
 
-class About extends Component {
+
+export default class About extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -83,16 +85,17 @@ class About extends Component {
     })
   }
 
+    
 render() {
 	return(
     <div>
+      
       <center><h1>About Us</h1></center>
       <center><p>The goal of this website is to provide a place for users to build a more healthy diet by drawing correlations between
       certain foods and diseases and also providing some restaurants to find these foods. By allowing users to see and understand the 
       risks behind consuming these certain foods we can notify more people about food related diseases.</p></center>
       <hr></hr>
-      <center>
-      <table>
+      <Table>
         <thead>
           <tr>
             <th>Photo</th>
@@ -151,8 +154,7 @@ render() {
             <td>{this.state['William Suh'].unit_tests}</td>
           </tr>
         </tbody>
-      </table>
-      </center>
+      </Table>
       <br></br>
       <h2>Total Commits: {this.state['Total'].commits}</h2>
       <h2>Total Issues: {this.state['Total'].closed_issues}</h2>
@@ -162,10 +164,9 @@ render() {
       <br></br>
       <a href = "https://gitlab.com/williamsuh123/foodforthoughts">Link to our GitLab</a>
       <br></br>
-      <a href = "http://api.www.foodforthoughtt.me/">Link to our RESTful API</a>
+      <a href = "http://api.foodforthoughtt.me/">Link to our RESTful API</a>
     </div>
 
 	)
 }
 }
-export default About;

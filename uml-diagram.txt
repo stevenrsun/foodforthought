@@ -1,0 +1,42 @@
+@startuml
+
+class Restaurant{
+  String name
+  String location
+  String cuisine
+  String phone_number
+  Integer rating
+  Integer cost
+  JSON Food
+  JSON Disease
+}
+
+class Food{
+  String name
+  Integer serving_size
+  Integer calories
+  Integer total_fat
+  Integer carbohydrates
+  Integer protein
+  Integer sodium
+  JSON Restaurant
+  JSON Disease
+}
+
+class Disease{
+  String name
+  String specialty
+  String symptoms
+  String causes
+  String diagnostic_method
+  String prevention_treatment
+  Integer freqeuncy
+  Integer deaths
+  JSON Restaurant
+  JSON Food
+}
+
+Restaurant "*" -- "*" Food
+Restaurant "*" -- "*" Disease
+Food "*" -- "*" Disease
+@enduml
