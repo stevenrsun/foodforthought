@@ -1,13 +1,13 @@
 import React from 'react';
 import backImage from '../food_photos/food_page_background.jpg';
-import {InfoCardGrid} from "../components/infocard.js";
+import {FoodCardGrid} from "../components/infocard.js";
 import {PageNav} from '../components/pageNav.js';
 import '../App.css';
 
 class food extends React.Component {
   state = {
     elements: [
-      {header: 'Blueberries page 1', image: require('../food_photos/blueberries.jpg'), text: 'it\'s blue!', point1: 'test: lots of info',
+      {header: 'Blueberries page 1', image: 'https://foodrevolution.org/wp-content/uploads/2018/05/blog-featured_blueberries-20180516.jpg', text: 'it\'s blue!', point1: 'test: lots of info',
       point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
       point5: 'data point 5', link: '/FoodPage'},
       {header: 'Seaweed', image: require('../food_photos/seaweed.jpg'), text: 'its a plant', point1: 'test: lots of info',
@@ -148,7 +148,7 @@ class food extends React.Component {
       <div className="img-fluid" style={this.styles.background}>
         <h1 class="display-1" style={this.styles.header}>Food</h1>
 
-        <InfoCardGrid link={this.state.link} elements={this.state.elements} currentPage={this.state.page}/>
+        <FoodCardGrid link={this.state.link} elements={this.state.elements} currentPage={this.state.page}/>
         <PageNav label='Food Page Navigator' page={this.state.page} decrementPage = {this.decrementPage}
          incrementPage = {this.incrementPage} lastPage={this.state.elements.length/9} goFirstPage = {this.goFirstPage} goLastPage = {this.goLastPage}/>
         

@@ -139,23 +139,23 @@ export class FoodPage extends Component {
                     <img class="img-thumbnail ml-4" src = {this.state.elements[this.state.index].image} style = {this.styles.image}/>
                     <div class="col">
                         <div class="row">
-                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Point 1:</p>
+                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Protein:</p>
                             <p class="ml-3 lead" style={this.styles.text}>{this.state.elements[this.state.index].point1}</p>
                         </div>
                         <div class="row">
-                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Point 2:</p>
+                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Fat:</p>
                             <p class="ml-3 lead" style={this.styles.text}>{this.state.elements[this.state.index].point2}</p>
                         </div>
                         <div class="row">
-                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Point 3:</p>
+                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Carbs:</p>
                             <p class="ml-3 lead" style={this.styles.text}>{this.state.elements[this.state.index].point3}</p>
                         </div>
                         <div class="row">
-                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Point 4:</p>
+                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Sodium:</p>
                             <p class="ml-3 lead" style={this.styles.text}>{this.state.elements[this.state.index].point4}</p>
                         </div>
                         <div class="row">
-                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Point 5:</p>
+                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Calories:</p>
                             <p class="ml-3 lead" style={this.styles.text}>{this.state.elements[this.state.index].point5}</p>
                         </div>
                     </div>
