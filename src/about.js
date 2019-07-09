@@ -14,7 +14,6 @@ class About extends Component {
     this.state = {
         "Murray Lee"    : { commits: 0, closed_issues: 0, unit_tests: 0 },
         "Kelvin Yu"       : { commits: 0, closed_issues: 0, unit_tests: 0 },
-        "Huylar Lee" : { commits: 0, closed_issues: 0, unit_tests: 0 },
         "Steven Sun"   : { commits: 0, closed_issues: 0, unit_tests: 0 },
         "William Suh"       : { commits: 0, closed_issues: 0, unit_tests: 0 },
         "Alexander Ng"       : { commits: 0, closed_issues: 0, unit_tests: 0 },
@@ -114,15 +113,6 @@ render() {
             <td>{this.state['Alexander Ng'].commits}</td>
             <td>{this.state['Alexander Ng'].closed_issues}</td>
             <td>{this.state['Alexander Ng'].unit_tests}</td>
-          </tr>
-          <tr>
-            <td><img src={Huylar} alt="Photo" height="150" /></td>
-            <td>Huylar Lee</td>
-            <td>Enjoys sucba diving and game development</td>
-            <td>Phase 1: API and tehcnical paper </td>
-            <td>{this.state['Huylar Lee'].commits}</td>
-            <td>{this.state['Huylar Lee'].closed_issues}</td>
-            <td>{this.state['Huylar Lee'].unit_tests}</td>
           </tr>
           <tr>
             <td><img src={Kelvin} alt="Photo" height="150" /></td>
