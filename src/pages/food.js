@@ -128,7 +128,7 @@ class food extends React.Component {
       backgroundImage: `url(${backImage}`,
       height: '220vh', // 220 vh
       width: '100vw',
-      overflow: 'hidden',
+      overflow: 'auto',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
       backgroundSize: 'cover',
