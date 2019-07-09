@@ -133,3 +133,49 @@ export class FoodCardGrid extends Component {
     }
 }
 
+export class RestaurantCardGrid extends Component {
+    state = {}
+    render() { 
+        return ( <div class="container">
+            <div class="row">
+                <div class="col"> <RestaurantCard link={this.props.link} info = {this.props.elements[0 + this.props.currentPage*9]} index={0 + this.props.currentPage*9} /></div>
+                <div class="col"> <RestaurantCard link={this.props.link} info = {this.props.elements[1 + this.props.currentPage*9]} index={1 + this.props.currentPage*9}/></div>
+                <div class="col"> <RestaurantCard link={this.props.link} info = {this.props.elements[2 + this.props.currentPage*9]} index={2 + this.props.currentPage*9}/></div>
+            </div>
+            <div class="row mt-5">
+                <div class="col"> <RestaurantCard link={this.props.link} info = {this.props.elements[3 + this.props.currentPage*9]} index={3 + this.props.currentPage*9}/></div>
+                <div class="col"> <RestaurantCard link={this.props.link} info = {this.props.elements[4 + this.props.currentPage*9]} index={4 + this.props.currentPage*9}/></div>
+                <div class="col"> <RestaurantCard link={this.props.link} info = {this.props.elements[5 + this.props.currentPage*9]} index={5 + this.props.currentPage*9}/></div>
+            </div>
+            <div class="row mt-5">
+                <div class="col"> <RestaurantCard link={this.props.link} info = {this.props.elements[6 + this.props.currentPage*9]} index={6 + this.props.currentPage*9}/></div>
+                <div class="col"> <RestaurantCard link={this.props.link} info = {this.props.elements[7 + this.props.currentPage*9]} index={7 + this.props.currentPage*9}/></div>
+                <div class="col"> <RestaurantCard link={this.props.link} info = {this.props.elements[8 + this.props.currentPage*9]} index={8 + this.props.currentPage*9}/></div>
+            </div>
+        </div> );
+    }
+}
+
+export class DiseaseCardGrid extends Component {
+    state = {}
+    render() { 
+        return ( <div class="container">
+            <div class="row">
+                <div class="col"> <DiseaseCard link={this.props.link} info = {this.props.elements[0 + this.props.currentPage*9]} index={0 + this.props.currentPage*9} /></div>
+                <div class="col"> <DiseaseCard link={this.props.link} info = {this.props.elements[1 + this.props.currentPage*9]} index={1 + this.props.currentPage*9}/></div>
+                <div class="col"> <DiseaseCard link={this.props.link} info = {this.props.elements[2 + this.props.currentPage*9]} index={2 + this.props.currentPage*9}/></div>
+            </div>
+            <div class="row mt-5">
+                <div class="col"> <DiseaseCard link={this.props.link} info = {this.props.elements[3 + this.props.currentPage*9]} index={3 + this.props.currentPage*9}/></div>
+                <div class="col"> <DiseaseCard link={this.props.link} info = {this.props.elements[4 + this.props.currentPage*9]} index={4 + this.props.currentPage*9}/></div>
+                <div class="col"> <DiseaseCard link={this.props.link} info = {this.props.elements[5 + this.props.currentPage*9]} index={5 + this.props.currentPage*9}/></div>
+            </div>
+            <div class="row mt-5">
+                <div class="col"> <DiseaseCard link={this.props.link} info = {this.props.elements[6 + this.props.currentPage*9]} index={6 + this.props.currentPage*9}/></div>
+                <div class="col"> <DiseaseCard link={this.props.link} info = {this.props.elements[7 + this.props.currentPage*9]} index={7 + this.props.currentPage*9}/></div>
+                <div class="col"> <DiseaseCard link={this.props.link} info = {this.props.elements[8 + this.props.currentPage*9]} index={8 + this.props.currentPage*9}/></div>
+            </div>
+        </div> );
+    }
+}
+
