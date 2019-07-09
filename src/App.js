@@ -3,7 +3,7 @@ import About from './about';
 import Food from './pages/food';
 import Disease from './pages/disease';
 import Restaurant from './pages/restaurant';
-import {Blueberry, Seaweed, Cranberry, FoodPage} from './pages/foodPages';
+import {FoodPage} from './pages/foodPages';
 import {Ihop, SushiJanai, Chipotle} from './pages/restaurantPages';
 import {Diabetes, UTI, HypoThy} from './pages/diseasePages';
 import logo from './home_image.jpg';
@@ -31,9 +31,6 @@ class Navbar extends Component {
               <Route exact path='/Disease' component={Disease} />
               <Route exact path='/Restaurant' component={Restaurant} />
               <Route exact path='/About' component={About} />
-              <Route path='/Blueberry' component={Blueberry} />
-              <Route path='/Seaweed' component={Seaweed} />
-              <Route path='/Cranberry' component={Cranberry} />
               <Route path='/IHOP' component={Ihop} />
               <Route path='/SushiJanai' component={SushiJanai} />
               <Route path='/Chipotle' component={Chipotle} />
