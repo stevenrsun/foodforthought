@@ -35,7 +35,7 @@ class About extends Component {
             var name = commit.committer_name;
             if(name === 'kelvin' || name === 'yuzongyang') {
               this.state["Kelvin Yu"].commits += 1;
-            } else if(name === 'Murray Lee') {
+            } else if(name === 'Murray Lee' || name === 'murraylee') {
               this.state["Murray Lee"].commits += 1;
             } else if(name === 'william suh') {
               this.state["William Suh"].commits += 1;
@@ -65,7 +65,7 @@ class About extends Component {
             var name = issue.closed_by.name;
             if(name === 'kelvin' || name === 'yuzongyang') {
               this.state["Kelvin Yu"].closed_issues += 1;
-            } else if(name === 'Murray Lee') {
+            } else if(name === 'Murray Lee' || name === 'murraylee') {
               this.state["Murray Lee"].closed_issues += 1;
             } else if(name === 'william suh') {
               this.state["William Suh"].closed_issues += 1;
