@@ -1,0 +1,534 @@
+{
+	"info": {
+		"_postman_id": "34085130-bf19-4191-a609-d4d391f9499a",
+		"name": "tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://api.foodforthoughtt.me/disease",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3f44141c-11b4-4983-bef9-34bfeeeda71a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"food\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"restaurant\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"name\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"cause\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"frequency\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"symptom\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"deaths\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"test disease4\",\n\t\"deaths\": 350865,\n\t\"frequency\": 100090,\n\t\"cause\": \"wtf\",\n\t\"symptom\": \"wtf\",\n\t\"restaurants\": \"wtf\",\n\t\"foods\": \"wtf\"\n\t\t\t\n}"
+				},
+				"url": {
+					"raw": "http://api.foodforthoughtt.me/disease",
+					"protocol": "http",
+					"host": [
+						"api",
+						"foodforthoughtt",
+						"me"
+					],
+					"path": [
+						"disease"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://api.foodforthoughtt.me/disease",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3f44141c-11b4-4983-bef9-34bfeeeda71a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"food\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"restaurant\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"name\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"cause\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"frequency\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"symptom\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"deaths\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"test disease4\",\n\t\"deaths\": 350865,\n\t\"frequency\": 100090,\n\t\"cause\": \"wtf\",\n\t\"symptom\": \"wtf\",\n\t\"restaurants\": \"wtf\",\n\t\"foods\": \"wtf\"\n\t\t\t\n}"
+				},
+				"url": {
+					"raw": "http://api.foodforthoughtt.me/disease",
+					"protocol": "http",
+					"host": [
+						"api",
+						"foodforthoughtt",
+						"me"
+					],
+					"path": [
+						"disease"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://api.foodforthoughtt.me/food",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3f44141c-11b4-4983-bef9-34bfeeeda71a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"diseases\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"restaurants\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"name\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"calories\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"sodium\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"fat\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"protein\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"test food\",\n\t\"sodium\": 350865,\n\t\"fat\": 100090,\n\t\"protein\": \"wtf\",\n\t\"calories\": \"wtf\",\n\t\"restaurants\": \"wtf\",\n\t\"diseases\": \"wtf\"\n\t\t\t\n}"
+				},
+				"url": {
+					"raw": "http://api.foodforthoughtt.me/food",
+					"protocol": "http",
+					"host": [
+						"api",
+						"foodforthoughtt",
+						"me"
+					],
+					"path": [
+						"food"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://api.foodforthoughtt.me/food",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3f44141c-11b4-4983-bef9-34bfeeeda71a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"diseases\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"restaurants\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"name\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"calories\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"sodium\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"fat\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"protein\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"test disease4\",\n\t\"sodium\": 350865,\n\t\"fat\": 100090,\n\t\"protein\": \"wtf\",\n\t\"calories\": \"wtf\",\n\t\"restaurants\": \"wtf\",\n\t\"diseases\": \"wtf\"\n\t\t\t\n}"
+				},
+				"url": {
+					"raw": "http://api.foodforthoughtt.me/food",
+					"protocol": "http",
+					"host": [
+						"api",
+						"foodforthoughtt",
+						"me"
+					],
+					"path": [
+						"food"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://api.foodforthoughtt.me/restaurant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3f44141c-11b4-4983-bef9-34bfeeeda71a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"diseases\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"foods\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"cuisine\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"location\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"diseases\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"cost\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"rating\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"test restaurant\",\n\t\"rating\": 350865,\n\t\"cost\": 100090,\n\t\"location\": \"wtf\",\n\t\"cuisine\": \"wtf\",\n\t\"foods\": \"wtf\",\n\t\"diseases\": \"wtf\"\n\t\t\t\n}"
+				},
+				"url": {
+					"raw": "http://api.foodforthoughtt.me/restaurant",
+					"protocol": "http",
+					"host": [
+						"api",
+						"foodforthoughtt",
+						"me"
+					],
+					"path": [
+						"restaurant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://api.foodforthoughtt.me/restaurant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3f44141c-11b4-4983-bef9-34bfeeeda71a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"diseases\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"foods\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"cuisine\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"location\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"diseases\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"cost\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"rating\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"test restaurant\",\n\t\"rating\": 350865,\n\t\"cost\": 100090,\n\t\"location\": \"wtf\",\n\t\"cuisine\": \"wtf\",\n\t\"foods\": \"wtf\",\n\t\"diseases\": \"wtf\"\n\t\t\t\n}"
+				},
+				"url": {
+					"raw": "http://api.foodforthoughtt.me/restaurant",
+					"protocol": "http",
+					"host": [
+						"api",
+						"foodforthoughtt",
+						"me"
+					],
+					"path": [
+						"restaurant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://api.foodforthoughtt.me/restaurant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3f44141c-11b4-4983-bef9-34bfeeeda71a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"diseases\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"foods\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"cuisine\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"location\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"diseases\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"cost\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"rating\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"test restaurant\"\n\n\t\t\t\n}"
+				},
+				"url": {
+					"raw": "http://api.foodforthoughtt.me/restaurant/1",
+					"protocol": "http",
+					"host": [
+						"api",
+						"foodforthoughtt",
+						"me"
+					],
+					"path": [
+						"restaurant",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://api.foodforthoughtt.me/food",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3f44141c-11b4-4983-bef9-34bfeeeda71a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"diseases\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"restaurants\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"calories\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"carbs\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"protein\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"sodium\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"images\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://api.foodforthoughtt.me/food/1",
+					"protocol": "http",
+					"host": [
+						"api",
+						"foodforthoughtt",
+						"me"
+					],
+					"path": [
+						"food",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://api.foodforthoughtt.me/disease",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3f44141c-11b4-4983-bef9-34bfeeeda71a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"restaurants\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"foods\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"image\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"age\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"frequency\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"deaths\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"cause\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://api.foodforthoughtt.me/disease/1",
+					"protocol": "http",
+					"host": [
+						"api",
+						"foodforthoughtt",
+						"me"
+					],
+					"path": [
+						"disease",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
