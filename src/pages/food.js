@@ -1,7 +1,6 @@
 import React from 'react';
 import backImage from '../food_photos/food_page_background.jpg';
-import {NavLink} from "react-router-dom";
-import {InfoCard, InfoCardGrid} from "../components/infocard.js";
+import {InfoCardGrid} from "../components/infocard.js";
 import {PageNav} from '../components/pageNav.js';
 import '../App.css';
 
