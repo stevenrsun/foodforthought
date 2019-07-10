@@ -59,6 +59,7 @@ export class DiseasePage extends Component {
     
 
     render() { 
+        var restDict = {name: "seafood shack", cost: "2", cuisine: "seafood", location: "lakeway", rating: "8", yelp: "75", images: "https://s3-media2.fl.yelpcdn.com/bphoto/zUe8Ay_EHA3tIJCHxb3eGQ/o.jpg"}
         var foodDict = {name: "turkey", protein: "29", fat: "7", carbs: "0.1", sodium: "5", calories: "189", images: "https://cdn-image.foodandwine.com/sites/default/files/styles/medium_2x/public/citrus-and-butter-turkey-xl-recipe1115.jpg"}
         return ( 
             <div className="img-fluid" style={this.styles.background}>
@@ -89,7 +90,7 @@ export class DiseasePage extends Component {
                     </div>
                     <div class="col text-right mr-5">
                         <Link to={{pathname: '/FoodPage/13', state: {dict: foodDict}}} style={this.styles.link}>Associated foods<br/></Link>
-                        <Link to='/Food' style={this.styles.link}>Associated restaurants</Link>
+                        <Link to={{pathname: '/RestaurantPage/3', state: {dict: restDict}}} style={this.styles.link}>Associated restaurants</Link>
                     </div>
                 </div>
             </div>    

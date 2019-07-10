@@ -127,8 +127,8 @@ class Restaurant extends React.Component {
     link: '/RestaurantPage'
   }
   
-  /*componentDidMount() {
-    let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/food';
+  componentDidMount() {
+    let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/restaurant';
     console.log("first");
     fetch(url)
     .then(response => response.json())
@@ -137,7 +137,7 @@ class Restaurant extends React.Component {
       const elements = data;
       this.setState({elements});
     })
-  }*/
+  }
   
   incrementPage = () => {
     const page = this.state.page + 1;

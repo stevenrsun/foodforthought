@@ -28,7 +28,7 @@ export class RestaurantPage extends Component {
     
         header: {
           textAlign: 'left',
-          color: 'aliceblue',
+          color: 'orange',
           fontSize: 100
         },
 
@@ -59,6 +59,7 @@ export class RestaurantPage extends Component {
     
 
     render() { 
+        var diseaseDict = {name: "acne", symptom: "too many", age: "20", cause: "immune system overreacting", deaths: "0", frequency: "52000000", images: "https://cdn1.medicalnewstoday.com/content/images/articles/321/321218/jawline-acne.jpg"}
         var foodDict = {name: "apple", protein: "0.3", fat: "0", carbs: "14", sodium: "1", calories: "52", images: "https://images-prod.healthline.com/hlcmsresource/images/topic_centers/Do_Apples_Affect_Diabetes_and_Blood_Sugar_Levels-732x549-thumbnail.jpg"}
         return ( 
             <div className="img-fluid" style={this.styles.background}>
@@ -67,29 +68,29 @@ export class RestaurantPage extends Component {
                     <img class="img-thumbnail ml-4" src = {this.state.dict.images} style = {this.styles.image}/>
                     <div class="col">
                         <div class="row">
-                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Protein:</p>
-                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.protein}</p>
+                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Cost:</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.cost}</p>
                         </div>
                         <div class="row">
-                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Fat:</p>
-                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.fat}</p>
+                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Cuisine:</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.cuisine}</p>
                         </div>
                         <div class="row">
-                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Carbs:</p>
-                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.carbs}</p>
+                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Location:</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.location}</p>
                         </div>
                         <div class="row">
-                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Sodium:</p>
-                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.sodium}</p>
+                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Rating/10:</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.rating}</p>
                         </div>
                         <div class="row">
-                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Calories:</p>
-                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.calories}</p>
+                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Yelp Reviews:</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.yelp}</p>
                         </div>
                     </div>
                     <div class="col text-right mr-5">
                         <Link to={{pathname: '/FoodPage/20', state: {dict: foodDict}}} style={this.styles.link} >Food found here<br/></Link>
-                        <Link to='/Food' style={this.styles.link}>Associated diseases</Link>
+                        <Link to={{pathname: '/DiseasePage/10', state: {dict: diseaseDict}}} style={this.styles.link}>Associated diseases</Link>
                     </div>
                 </div>
             </div>    

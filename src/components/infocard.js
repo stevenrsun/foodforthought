@@ -44,11 +44,11 @@ export class RestaurantCard extends Component {
             <img class="card-img-top" src={this.props.info.images} style={this.state.style} alt="Card image cap"/>
             <div class="card-body">
                 <div class="list-group">
-                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>fix:</Text>&nbsp;{this.props.info.protein}</div>
-                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>the:</Text>&nbsp;{this.props.info.fat}</div>
-                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>fucking:</Text>&nbsp;{this.props.info.carbs}</div>
-                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>database:</Text>&nbsp;{this.props.info.sodium}</div>
-                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>please:</Text>&nbsp;{this.props.info.calories}</div>
+                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Cost:</Text>&nbsp;{this.props.info.cost}</div>
+                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Cuisine:</Text>&nbsp;{this.props.info.cuisine}</div>
+                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Location:</Text>&nbsp;{this.props.info.location}</div>
+                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Rating/10:</Text>&nbsp;{this.props.info.rating}</div>
+                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Yelp Reviews:</Text>&nbsp;{this.props.info.yelp}</div>
                 </div>
                 <div class="card-text"><p></p></div>
                 <NavLink to={{pathname: this.props.link, state: {dict: this.props.info}}} class="card-link">More Info</NavLink>
