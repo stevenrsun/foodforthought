@@ -16,7 +16,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "deploy": "aws s3 sync build s3://www.foodforthoughtt.com",
-    "test": "react-scripts test", 
+    "test": "mocha", 
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
