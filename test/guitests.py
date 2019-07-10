@@ -16,10 +16,6 @@ class Tests(unittest.TestCase):
         self.driver.get(self.url)
         self.assertIn("Food for thought", self.driver.title)
 
-        def test_home_title(self):
-        self.driver.get(self.url)
-        self.assertIn("Budget For Space", self.driver.title)
-
     def test_food_nav(self):
         self.driver.get(self.url + '/food')
         link = self.driver.find_element_by_link_text("food")
