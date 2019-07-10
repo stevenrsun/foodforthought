@@ -1,88 +1,107 @@
 import React, { Component } from 'react';
+import {NavLink} from "react-router-dom";
+import backImage from '../food_photos/rest_image.jpg'
+import {Link} from 'react-router-dom';
 
-export class Ihop extends Component {
+export class RestaurantPage extends Component {
+    state = { 
+        dict: {name: "", images: "", protein: "", carbs: "", 
+                fat: "", calories: "", restaurants: "", diseases: "", sodium: "", id: ""}
+    }
 
     styles = {
         image: {
-          width: 200,
-          height: 150
+          width: 401,
+          height: 300
+        },
+    
+        background:{
+          backgroundImage: `url(${backImage}`,
+          height: '100vh', // 220 vh
+          width: '100vw',
+          overflow: 'hidden',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundAttachment: 'fixed'
+        },
+    
+        header: {
+          textAlign: 'left',
+          color: 'aliceblue',
+          fontSize: 100
+        },
+
+        text: {
+            color: 'aliceblue',
+            fontSize: 30
+        },
+
+        link: {
+            color: 'orange',
+            fontSize: 50
         }
-      };
+    };
+
+    componentDidMount () {
+        const {dict} = this.props.location.state;
+        this.setState({dict});
+    }
+/*
+    getDict () {
+        let i;
+        for(i = 0; i < this.state.elements.length; i++) {
+            if(this.state.elements[i]["name"] === this.state.item)
+                return this.state.elements[i];
+        }
+        return this.state.elements[0];
+    }*/
+    
 
     render() { 
-        return (  
-            <div>
-                <h1>IHOP</h1>
-                <img class = "img-thumbnail" src = {require("../restaurant_photos/ihop.jpg")} style = {this.styles.image}/>
-                <h5>Location:</h5>
-                <p>707 E Cesar Chavez St, Austin, TX</p>
-                <h5>Cuisine:</h5>
-                <p>American (breakfast)</p>
-                <h5>Cost ($-$$$$$)</h5>
-                <p>$$</p>
-                <h5>Contact:</h5>
-                <p>(512) 478-9520</p>
-                <h5>Rating (Google Reviews)</h5>
-                <p>3.7/5</p>
-            </div>
+        var foodDict = {name: "apple", protein: "0.3", fat: "0", carbs: "14", sodium: "1", calories: "52", images: "https://images-prod.healthline.com/hlcmsresource/images/topic_centers/Do_Apples_Affect_Diabetes_and_Blood_Sugar_Levels-732x549-thumbnail.jpg"}
+        return ( 
+            <div className="img-fluid" style={this.styles.background}>
+                <h1 class="display-1 ml-4" style={this.styles.header}>&nbsp;{this.state.dict.name}</h1>
+                <div class="row text-left ml-5 mt-5">
+                    <img class="img-thumbnail ml-4" src = {this.state.dict.images} style = {this.styles.image}/>
+                    <div class="col">
+                        <div class="row">
+                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Protein:</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.protein}</p>
+                        </div>
+                        <div class="row">
+                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Fat:</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.fat}</p>
+                        </div>
+                        <div class="row">
+                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Carbs:</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.carbs}</p>
+                        </div>
+                        <div class="row">
+                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Sodium:</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.sodium}</p>
+                        </div>
+                        <div class="row">
+                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Calories:</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.calories}</p>
+                        </div>
+                    </div>
+                    <div class="col text-right mr-5">
+                        <Link to={{pathname: '/FoodPage/20', state: {dict: foodDict}}} style={this.styles.link} >Food found here<br/></Link>
+                        <Link to='/Food' style={this.styles.link}>Associated diseases</Link>
+                    </div>
+                </div>
+            </div>    
         );
     }
 }
 
-export class SushiJanai extends Component {
 
-    styles = {
-        image: {
-          width: 200,
-          height: 150
-        }
-      };
+ 
 
-    render() { 
-        return (  
-            <div>
-                <h1>Sushi Janai</h1>
-                <img class = "img-thumbnail" src = {require("../restaurant_photos/sushijanai.jpg")} style = {this.styles.image}/>
-                <h5>Location:</h5>
-                <p>1612 Lavaca St, Austin, TX</p>
-                <h5>Cuisine:</h5>
-                <p>Japanese (Seafood)</p>
-                <h5>Cost ($-$$$$$)</h5>
-                <p>$$$</p>
-                <h5>Contact:</h5>
-                <p>(512) 322-2428</p>
-                <h5>Rating (Google Reviews)</h5>
-                <p>4.4/5</p>
-            </div>
-        );
-    }
-}
+ 
 
-export class Chipotle extends Component {
 
-    styles = {
-        image: {
-          width: 200,
-          height: 150
-        }
-      };
 
-    render() { 
-        return (  
-            <div>
-                <h1>Chipotle</h1>
-                <img class = "img-thumbnail" src = {require("../restaurant_photos/chipotle.jpg")} style = {this.styles.image}/>
-                <h5>Location:</h5>
-                <p>2230 Guadalupe St, Austin, TX</p>
-                <h5>Cuisine:</h5>
-                <p>Mexican (Grill)</p>
-                <h5>Cost ($-$$$$$)</h5>
-                <p>$</p>
-                <h5>Contact:</h5>
-                <p>(512) 320-0238</p>
-                <h5>Rating (Google Reviews)</h5>
-                <p>4/5</p>
-            </div>
-        );
-    }
-}
+ 

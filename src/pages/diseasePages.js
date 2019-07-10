@@ -1,69 +1,107 @@
 import React, { Component } from 'react';
+import {NavLink} from "react-router-dom";
+import backImage from '../food_photos/Red-blood-cells_1920x1080.jpg';
+import {Link} from 'react-router-dom';
 
-export class Diabetes extends Component {
+export class DiseasePage extends Component {
+    state = { 
+        dict: {name: "", images: "", protein: "", carbs: "", 
+                fat: "", calories: "", restaurants: "", diseases: "", sodium: "", id: ""}
+    }
+
+    styles = {
+        image: {
+          width: 401,
+          height: 300
+        },
+    
+        background:{
+          backgroundImage: `url(${backImage}`,
+          height: '100vh', // 220 vh
+          width: '100vw',
+          overflow: 'hidden',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundAttachment: 'fixed'
+        },
+    
+        header: {
+          textAlign: 'left',
+          color: 'aliceblue',
+          fontSize: 100
+        },
+
+        text: {
+            color: 'aliceblue',
+            fontSize: 30
+        },
+
+        link: {
+            color: 'tomato',
+            fontSize: 50
+        }
+    };
+
+    componentDidMount () {
+        const {dict} = this.props.location.state;
+        this.setState({dict});
+    }
+/*
+    getDict () {
+        let i;
+        for(i = 0; i < this.state.elements.length; i++) {
+            if(this.state.elements[i]["name"] === this.state.item)
+                return this.state.elements[i];
+        }
+        return this.state.elements[0];
+    }*/
+    
 
     render() { 
-        return (  
-            <div>
-                <h1>Diabetes</h1>
-                <h5>Symptoms:</h5>
-                <p>Frequent urination, increased thirst, constant hunger, extreme fatigue, blurry vision.</p>
-                <h5>Risk Factors:</h5>
-                <p>Type 1: Hereditary/Genetic</p>
-                <p>Type 2: High blood pressure, high blood fat levels, obesity</p>
-                <h5>Prevention</h5>
-                <p>Type 2: Avoid high alcohol intake and high-fat/carbohydrate diets.</p>
-                <h5>Treatment:</h5>
-                <p>Thiazolidinediones (lower insulin), alpha-glucosidase inhibitors (slow digestion of complex carbohydrates), 
-                bile acid sequestrants (cholesterol lowering drugs), GLP-1 receptor agonists (help pancreas produce insulin), direct insulin injections.
-                </p>
-                <h5>Frequency:</h5>
-                <p>9.4% of Americans in 2015 (30.3 million)</p>
-            </div>
+        var foodDict = {name: "turkey", protein: "29", fat: "7", carbs: "0.1", sodium: "5", calories: "189", images: "https://cdn-image.foodandwine.com/sites/default/files/styles/medium_2x/public/citrus-and-butter-turkey-xl-recipe1115.jpg"}
+        return ( 
+            <div className="img-fluid" style={this.styles.background}>
+                <h1 class="display-1 ml-4" style={this.styles.header}>&nbsp;{this.state.dict.name}</h1>
+                <div class="row text-left ml-5 mt-5">
+                    <img class="img-thumbnail ml-4" src = {this.state.dict.images} style = {this.styles.image}/>
+                    <div class="col">
+                        <div class="row">
+                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Average age affected:</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.age}</p>
+                        </div>
+                        <div class="row">
+                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Causes:</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.cause}</p>
+                        </div>
+                        <div class="row">
+                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Deaths per year:</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.deaths}</p>
+                        </div>
+                        <div class="row">
+                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Symptoms:</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.symptom}</p>
+                        </div>
+                        <div class="row">
+                            <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Diagnosed per year:</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.frequency}</p>
+                        </div>
+                    </div>
+                    <div class="col text-right mr-5">
+                        <Link to={{pathname: '/FoodPage/13', state: {dict: foodDict}}} style={this.styles.link}>Associated foods<br/></Link>
+                        <Link to='/Food' style={this.styles.link}>Associated restaurants</Link>
+                    </div>
+                </div>
+            </div>    
         );
     }
 }
 
-export class UTI extends Component {
 
-    render() { 
-        return (  
-            <div>
-                <h1>Urinary Tract Infection (UTI)</h1>
-                <h5>Symptoms:</h5>
-                <p>Burning feeling during urination, frequent urge to urinate, strange-smelling or bloody urine.</p>
-                <h5>Risk Factors:</h5>
-                <p>Higher sexual activity and age, kidney stones, poor bladder control.</p>
-                <h5>Prevention</h5>
-                <p>Drink lots of liquids, empty bladder after intercourse, drink cranberry juice.</p>
-                <h5>Treatment:</h5>
-                <p>Antibiotics, Penicillin.
-                </p>
-                <h5>Frequency:</h5>
-                <p>Relatively common (women), uncommon (men).</p>
-            </div>
-        );
-    }
-}
+ 
 
-export class HypoThy extends Component {
+ 
 
-    render() { 
-        return (  
-            <div>
-                <h1>Hypothyroidism</h1>
-                <h5>Symptoms:</h5>
-                <p>Change in appetite, insomnia, fatigue, frequent bowel movements (diarrhea), increased sweating and heat intolerance.</p>
-                <h5>Risk Factors:</h5>
-                <p>Family history of hypothyroidism, personal history of chronic illness.</p>
-                <h5>Prevention</h5>
-                <p>Avoid foods rich in iodine such as dairy products, salt, water, and eggs.</p>
-                <h5>Treatment:</h5>
-                <p>Radioactive iodine, anti-thydroid medications, beat blockers, surgery (thyroidectomy).
-                </p>
-                <h5>Frequency:</h5>
-                <p>Relatively uncommon (12% of US population or 20 million peopel have or will have thyroid problems)</p>
-            </div>
-        );
-    }
-}
+
+
+ 

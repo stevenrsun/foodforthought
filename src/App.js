@@ -4,8 +4,8 @@ import Food from './pages/food';
 import Disease from './pages/disease';
 import Restaurant from './pages/restaurant';
 import {FoodPage} from './pages/foodPages';
-import {Ihop, SushiJanai, Chipotle} from './pages/restaurantPages';
-import {Diabetes, UTI, HypoThy} from './pages/diseasePages';
+import {DiseasePage} from './pages/diseasePages';
+import {RestaurantPage} from './pages/restaurantPages'
 import logo from './home_image.jpg';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch, Link, NavLink } from "react-router-dom";
@@ -28,17 +28,15 @@ class Navbar extends Component {
           <Switch>
               <Route exact path='/' component={Home} />
               <Route exact path='/Food' component={Food} />
-              <Route exact path='/Disease' component={Disease} />
               <Route exact path='/Restaurant' component={Restaurant} />
+              <Route exact path='/Disease' component={Disease} />
               <Route exact path='/About' component={About} />
-              <Route path='/IHOP' component={Ihop} />
-              <Route path='/SushiJanai' component={SushiJanai} />
-              <Route path='/Chipotle' component={Chipotle} />
-              <Route path='/Diabetes' component={Diabetes} />
-              <Route path='/UTI' component={UTI} />
-              <Route path='/HypoThy' component={HypoThy} />
               <Route path='/FoodPage' component={FoodPage} />
               <Route path='/FoodPage/:id' component={FoodPage}/>
+              <Route path='/DiseasePage' component={DiseasePage} />
+              <Route path='/DiseasePage/:id' component={DiseasePage}/>
+              <Route path='/RestaurantPage' component={RestaurantPage} />
+              <Route path='/RestaurantPage/:id' component={RestaurantPage}/>
           </Switch>
         </div>
       </Router>
