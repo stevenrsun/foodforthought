@@ -38,6 +38,7 @@ class Navbar extends Component {
               <Route path='/UTI' component={UTI} />
               <Route path='/HypoThy' component={HypoThy} />
               <Route path='/FoodPage' component={FoodPage} />
+              <Route path='/FoodPage/:id' component={FoodPage}/>
           </Switch>
         </div>
       </Router>

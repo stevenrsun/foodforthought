@@ -5,92 +5,8 @@ import {Link} from 'react-router-dom';
 
 export class FoodPage extends Component {
     state = { 
-        elements: [
-            {header: 'Blueberries page 1', image: require('../food_photos/blueberries.jpg'), text: 'it\'s blue!', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/FoodPage', index: 0},
-            {header: 'Seaweed', image: require('../food_photos/seaweed.jpg'), text: 'its a plant', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/FoodPage', index: 1},
-            {header: 'Cranberries', image: require('../food_photos/cranberries.jpg'), text: 'delicious and red', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/FoodPage', index: 2},
-            {header: 'Blueberries', image: require('../food_photos/blueberries.jpg'), text: 'it\'s blue!', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Blueberry'},
-            {header: 'Seaweed', image: require('../food_photos/seaweed.jpg'), text: 'its a plant', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Seaweed'},
-            {header: 'Cranberries', image: require('../food_photos/cranberries.jpg'), text: 'delicious and red', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Cranberry'},
-            {header: 'Blueberries', image: require('../food_photos/blueberries.jpg'), text: 'it\'s blue!', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Blueberry'},
-            {header: 'Seaweed', image: require('../food_photos/seaweed.jpg'), text: 'its a plant', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Seaweed'},
-            {header: 'Cranberries', image: require('../food_photos/cranberries.jpg'), text: 'delicious and red', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Cranberry'},
-            
-            {header: 'Blueberries page 2', image: require('../food_photos/blueberries.jpg'), text: 'it\'s blue!', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Blueberry'},
-            {header: 'Seaweed', image: require('../food_photos/seaweed.jpg'), text: 'its a plant', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Seaweed'},
-            {header: 'Cranberries', image: require('../food_photos/cranberries.jpg'), text: 'delicious and red', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Cranberry'},
-            {header: 'Blueberries', image: require('../food_photos/blueberries.jpg'), text: 'it\'s blue!', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Blueberry'},
-            {header: 'Seaweed', image: require('../food_photos/seaweed.jpg'), text: 'its a plant', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Seaweed'},
-            {header: 'Cranberries', image: require('../food_photos/cranberries.jpg'), text: 'delicious and red', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Cranberry'},
-            {header: 'Blueberries', image: require('../food_photos/blueberries.jpg'), text: 'it\'s blue!', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Blueberry'},
-            {header: 'Seaweed', image: require('../food_photos/seaweed.jpg'), text: 'its a plant', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Seaweed'},
-            {header: 'Cranberries', image: require('../food_photos/cranberries.jpg'), text: 'delicious and red', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Cranberry'},
-
-            {header: 'Blueberries page 3', image: require('../food_photos/blueberries.jpg'), text: 'it\'s blue!', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Blueberry'},
-            {header: 'Seaweed', image: require('../food_photos/seaweed.jpg'), text: 'its a plant', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Seaweed'},
-            {header: 'Cranberries', image: require('../food_photos/cranberries.jpg'), text: 'delicious and red', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Cranberry'},
-            {header: 'Blueberries', image: require('../food_photos/blueberries.jpg'), text: 'it\'s blue!', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Blueberry'},
-            {header: 'Seaweed', image: require('../food_photos/seaweed.jpg'), text: 'its a plant', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Seaweed'},
-            {header: 'Cranberries', image: require('../food_photos/cranberries.jpg'), text: 'delicious and red', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Cranberry'},
-            {header: 'Blueberries', image: require('../food_photos/blueberries.jpg'), text: 'it\'s blue!', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Blueberry'},
-            {header: 'Seaweed', image: require('../food_photos/seaweed.jpg'), text: 'its a plant', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Seaweed'},
-            {header: 'Cranberries', image: require('../food_photos/cranberries.jpg'), text: 'delicious and red', point1: 'test: lots of info',
-            point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-            point5: 'data point 5', link: '/Cranberry'}
-        ],
-        index: 0
+        dict: {name: "", images: "", protein: "", carbs: "", 
+                fat: "", calories: "", restaurants: "", diseases: "", sodium: "", id: ""}
     }
 
     styles = {
@@ -128,35 +44,46 @@ export class FoodPage extends Component {
     };
 
     componentDidMount () {
-        const {index} = this.props.location.state;
-        this.setState({index});
+        const {dict} = this.props.location.state;
+        this.setState({dict});
     }
+/*
+    getDict () {
+        let i;
+        for(i = 0; i < this.state.elements.length; i++) {
+            if(this.state.elements[i]["name"] === this.state.item)
+                return this.state.elements[i];
+        }
+        return this.state.elements[0];
+    }*/
+    
+
     render() { 
         return ( 
             <div className="img-fluid" style={this.styles.background}>
-                <h1 class="display-1 ml-4" style={this.styles.header}>&nbsp;{this.state.elements[this.state.index].header}</h1>
+                <h1 class="display-1 ml-4" style={this.styles.header}>&nbsp;{this.state.dict.name}</h1>
                 <div class="row text-left ml-5 mt-5">
-                    <img class="img-thumbnail ml-4" src = {this.state.elements[this.state.index].image} style = {this.styles.image}/>
+                    <img class="img-thumbnail ml-4" src = {this.state.dict.images} style = {this.styles.image}/>
                     <div class="col">
                         <div class="row">
                             <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Protein:</p>
-                            <p class="ml-3 lead" style={this.styles.text}>{this.state.elements[this.state.index].point1}</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.protein}</p>
                         </div>
                         <div class="row">
                             <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Fat:</p>
-                            <p class="ml-3 lead" style={this.styles.text}>{this.state.elements[this.state.index].point2}</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.fat}</p>
                         </div>
                         <div class="row">
                             <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Carbs:</p>
-                            <p class="ml-3 lead" style={this.styles.text}>{this.state.elements[this.state.index].point3}</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.carbs}</p>
                         </div>
                         <div class="row">
                             <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Sodium:</p>
-                            <p class="ml-3 lead" style={this.styles.text}>{this.state.elements[this.state.index].point4}</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.sodium}</p>
                         </div>
                         <div class="row">
                             <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Calories:</p>
-                            <p class="ml-3 lead" style={this.styles.text}>{this.state.elements[this.state.index].point5}</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.calories}</p>
                         </div>
                     </div>
                     <div class="col text-right mr-5">

@@ -91,6 +91,7 @@ class food extends React.Component {
       {header: 'Cranberries', image: require('../food_photos/cranberries.jpg'), text: 'delicious and red', point1: 'test: lots of info',
       point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
       point5: 'data point 5', link: '/Cranberry'}
+
     ],
 
     page: 0,
@@ -126,7 +127,7 @@ class food extends React.Component {
   }
 
   goLastPage = () => {
-    const page = this.state.elements.length/9 - 1;
+    const page = Math.ceil(this.state.elements.length/9) - 1;
     this.setState({page});
   }
 
