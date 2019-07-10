@@ -112,7 +112,9 @@ render() {
             <td><img src={Alex} alt="Photo" height="150" /></td>
             <td>Alex Ng</td>
             <td>Enjoys working out and T22</td>
-            <td>Phase 1: user stories, techincal paper, and planning out the project </td>
+            <td>Phase 1: user stories, techincal paper, and planning out the project <br></br>
+                Phase 2: collecting data
+            </td>
             <td>{this.state['Alexander Ng'].commits}</td>
             <td>{this.state['Alexander Ng'].closed_issues}</td>
             <td>{this.state['Alexander Ng'].unit_tests}</td>
