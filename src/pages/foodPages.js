@@ -59,6 +59,7 @@ export class FoodPage extends Component {
     
 
     render() { 
+        var diseaseDict = {name: "acne", symptom: "too many", age: "20", cause: "immune system overreacting", deaths: "0", frequency: "52000000", images: "https://cdn1.medicalnewstoday.com/content/images/articles/321/321218/jawline-acne.jpg"}
         return ( 
             <div className="img-fluid" style={this.styles.background}>
                 <h1 class="display-1 ml-4" style={this.styles.header}>&nbsp;{this.state.dict.name}</h1>
@@ -88,7 +89,7 @@ export class FoodPage extends Component {
                     </div>
                     <div class="col text-right mr-5">
                         <Link to='/' style={this.styles.link}>Example Link 1 <br/></Link>
-                        <Link to='/Food' style={this.styles.link}>Example Link 2</Link>
+                        <Link to={{pathname: '/DiseasePage/8', state: {dict: diseaseDict}}} style={this.styles.link}>Associated diseases</Link>
                     </div>
                 </div>
             </div>    
