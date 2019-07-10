@@ -123,7 +123,9 @@ render() {
             <td><img src={Kelvin} alt="Photo" height="150" /></td>
             <td>Kelvin Yu</td>
             <td>Enjoys playing tennis and piano</td>
-            <td>Phase 1: front end</td>
+            <td>Phase 1: front end <br></br>
+                Phase 2: uml diagram, mocha tests
+            </td>
             <td>{this.state['Kelvin Yu'].commits}</td>
             <td>{this.state['Kelvin Yu'].closed_issues}</td>
             <td>{this.state['Kelvin Yu'].unit_tests}</td>
@@ -132,7 +134,9 @@ render() {
             <td><img src={Murray} alt="Photo" height="150" /></td>
             <td>Murray Lee</td>
             <td>Enjoys snowboarding</td>
-            <td>Phase 1: front end</td>
+            <td>Phase 1: front end <br></br>
+                Phase 2: api calls, frontend, gui tests
+            </td>
             <td>{this.state['Murray Lee'].commits}</td>
             <td>{this.state['Murray Lee'].closed_issues}</td>
             <td>{this.state['Murray Lee'].unit_tests}</td>
@@ -141,7 +145,9 @@ render() {
             <td><img src={Steven} alt="Photo" height="150" /></td>
             <td>Steven Sun</td>
             <td>Enjoys playing video games</td>
-            <td>Phase 1: front end</td>
+            <td>Phase 1: front end <br></br>
+                Phase 2: pagination, frontend
+            </td>
             <td>{this.state['Steven Sun'].commits}</td>
             <td>{this.state['Steven Sun'].closed_issues}</td>
             <td>{this.state['Steven Sun'].unit_tests}</td>
@@ -150,7 +156,9 @@ render() {
             <td><img src={William} alt="Photo" height="150" /></td>
             <td>William Suh</td>
             <td>Enjoys riding the bus to class everyday</td>
-            <td>Phase 1: AWS and API</td>
+            <td>Phase 1: AWS and API <br></br>
+                Phase 2: backend
+            </td>
             <td>{this.state['William Suh'].commits}</td>
             <td>{this.state['William Suh'].closed_issues}</td>
             <td>{this.state['William Suh'].unit_tests}</td>
