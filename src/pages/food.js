@@ -118,7 +118,6 @@ class Food extends React.Component {
       point5: 'data point 5', link: '/Seaweed'}
 
     ],
-
     page: 0,
 
     link: '/FoodPage'
