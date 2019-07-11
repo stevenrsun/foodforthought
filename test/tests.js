@@ -1,27 +1,60 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
-import App from './App';
-import getCalories from /src/pages/food.js
-import getProtein from /src/pages/food.js
-import getFat from /src/pages/food.js
+import Enzyme, { configure, shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
-describe('calorie count for blueberries', () => {
-  it('works', () => {
-    let v = new Food();
-    expect(v.getCalories().toEqual(57))
-  })
-})
+import About from './about.js'
+import Food from './pages/food.js';
+import FoodPage from './pages/foodPages.js';
+import Disease from './pages/disease.js';
+import DiseasePage from './pages/diseasePages.js';
+import Restaurant from './pages/restaurant.js';
+import RestaurantPage from './pages/restaurantPages.js';
 
-describe('protein count for blueberries', () => {
-  it('works', () => {
-    let v = new Food();
-    expect(v.getProtein().toEqual(.7))
-  })
-})
+Enzyme.configure({ adapter: new Adapter()})
+var assert = require('assert');
 
-describe('fat count for blueberries', () => {
-  it('works', () => {
-    let v = new Food();
-    expect(v.getFat().toEqual(0))
-  })
-})
+describe('Page Tests', function() {
+    describe('<Food>', () => {
+        it('component renders', () => {
+            const wrapper = shallow(<Food />);
+            expect(wrapper.exists()).toBe(true);
+        });
+    });
+    describe('<FoodPage>', () => {
+        it('component renders', () => {
+            const wrapper = shallow(<FoodPage />);
+            expect(wrapper.exists()).toBe(true);
+        });
+    });
+    describe('<Restaurant>', () => {
+        it('component renders', () => {
+            const wrapper = shallow(<Restaurant />);
+            expect(wrapper.exists()).toBe(true);
+        });
+    });
+    describe('<RestaurantPage>', () => {
+        it('component renders', () => {
+            const wrapper = shallow(<RestaurantPage />);
+            expect(wrapper.exists()).toBe(true);
+        });
+    });
+    describe('<Disease>', () => {
+        it('component renders', () => {
+            const wrapper = shallow(<Disease />);
+            expect(wrapper.exists()).toBe(true);
+        });
+    });
+    describe('<DiseasePage>', () => {
+        it('component renders', () => {
+            const wrapper = shallow(<DiseasePage />);
+            expect(wrapper.exists()).toBe(true);
+        });
+    });
+    describe('<About>', () => {
+        it('component renders', () => {
+            const wrapper = shallow(<About />);
+            expect(wrapper.exists()).toBe(true);
+        });
+    });
+});
