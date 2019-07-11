@@ -4,7 +4,6 @@
 // LICENSE file in the root directory of this source tree.
 
 #pragma once
-#include <folly/dynamic.h>
 
 namespace facebook {
 namespace xplat {

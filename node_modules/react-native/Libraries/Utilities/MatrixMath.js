@@ -11,7 +11,7 @@
 /* eslint-disable space-infix-ops */
 'use strict';
 
-const invariant = require('invariant');
+const invariant = require('fbjs/lib/invariant');
 
 /**
  * Memory conservative (mutative) matrix math utilities. Uses "command"

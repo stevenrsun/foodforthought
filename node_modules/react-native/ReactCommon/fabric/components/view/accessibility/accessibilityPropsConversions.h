@@ -81,18 +81,20 @@ inline void fromString(const std::string &string, AccessibilityTraits &result) {
   abort();
 }
 
-inline void fromRawValue(const RawValue &value, AccessibilityTraits &result) {
-  if (value.hasType<std::string>()) {
-    fromString((std::string)value, result);
+inline void fromDynamic(
+    const folly::dynamic &value,
+    AccessibilityTraits &result) {
+  if (value.isString()) {
+    fromString(value.asString(), result);
     return;
   }
 
-  if (value.hasType<std::vector<std::string>>()) {
+  if (value.isArray()) {
     result = {};
-    auto items = (std::vector<std::string>)value;
-    for (auto &item : items) {
+    for (auto &item : value) {
+      auto string = item.asString();
       AccessibilityTraits itemAccessibilityTraits;
-      fromString(item, itemAccessibilityTraits);
+      fromString(value.asString(), itemAccessibilityTraits);
       result = result | itemAccessibilityTraits;
     }
   }

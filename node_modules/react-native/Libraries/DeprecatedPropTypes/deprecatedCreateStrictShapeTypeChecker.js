@@ -10,8 +10,8 @@
 
 'use strict';
 
-const invariant = require('invariant');
-const merge = require('../vendor/core/merge');
+const invariant = require('fbjs/lib/invariant');
+const merge = require('merge');
 
 function deprecatedCreateStrictShapeTypeChecker(shapeTypes: {
   [key: string]: ReactPropsCheckType,

@@ -8,6 +8,8 @@
 #include <folly/Memory.h>
 #include <folly/String.h>
 
+#include <libgen.h>
+
 namespace facebook {
 namespace react {
 

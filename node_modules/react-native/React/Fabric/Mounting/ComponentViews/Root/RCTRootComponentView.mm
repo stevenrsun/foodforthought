@@ -7,7 +7,6 @@
 
 #import "RCTRootComponentView.h"
 
-#import <react/components/root/RootComponentDescriptor.h>
 #import <react/components/root/RootProps.h>
 
 using namespace facebook::react;
@@ -22,13 +21,6 @@ using namespace facebook::react;
   }
 
   return self;
-}
-
-#pragma mark - RCTComponentViewProtocol
-
-+ (ComponentDescriptorProvider)componentDescriptorProvider
-{
-  return concreteComponentDescriptorProvider<RootComponentDescriptor>();
 }
 
 @end

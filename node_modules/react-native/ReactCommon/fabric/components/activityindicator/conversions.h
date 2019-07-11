@@ -13,10 +13,10 @@
 namespace facebook {
 namespace react {
 
-inline void fromRawValue(
-    const RawValue &value,
+inline void fromDynamic(
+    const folly::dynamic &value,
     ActivityIndicatorViewSize &result) {
-  auto string = (std::string)value;
+  auto string = value.asString();
   if (string == "large") {
     result = ActivityIndicatorViewSize::Large;
     return;

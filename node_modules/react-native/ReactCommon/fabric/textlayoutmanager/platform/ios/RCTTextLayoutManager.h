@@ -32,13 +32,14 @@ NS_ASSUME_NONNULL_BEGIN
              (facebook::react::ParagraphAttributes)paragraphAttributes
                        frame:(CGRect)frame;
 
-- (facebook::react::SharedEventEmitter)
-    getEventEmitterWithAttributeString:
+- (facebook::react::SharedShadowNode)
+    getParentShadowNodeWithAttributeString:
         (facebook::react::AttributedString)attributedString
-                   paragraphAttributes:
-                       (facebook::react::ParagraphAttributes)paragraphAttributes
-                                 frame:(CGRect)frame
-                               atPoint:(CGPoint)point;
+                       paragraphAttributes:
+                           (facebook::react::ParagraphAttributes)
+                               paragraphAttributes
+                                     frame:(CGRect)frame
+                                   atPoint:(CGPoint)point;
 
 @end
 

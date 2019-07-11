@@ -38,8 +38,6 @@
                               moduleName:moduleName
                        initialProperties:properties];
 
-    [surface start];
-
     state = [RCTSurfaceBackedComponentState newWithSurface:surface];
 
     CKComponentScope::replaceState(scope, state);

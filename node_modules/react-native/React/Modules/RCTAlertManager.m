@@ -177,9 +177,7 @@ RCT_EXPORT_METHOD(alertWithArgs:(NSDictionary *)args
   }
   [_alertControllers addObject:alertController];
 
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [presentingController presentViewController:alertController animated:YES completion:nil];
-  });
+  [presentingController presentViewController:alertController animated:YES completion:nil];
 }
 
 @end

@@ -10,13 +10,9 @@
 #import "NSTextStorage+FontScaling.h"
 #import "RCTAttributedTextUtils.h"
 
-#import <react/utils/SimpleThreadSafeCache.h>
-
 using namespace facebook::react;
 
-@implementation RCTTextLayoutManager {
-  SimpleThreadSafeCache<AttributedString, std::shared_ptr<const void>, 256> _cache;
-}
+@implementation RCTTextLayoutManager
 
 static NSLineBreakMode RCTNSLineBreakModeFromWritingDirection(
     EllipsizeMode ellipsizeMode) {
@@ -38,10 +34,11 @@ static NSLineBreakMode RCTNSLineBreakModeFromWritingDirection(
               layoutConstraints:(LayoutConstraints)layoutConstraints {
   CGSize maximumSize = CGSize{layoutConstraints.maximumSize.width,
                               layoutConstraints.maximumSize.height};
-  NSTextStorage *textStorage = [self
-      _textStorageAndLayoutManagerWithAttributesString:[self _nsAttributedStringFromAttributedString:attributedString]
-                                   paragraphAttributes:paragraphAttributes
-                                                  size:maximumSize];
+  NSTextStorage *textStorage =
+      [self _textStorageAndLayoutManagerWithAttributesString:
+                RCTNSAttributedStringFromAttributedString(attributedString)
+                                         paragraphAttributes:paragraphAttributes
+                                                        size:maximumSize];
 
   NSLayoutManager *layoutManager = textStorage.layoutManagers.firstObject;
   NSTextContainer *textContainer = layoutManager.textContainers.firstObject;
@@ -58,10 +55,11 @@ static NSLineBreakMode RCTNSLineBreakModeFromWritingDirection(
 - (void)drawAttributedString:(AttributedString)attributedString
          paragraphAttributes:(ParagraphAttributes)paragraphAttributes
                        frame:(CGRect)frame {
-  NSTextStorage *textStorage = [self
-      _textStorageAndLayoutManagerWithAttributesString:[self _nsAttributedStringFromAttributedString:attributedString]
-                                   paragraphAttributes:paragraphAttributes
-                                                  size:frame.size];
+  NSTextStorage *textStorage =
+      [self _textStorageAndLayoutManagerWithAttributesString:
+                RCTNSAttributedStringFromAttributedString(attributedString)
+                                         paragraphAttributes:paragraphAttributes
+                                                        size:frame.size];
   NSLayoutManager *layoutManager = textStorage.layoutManagers.firstObject;
   NSTextContainer *textContainer = layoutManager.textContainers.firstObject;
 
@@ -108,15 +106,17 @@ static NSLineBreakMode RCTNSLineBreakModeFromWritingDirection(
   return textStorage;
 }
 
-- (SharedEventEmitter)
-    getEventEmitterWithAttributeString:(AttributedString)attributedString
-                   paragraphAttributes:(ParagraphAttributes)paragraphAttributes
-                                 frame:(CGRect)frame
-                               atPoint:(CGPoint)point {
-  NSTextStorage *textStorage = [self
-      _textStorageAndLayoutManagerWithAttributesString:[self _nsAttributedStringFromAttributedString:attributedString]
-                                   paragraphAttributes:paragraphAttributes
-                                                  size:frame.size];
+- (SharedShadowNode)
+    getParentShadowNodeWithAttributeString:(AttributedString)attributedString
+                       paragraphAttributes:
+                           (ParagraphAttributes)paragraphAttributes
+                                     frame:(CGRect)frame
+                                   atPoint:(CGPoint)point {
+  NSTextStorage *textStorage =
+      [self _textStorageAndLayoutManagerWithAttributesString:
+                RCTNSAttributedStringFromAttributedString(attributedString)
+                                         paragraphAttributes:paragraphAttributes
+                                                        size:frame.size];
   NSLayoutManager *layoutManager = textStorage.layoutManagers.firstObject;
   NSTextContainer *textContainer = layoutManager.textContainers.firstObject;
 
@@ -130,25 +130,15 @@ static NSLineBreakMode RCTNSLineBreakModeFromWritingDirection(
   // after (fraction == 1.0) the last character, then the attribute is valid.
   if (textStorage.length > 0 && (fraction > 0 || characterIndex > 0) &&
       (fraction < 1 || characterIndex < textStorage.length - 1)) {
-    RCTWeakEventEmitterWrapper *eventEmitterWrapper =
-        (RCTWeakEventEmitterWrapper *)[textStorage
-                 attribute:RCTAttributedStringEventEmitterKey
+    RCTSharedShadowNodeWrapper *parentShadowNode =
+        (RCTSharedShadowNodeWrapper *)[textStorage
+                 attribute:RCTAttributedStringParentShadowNode
                    atIndex:characterIndex
             effectiveRange:NULL];
-    return eventEmitterWrapper.eventEmitter;
+    return parentShadowNode.node;
   }
 
   return nil;
-}
-
-- (NSAttributedString *)_nsAttributedStringFromAttributedString:(AttributedString)attributedString
-{
-  auto sharedNSAttributedString = _cache.get(attributedString, [](const AttributedString attributedString) {
-    return std::shared_ptr<void>(
-        (__bridge_retained void *)RCTNSAttributedStringFromAttributedString(attributedString), CFRelease);
-  });
-
-  return (__bridge NSAttributedString *)sharedNSAttributedString.get();
 }
 
 @end

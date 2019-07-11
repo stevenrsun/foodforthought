@@ -1,8 +1,12 @@
 import React from 'react';
 import { configure, shallow, render} from 'enzyme';
 import chai, { expect } from 'chai';
+import NavBar from '../src/App.js';
 import chaiEnzyme from 'chai-enzyme';
+
 import Adapter from 'enzyme-adapter-react-16';
+
+configure({ adapter: new Adapter() });
 
 import About from '../src/about.js'
 import Food from '../src/pages/food.js';
@@ -15,48 +19,28 @@ import RestaurantPage from '../src/pages/restaurantPages.js';
 configure({ adapter: new Adapter() });
 
 
-describe('Page Tests', function() {
-    describe('<Food>', () => {
-        it('component renders', () => {
-            const wrapper = shallow(<Food />);
-            expect(wrapper.exists()).toBe(true);
-        });
+describe('<App/>', function () {
+ 
+    it('Navigation Bar contains Food', function () {
+      const wrapper = shallow(<NavBar/>);
+      expect(wrapper.find('Food'));
     });
-    describe('<FoodPage>', () => {
-        it('component renders', () => {
-            const wrapper = shallow(<FoodPage />);
-            expect(wrapper.exists()).toBe(true);
-        });
+  
+    it('Navigation Bar contains Restaurant', function () {
+      const wrapper = shallow(<NavBar/>);
+      expect(wrapper.find('Restaurant'));
     });
-    describe('<Restaurant>', () => {
-        it('component renders', () => {
-            const wrapper = shallow(<Restaurant />);
-            expect(wrapper.exists()).toBe(true);
-        });
+  
+    it('Navigation Bar contains Disease', function () {
+      const wrapper = shallow(<NavBar/>);
+      expect(wrapper.find('Disease'));
     });
-    describe('<RestaurantPage>', () => {
-        it('component renders', () => {
-            const wrapper = shallow(<RestaurantPage />);
-            expect(wrapper.exists()).toBe(true);
-        });
+  
+    it('Navigation Bar contains About', function () {
+      const wrapper = shallow(<NavBar/>);
+      expect(wrapper.find('About'));
     });
-    describe('<Disease>', () => {
-        it('component renders', () => {
-            const wrapper = shallow(<Disease />);
-            expect(wrapper.exists()).toBe(true);
-        });
-    });
-    describe('<DiseasePage>', () => {
-        it('component renders', () => {
-            const wrapper = shallow(<DiseasePage />);
-            expect(wrapper.exists()).toBe(true);
-        });
-    });
-    describe('<About>', () => {
-        it('component renders', () => {
-            const wrapper = shallow(<About />);
-            expect(wrapper.exists()).toBe(true);
-        });
-    });
+  
     chai.use(chaiEnzyme())
-});
+  });
+  

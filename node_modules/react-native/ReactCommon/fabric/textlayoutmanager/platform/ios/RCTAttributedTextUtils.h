@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 NSString *const RCTAttributedStringIsHighlightedAttributeName =
     @"IsHighlighted";
-NSString *const RCTAttributedStringEventEmitterKey = @"EventEmitter";
+NSString *const RCTAttributedStringParentShadowNode = @"ParentShadowNode";
 
 /**
  * Constructs ready-to-render `NSAttributedString` by given `AttributedString`.
@@ -22,8 +22,8 @@ NSString *const RCTAttributedStringEventEmitterKey = @"EventEmitter";
 NSAttributedString *RCTNSAttributedStringFromAttributedString(
     const facebook::react::AttributedString &attributedString);
 
-@interface RCTWeakEventEmitterWrapper : NSObject
-@property(nonatomic, assign) facebook::react::SharedEventEmitter eventEmitter;
+@interface RCTSharedShadowNodeWrapper : NSObject
+@property(nonatomic, assign) facebook::react::SharedShadowNode node;
 @end
 
 NS_ASSUME_NONNULL_END

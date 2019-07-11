@@ -12,9 +12,9 @@
 #include <react/components/view/ViewComponentDescriptor.h>
 #include <react/components/view/ViewProps.h>
 #include <react/components/view/ViewShadowNode.h>
-#include <react/core/ComponentDescriptor.h>
 #include <react/core/LayoutContext.h>
 #include <react/core/ShadowNodeFragment.h>
+#include <react/core/ComponentDescriptor.h>
 #include <react/debug/DebugStringConvertible.h>
 #include <react/debug/DebugStringConvertibleItem.h>
 
@@ -38,8 +38,7 @@ SharedShadowNode UITemplateProcessor::runCommand(
     std::vector<SharedShadowNode> &nodes,
     std::vector<folly::dynamic> &registers,
     const ComponentDescriptorRegistry &componentDescriptorRegistry,
-    const NativeModuleRegistry &nativeModuleRegistry,
-    const std::shared_ptr<const ReactNativeConfig> reactNativeConfig) {
+    const NativeModuleRegistry &nativeModuleRegistry) {
   const std::string &opcode = command[0].asString();
   const int tagOffset = 420000;
   // TODO: change to integer codes and a switch statement
@@ -52,20 +51,19 @@ SharedShadowNode UITemplateProcessor::runCommand(
         tag + tagOffset, type, rootTag, props, nullptr);
     if (parentTag > -1) { // parentTag == -1 indicates root node
       auto parentShadowNode = nodes[parentTag];
-      auto const &componentDescriptor = componentDescriptorRegistry.at(
-          parentShadowNode->getComponentHandle());
-      componentDescriptor.appendChild(parentShadowNode, nodes[tag]);
+      const SharedComponentDescriptor &componentDescriptor =
+          componentDescriptorRegistry[parentShadowNode];
+      componentDescriptor->appendChild(parentShadowNode, nodes[tag]);
     }
   } else if (opcode == "returnRoot") {
-    if (DEBUG_FLY) {
-      LOG(INFO)
-          << "(stop) UITemplateProcessor inject serialized 'server rendered' view tree";
-    }
+    LOG(INFO)
+        << "(stop) UITemplateProcessor inject serialized 'server rendered' view tree";
     return nodes[command[1].asInt()];
   } else if (opcode == "loadNativeBool") {
     int registerNumber = command[1].asInt();
-    std::string param = command[4][0].asString();
-    registers[registerNumber] = reactNativeConfig->getBool(param);
+    const folly::dynamic &value = nativeModuleRegistry.call(
+        command[2].asString(), command[3].asString(), command[4]);
+    registers[registerNumber] = value.asBool();
   } else if (opcode == "conditional") {
     int registerNumber = command[1].asInt();
     auto conditionDynamic = registers[registerNumber];
@@ -91,8 +89,7 @@ SharedShadowNode UITemplateProcessor::runCommand(
           nodes,
           registers,
           componentDescriptorRegistry,
-          nativeModuleRegistry,
-          reactNativeConfig);
+          nativeModuleRegistry);
     }
   } else {
     throw std::runtime_error("Unsupported opcode: " + command[0].asString());
@@ -105,12 +102,9 @@ SharedShadowNode UITemplateProcessor::buildShadowTree(
     Tag rootTag,
     const folly::dynamic &params,
     const ComponentDescriptorRegistry &componentDescriptorRegistry,
-    const NativeModuleRegistry &nativeModuleRegistry,
-    const std::shared_ptr<const ReactNativeConfig> reactNativeConfig) {
-  if (DEBUG_FLY) {
-    LOG(INFO)
-        << "(strt) UITemplateProcessor inject hardcoded 'server rendered' view tree";
-  }
+    const NativeModuleRegistry &nativeModuleRegistry) {
+  LOG(INFO)
+      << "(strt) UITemplateProcessor inject hardcoded 'server rendered' view tree";
 
   std::string content = jsonStr;
   for (const auto &param : params.items()) {
@@ -135,8 +129,7 @@ SharedShadowNode UITemplateProcessor::buildShadowTree(
           nodes,
           registers,
           componentDescriptorRegistry,
-          nativeModuleRegistry,
-          reactNativeConfig);
+          nativeModuleRegistry);
       if (ret != nullptr) {
         return ret;
       }

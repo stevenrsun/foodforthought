@@ -43,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithBridge:(RCTBridge *)bridge
                     moduleName:(NSString *)moduleName
-             initialProperties:(NSDictionary *)initialProperties;
+             initialProperties:(NSDictionary *)initialProperties NS_DESIGNATED_INITIALIZER;
 
 #pragma mark - Dealing with UIView representation, the Main thread only access
 
@@ -118,7 +118,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * Starts or stops the Surface.
- * Those methods are a no-op for regular RCTSurface (for now), but all call sites must call them appropriately.
+ * Those methods are not implemented yet for regular RCTSurface.
  */
 - (BOOL)start;
 - (BOOL)stop;

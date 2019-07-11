@@ -11,7 +11,6 @@
 
 #include <folly/dynamic.h>
 
-#include <react/config/ReactNativeConfig.h>
 #include <react/core/ShadowNode.h>
 #include <react/uimanager/ComponentDescriptorRegistry.h>
 #include <react/uimanager/UIManagerDelegate.h>
@@ -49,8 +48,7 @@ class UITemplateProcessor {
       int rootTag,
       const folly::dynamic &params,
       const ComponentDescriptorRegistry &componentDescriptorRegistry,
-      const NativeModuleRegistry &nativeModuleRegistry,
-      const std::shared_ptr<const ReactNativeConfig> reactNativeConfig);
+      const NativeModuleRegistry &nativeModuleRegistry);
 
  private:
   static SharedShadowNode runCommand(
@@ -59,8 +57,7 @@ class UITemplateProcessor {
       std::vector<SharedShadowNode> &nodes,
       std::vector<folly::dynamic> &registers,
       const ComponentDescriptorRegistry &componentDescriptorRegistry,
-      const NativeModuleRegistry &nativeModuleRegistry,
-      const std::shared_ptr<const ReactNativeConfig> reactNativeConfig);
+      const NativeModuleRegistry &nativeModuleRegistry);
 };
 } // namespace react
 } // namespace facebook

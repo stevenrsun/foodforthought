@@ -18,7 +18,6 @@ static NSString *const RCTAssertFunctionStack = @"RCTAssertFunctionStack";
 
 RCTAssertFunction RCTCurrentAssertFunction = nil;
 RCTFatalHandler RCTCurrentFatalHandler = nil;
-RCTFatalExceptionHandler RCTCurrentFatalExceptionHandler = nil;
 
 NSException *_RCTNotImplementedException(SEL, Class);
 NSException *_RCTNotImplementedException(SEL cmd, Class cls)
@@ -150,9 +149,9 @@ void RCTFatal(NSError *error)
   }
 }
 
-void RCTSetFatalHandler(RCTFatalHandler fatalHandler)
+void RCTSetFatalHandler(RCTFatalHandler fatalhandler)
 {
-  RCTCurrentFatalHandler = fatalHandler;
+  RCTCurrentFatalHandler = fatalhandler;
 }
 
 RCTFatalHandler RCTGetFatalHandler(void)
@@ -170,14 +169,13 @@ NSString *RCTFormatError(NSString *message, NSArray<NSDictionary<NSString *, id>
   if (stackTrace) {
     [prettyStack appendString:@", stack:\n"];
 
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\b((?:seg-\\d+(?:_\\d+)?|\\d+)\\.js)"
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^(\\d+\\.js)$"
                                                                            options:NSRegularExpressionCaseInsensitive
                                                                              error:NULL];
     for (NSDictionary<NSString *, id> *frame in stackTrace) {
       NSString *fileName = [frame[@"file"] lastPathComponent];
-      NSTextCheckingResult *match = fileName != nil ? [regex firstMatchInString:fileName options:0 range:NSMakeRange(0, fileName.length)] : nil;
-      if (match) {
-        fileName = [NSString stringWithFormat:@"%@:", [fileName substringWithRange:match.range]];
+      if (fileName && [regex numberOfMatchesInString:fileName options:0 range:NSMakeRange(0, [fileName length])]) {
+        fileName = [fileName stringByAppendingString:@":"];
       } else {
         fileName = @"";
       }
@@ -188,32 +186,3 @@ NSString *RCTFormatError(NSString *message, NSArray<NSDictionary<NSString *, id>
 
   return [NSString stringWithFormat:@"%@%@", message, prettyStack];
 }
-
-void RCTFatalException(NSException *exception)
-{
-  _RCTLogNativeInternal(RCTLogLevelFatal, NULL, 0, @"%@: %@", exception.name, exception.reason);
-
-  RCTFatalExceptionHandler fatalExceptionHandler = RCTGetFatalExceptionHandler();
-  if (fatalExceptionHandler) {
-    fatalExceptionHandler(exception);
-  } else {
-#if DEBUG
-    @try {
-#endif
-      @throw exception;
-#if DEBUG
-    } @catch (NSException *e) {}
-#endif
-  }
-}
-
-void RCTSetFatalExceptionHandler(RCTFatalExceptionHandler fatalExceptionHandler)
-{
-  RCTCurrentFatalExceptionHandler = fatalExceptionHandler;
-}
-
-RCTFatalExceptionHandler RCTGetFatalExceptionHandler(void)
-{
-  return RCTCurrentFatalExceptionHandler;
-}
-

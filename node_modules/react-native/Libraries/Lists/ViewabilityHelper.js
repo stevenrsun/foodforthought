@@ -9,7 +9,7 @@
  */
 'use strict';
 
-const invariant = require('invariant');
+const invariant = require('fbjs/lib/invariant');
 
 export type ViewToken = {
   item: any,
@@ -121,13 +121,10 @@ class ViewabilityHelper {
     }
     let firstVisible = -1;
     const {first, last} = renderRange || {first: 0, last: itemCount - 1};
-    if (last >= itemCount) {
-      console.warn(
-        'Invalid render range computing viewability ' +
-          JSON.stringify({renderRange, itemCount}),
-      );
-      return [];
-    }
+    invariant(
+      last < itemCount,
+      'Invalid render range ' + JSON.stringify({renderRange, itemCount}),
+    );
     for (let idx = first; idx <= last; idx++) {
       const metrics = getFrameMetrics(idx);
       if (!metrics) {

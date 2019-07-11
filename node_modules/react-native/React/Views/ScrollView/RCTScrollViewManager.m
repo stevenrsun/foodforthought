@@ -34,8 +34,6 @@ RCT_ENUM_CONVERTER(UIScrollViewIndicatorStyle, (@{
   @"white": @(UIScrollViewIndicatorStyleWhite),
 }), UIScrollViewIndicatorStyleDefault, integerValue)
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunguarded-availability-new"
 #if defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 110000 /* __IPHONE_11_0 */
 RCT_ENUM_CONVERTER(UIScrollViewContentInsetAdjustmentBehavior, (@{
   @"automatic": @(UIScrollViewContentInsetAdjustmentAutomatic),
@@ -44,7 +42,6 @@ RCT_ENUM_CONVERTER(UIScrollViewContentInsetAdjustmentBehavior, (@{
   @"always": @(UIScrollViewContentInsetAdjustmentAlways),
 }), UIScrollViewContentInsetAdjustmentNever, integerValue)
 #endif
-#pragma clang diagnostic pop
 
 @end
 
@@ -83,9 +80,7 @@ RCT_EXPORT_VIEW_PROPERTY(scrollEventThrottle, NSTimeInterval)
 RCT_EXPORT_VIEW_PROPERTY(zoomScale, CGFloat)
 RCT_EXPORT_VIEW_PROPERTY(contentInset, UIEdgeInsets)
 RCT_EXPORT_VIEW_PROPERTY(scrollIndicatorInsets, UIEdgeInsets)
-RCT_EXPORT_VIEW_PROPERTY(scrollToOverflowEnabled, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(snapToInterval, int)
-RCT_EXPORT_VIEW_PROPERTY(disableIntervalMomentum, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(snapToOffsets, NSArray<NSNumber *>)
 RCT_EXPORT_VIEW_PROPERTY(snapToStart, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(snapToEnd, BOOL)

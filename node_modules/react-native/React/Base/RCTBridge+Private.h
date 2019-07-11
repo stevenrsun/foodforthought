@@ -107,14 +107,9 @@ RCT_EXTERN void RCTRegisterModule(Class);
 - (RCTModuleData *)moduleDataForName:(NSString *)moduleName;
 
 /**
- * Registers additional classes with the ModuleRegistry.
- */
+* Registers additional classes with the ModuleRegistry.
+*/
 - (void)registerAdditionalModuleClasses:(NSArray<Class> *)newModules;
-
-/**
- * Updates the ModuleRegistry with a pre-initialized instance.
- */
-- (void)updateModuleWithInstance:(id<RCTBridgeModule>)instance;
 
 /**
  * Systrace profiler toggling methods exposed for the RCTDevMenu
@@ -149,8 +144,7 @@ RCT_EXTERN void RCTRegisterModule(Class);
 
 @interface RCTCxxBridge : RCTBridge
 
-// TODO(cjhopman): this seems unsafe unless we require that it is only called on the main js queue.
-@property (nonatomic, readonly) void *runtime;
+@property (nonatomic) void *runtime;
 
 - (instancetype)initWithParentBridge:(RCTBridge *)bridge NS_DESIGNATED_INITIALIZER;
 

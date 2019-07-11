@@ -12,7 +12,7 @@
 #import "RCTEventDispatcher.h"
 #import "RCTUtils.h"
 
-static NSString *RCTCurrentAppState()
+static NSString *RCTCurrentAppBackgroundState()
 {
   static NSDictionary *states;
   static dispatch_once_t onceToken;
@@ -49,12 +49,7 @@ RCT_EXPORT_MODULE()
 
 - (NSDictionary *)constantsToExport
 {
-  return [self getConstants];
-}
-
-- (NSDictionary *)getConstants
-{
-  return @{@"initialAppState": RCTCurrentAppState()};
+  return @{@"initialAppState": RCTCurrentAppBackgroundState()};
 }
 
 #pragma mark - Lifecycle
@@ -105,7 +100,7 @@ RCT_EXPORT_MODULE()
   } else if ([notification.name isEqualToString:UIApplicationWillEnterForegroundNotification]) {
     newState = @"background";
   } else {
-    newState = RCTCurrentAppState();
+    newState = RCTCurrentAppBackgroundState();
   }
 
   if (![newState isEqualToString:_lastKnownState]) {
@@ -123,7 +118,7 @@ RCT_EXPORT_MODULE()
 RCT_EXPORT_METHOD(getCurrentAppState:(RCTResponseSenderBlock)callback
                   error:(__unused RCTResponseSenderBlock)error)
 {
-  callback(@[@{@"app_state": RCTCurrentAppState()}]);
+  callback(@[@{@"app_state": RCTCurrentAppBackgroundState()}]);
 }
 
 @end

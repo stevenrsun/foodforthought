@@ -9,7 +9,6 @@
 #include <functional>
 #include <tuple>
 
-#include <folly/Hash.h>
 #include <react/graphics/Float.h>
 
 namespace facebook {
@@ -186,41 +185,44 @@ namespace std {
 template <>
 struct hash<facebook::react::Point> {
   size_t operator()(const facebook::react::Point &point) const {
-    return folly::hash::hash_combine(0, point.x, point.y);
+    return hash<decltype(point.x)>{}(point.x) +
+        hash<decltype(point.y)>{}(point.y);
   }
 };
 
 template <>
 struct hash<facebook::react::Size> {
   size_t operator()(const facebook::react::Size &size) const {
-    return folly::hash::hash_combine(0, size.width, size.height);
+    return hash<decltype(size.width)>{}(size.width) +
+        hash<decltype(size.height)>{}(size.height);
   }
 };
 
 template <>
 struct hash<facebook::react::Rect> {
   size_t operator()(const facebook::react::Rect &rect) const {
-    return folly::hash::hash_combine(0, rect.origin, rect.size);
+    return hash<decltype(rect.origin)>{}(rect.origin) +
+        hash<decltype(rect.size)>{}(rect.size);
   }
 };
 
 template <typename T>
 struct hash<facebook::react::RectangleEdges<T>> {
   size_t operator()(const facebook::react::RectangleEdges<T> &edges) const {
-    return folly::hash::hash_combine(
-        0, edges.left, edges.right, edges.top, edges.bottom);
+    return hash<decltype(edges.left)>{}(edges.left) +
+        hash<decltype(edges.right)>{}(edges.right) +
+        hash<decltype(edges.top)>{}(edges.top) +
+        hash<decltype(edges.bottom)>{}(edges.bottom);
   }
 };
 
 template <typename T>
 struct hash<facebook::react::RectangleCorners<T>> {
   size_t operator()(const facebook::react::RectangleCorners<T> &corners) const {
-    return folly::hash::hash_combine(
-        0,
-        corners.topLeft,
-        corners.bottomLeft,
-        corners.topRight,
-        corners.bottomRight);
+    return hash<decltype(corners.topLeft)>{}(corners.topLeft) +
+        hash<decltype(corners.bottomLeft)>{}(corners.bottomLeft) +
+        hash<decltype(corners.topRight)>{}(corners.topRight) +
+        hash<decltype(corners.bottomRight)>{}(corners.bottomRight);
   }
 };
 

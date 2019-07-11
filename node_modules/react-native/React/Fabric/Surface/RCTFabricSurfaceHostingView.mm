@@ -7,7 +7,6 @@
 
 #import "RCTFabricSurfaceHostingView.h"
 
-#import <React/RCTSurface.h>
 #import "RCTFabricSurface.h"
 
 @implementation RCTFabricSurfaceHostingView
@@ -20,8 +19,8 @@
   RCTSurface *surface = (RCTSurface *)[[RCTFabricSurface alloc] initWithBridge:bridge
                                                                     moduleName:moduleName
                                                              initialProperties:initialProperties];
-  [surface start];
   return [self initWithSurface:surface sizeMeasureMode:sizeMeasureMode];
 }
 
 @end
+
