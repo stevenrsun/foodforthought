@@ -1,6 +1,8 @@
-import React from 'react'
-import ReactDOM from 'react-dom';
-import Enzyme, { configure, shallow } from 'enzyme';
+import React from 'react';
+import { configure, shallow, render} from 'enzyme';
+import chai, { expect } from 'chai';
+import App from '../App';
+import chaiEnzyme from 'chai-enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import About from './about.js'
@@ -14,6 +16,19 @@ import RestaurantPage from './pages/restaurantPages.js';
 Enzyme.configure({ adapter: new Adapter()})
 var assert = require('assert');
 
+describe('App Component testing', function() {
+
+    it('App renders main message', () => {
+      const wrapper = shallow(<App />);
+      const editText = <p>Edit <code>src/App.js</code> and save to reload.</p>;
+      expect(wrapper).to.contain(editText);
+  
+  });
+  
+    chai.use(chaiEnzyme())
+  
+  })
+/*
 describe('Page Tests', function() {
     describe('<Food>', () => {
         it('component renders', () => {
@@ -58,3 +73,4 @@ describe('Page Tests', function() {
         });
     });
 });
+*/

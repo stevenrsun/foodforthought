@@ -1,0 +1,73 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Disease	../Backend/application.py	/^class Disease(db.Model):$/;"	kind:class	line:53
+Diseaseformat	../Backend/application.py	/^class Diseaseformat(ma.Schema):$/;"	kind:class	line:70
+Food	../Backend/application.py	/^class Food(db.Model):$/;"	kind:class	line:32
+Foodformat	../Backend/application.py	/^class Foodformat(ma.Schema):$/;"	kind:class	line:49
+Meta	../Backend/application.py	/^  class Meta:$/;"	kind:class	line:50
+Meta	../Backend/application.py	/^  class Meta:$/;"	kind:class	line:71
+Meta	../Backend/application.py	/^  class Meta:$/;"	kind:class	line:94
+Restaurant	../Backend/application.py	/^class Restaurant(db.Model):$/;"	kind:class	line:76
+Restaurantformat	../Backend/application.py	/^class Restaurantformat(ma.Schema):$/;"	kind:class	line:93
+Tests	../test/guitests.py	/^class Tests(unittest.TestCase):$/;"	kind:class	line:8
+__init__	../Backend/application.py	/^  def __init__(self, name, calories, fat, sodium, protein):$/;"	kind:member	line:40
+__init__	../Backend/application.py	/^  def __init__(self, name, frequency, deaths, cause, symptom):$/;"	kind:member	line:61
+__init__	../Backend/application.py	/^  def __init__(self, name, rating, cuisine, cost, location):$/;"	kind:member	line:84
+add_Disease	../Backend/application.py	/^def add_Disease():$/;"	kind:function	line:121
+add_food	../Backend/application.py	/^def add_food():$/;"	kind:function	line:108
+add_restaurant	../Backend/application.py	/^def add_restaurant():$/;"	kind:function	line:133
+api	../test/apitests.py	/^api = "http:\/\/api.foodforthoughtt.me"$/;"	kind:variable	line:5
+apiTests	../test/apitests.py	/^class apiTests(unittest.TestCase) :$/;"	kind:class	line:7
+api_url	../test/guitests.py	/^    api_url = "https:\/\/api.foodforthoughtt.me"$/;"	kind:variable	line:10
+apitests.py	../test/apitests.py	1;"	kind:file	line:1
+application	../Backend/application.py	/^application = Flask(__name__)$/;"	kind:variable	line:19
+application.py	../Backend/application.py	1;"	kind:file	line:1
+basedir	../Backend/application.py	/^basedir = os.path.abspath(os.path.dirname(__file__))$/;"	kind:variable	line:22
+calories	../Backend/application.py	/^  calories = db.Column(db.Integer)$/;"	kind:variable	line:35
+cause	../Backend/application.py	/^  cause = db.Column(db.String(100))$/;"	kind:variable	line:58
+cost	../Backend/application.py	/^  cost = db.Column(db.Integer)$/;"	kind:variable	line:81
+cuisine	../Backend/application.py	/^  cuisine = db.Column(db.String(100))$/;"	kind:variable	line:80
+db	../Backend/application.py	/^db = SQLAlchemy(application)$/;"	kind:variable	line:27
+deaths	../Backend/application.py	/^  deaths = db.Column(db.Integer)$/;"	kind:variable	line:57
+disease_schema	../Backend/application.py	/^disease_schema = Diseaseformat(strict=True)$/;"	kind:variable	line:100
+diseases_schema	../Backend/application.py	/^diseases_schema = Diseaseformat(many=True, strict=True)$/;"	kind:variable	line:103
+fat	../Backend/application.py	/^  fat = db.Column(db.Integer)$/;"	kind:variable	line:36
+fields	../Backend/application.py	/^    fields = ('id', 'name', 'calories', 'fat', 'sodium', 'protein')$/;"	kind:variable	line:51
+fields	../Backend/application.py	/^    fields = ('id', 'name', 'frequency', 'deaths', 'cause', 'symptom')$/;"	kind:variable	line:72
+fields	../Backend/application.py	/^    fields = ('id', 'name', 'rating', 'cuisine', 'cost', 'location')$/;"	kind:variable	line:95
+food_schema	../Backend/application.py	/^food_schema = Foodformat(strict=True)$/;"	kind:variable	line:99
+foods_schema	../Backend/application.py	/^foods_schema = Foodformat(many=True, strict=True)$/;"	kind:variable	line:102
+footer_text	../Backend/application.py	/^footer_text = '<\/body>\\n<\/html>'$/;"	kind:variable	line:17
+frequency	../Backend/application.py	/^  frequency = db.Column(db.Integer)$/;"	kind:variable	line:56
+get_diseases	../Backend/application.py	/^def get_diseases():$/;"	kind:function	line:151
+get_products	../Backend/application.py	/^def get_products():$/;"	kind:function	line:146
+get_restaurant	../Backend/application.py	/^def get_restaurant():$/;"	kind:function	line:156
+guitests.py	../test/guitests.py	1;"	kind:file	line:1
+id	../Backend/application.py	/^  id = db.Column(db.Integer, primary_key=True)$/;"	kind:variable	line:33
+id	../Backend/application.py	/^  id = db.Column(db.Integer, primary_key=True)$/;"	kind:variable	line:54
+id	../Backend/application.py	/^  id = db.Column(db.Integer, primary_key=True)$/;"	kind:variable	line:77
+location	../Backend/application.py	/^  location = db.Column(db.String(100))$/;"	kind:variable	line:82
+ma	../Backend/application.py	/^ma = Marshmallow(application)$/;"	kind:variable	line:29
+name	../Backend/application.py	/^  name = db.Column(db.String(100), unique=True)$/;"	kind:variable	line:34
+name	../Backend/application.py	/^  name = db.Column(db.String(100), unique=True)$/;"	kind:variable	line:55
+name	../Backend/application.py	/^  name = db.Column(db.String(100), unique=True)$/;"	kind:variable	line:78
+protein	../Backend/application.py	/^  protein = db.Column(db.Integer)$/;"	kind:variable	line:38
+rating	../Backend/application.py	/^  rating = db.Column(db.Integer)$/;"	kind:variable	line:79
+restaurant_schema	../Backend/application.py	/^restaurant_schema = Restaurantformat(strict=True)$/;"	kind:variable	line:101
+restaurants_schema	../Backend/application.py	/^restaurants_schema = Restaurantformat(many=True, strict=True)$/;"	kind:variable	line:104
+setUp	../test/guitests.py	/^    def setUp(self):$/;"	kind:member	line:12
+sodium	../Backend/application.py	/^  sodium = db.Column(db.Integer)$/;"	kind:variable	line:37
+symptom	../Backend/application.py	/^  symptom = db.Column(db.String(100))$/;"	kind:variable	line:59
+testDisease	../test/apitests.py	/^	def testDisease(self):$/;"	kind:member	line:16
+testFood	../test/apitests.py	/^	def testFood(self):$/;"	kind:member	line:12
+testRestaurant	../test/apitests.py	/^	def testRestaurant(self):$/;"	kind:member	line:20
+testRoot	../test/apitests.py	/^	def testRoot(self):$/;"	kind:member	line:8
+test_diseases_nav	../test/guitests.py	/^    def test_diseases_nav(self):$/;"	kind:member	line:33
+test_food_nav	../test/guitests.py	/^    def test_food_nav(self):$/;"	kind:member	line:19
+test_home_title	../test/guitests.py	/^    def test_home_title(self):$/;"	kind:member	line:15
+test_restaurants_nav	../test/guitests.py	/^    def test_restaurants_nav(self):$/;"	kind:member	line:26
+url	../test/guitests.py	/^    url = "https:\/\/www.foodforthoughtt.me"$/;"	kind:variable	line:9
