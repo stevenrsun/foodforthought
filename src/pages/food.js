@@ -7,117 +7,7 @@ import '../App.css';
 
 class Food extends React.Component {
   state = {
-    elements: [
-      {header: 'Blueberries page 1', image: 'https://foodrevolution.org/wp-content/uploads/2018/05/blog-featured_blueberries-20180516.jpg', text: 'it\'s blue!', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/FoodPage'},
-      {header: 'Seaweed', image: require('../food_photos/seaweed.jpg'), text: 'its a plant', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/FoodPage'},
-      {header: 'Cranberries', image: require('../food_photos/cranberries.jpg'), text: 'delicious and red', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/FoodPage',},
-      {header: 'Blueberries', image: require('../food_photos/blueberries.jpg'), text: 'it\'s blue!', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Blueberry'},
-      {header: 'Seaweed', image: require('../food_photos/seaweed.jpg'), text: 'its a plant', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Seaweed'},
-      {header: 'Cranberries', image: require('../food_photos/cranberries.jpg'), text: 'delicious and red', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Cranberry'},
-      {header: 'Blueberries', image: require('../food_photos/blueberries.jpg'), text: 'it\'s blue!', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Blueberry'},
-      {header: 'Seaweed', image: require('../food_photos/seaweed.jpg'), text: 'its a plant', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Seaweed'},
-      {header: 'Cranberries', image: require('../food_photos/cranberries.jpg'), text: 'delicious and red', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Cranberry'},
-      
-      {header: 'Blueberries page 2', image: require('../food_photos/blueberries.jpg'), text: 'it\'s blue!', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Blueberry'},
-      {header: 'Seaweed', image: require('../food_photos/seaweed.jpg'), text: 'its a plant', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Seaweed'},
-      {header: 'Cranberries', image: require('../food_photos/cranberries.jpg'), text: 'delicious and red', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Cranberry'},
-      {header: 'Blueberries', image: require('../food_photos/blueberries.jpg'), text: 'it\'s blue!', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Blueberry'},
-      {header: 'Seaweed', image: require('../food_photos/seaweed.jpg'), text: 'its a plant', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Seaweed'},
-      {header: 'Cranberries', image: require('../food_photos/cranberries.jpg'), text: 'delicious and red', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Cranberry'},
-      {header: 'Blueberries', image: require('../food_photos/blueberries.jpg'), text: 'it\'s blue!', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Blueberry'},
-      {header: 'Seaweed', image: require('../food_photos/seaweed.jpg'), text: 'its a plant', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Seaweed'},
-      {header: 'Cranberries', image: require('../food_photos/cranberries.jpg'), text: 'delicious and red', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Cranberry'},
-
-      {header: 'Blueberries page 3', image: require('../food_photos/blueberries.jpg'), text: 'it\'s blue!', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Blueberry'},
-      {header: 'Seaweed', image: require('../food_photos/seaweed.jpg'), text: 'its a plant', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Seaweed'},
-      {header: 'Cranberries', image: require('../food_photos/cranberries.jpg'), text: 'delicious and red', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Cranberry'},
-      {header: 'Blueberries', image: require('../food_photos/blueberries.jpg'), text: 'it\'s blue!', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Blueberry'},
-      {header: 'Seaweed', image: require('../food_photos/seaweed.jpg'), text: 'its a plant', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Seaweed'},
-      {header: 'Cranberries', image: require('../food_photos/cranberries.jpg'), text: 'delicious and red', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Cranberry'},
-      {header: 'Blueberries', image: require('../food_photos/blueberries.jpg'), text: 'it\'s blue!', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Blueberry'},
-      {header: 'Seaweed', image: require('../food_photos/seaweed.jpg'), text: 'its a plant', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Seaweed'},
-      {header: 'Cranberries', image: require('../food_photos/cranberries.jpg'), text: 'delicious and red', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Cranberry'},
-
-      {header: 'Blueberries page 3', image: require('../food_photos/blueberries.jpg'), text: 'it\'s blue!', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Blueberry'},
-      {header: 'Seaweed', image: require('../food_photos/seaweed.jpg'), text: 'its a plant', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Seaweed'},
-      {header: 'Cranberries', image: require('../food_photos/cranberries.jpg'), text: 'delicious and red', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Cranberry'},
-      {header: 'Blueberries', image: require('../food_photos/blueberries.jpg'), text: 'it\'s blue!', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Blueberry'},
-      {header: 'Seaweed', image: require('../food_photos/seaweed.jpg'), text: 'its a plant', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Seaweed'},
-      {header: 'Cranberries', image: require('../food_photos/cranberries.jpg'), text: 'delicious and red', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Cranberry'},
-      {header: 'Blueberries', image: require('../food_photos/blueberries.jpg'), text: 'it\'s blue!', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Blueberry'},
-      {header: 'Seaweed', image: require('../food_photos/seaweed.jpg'), text: 'its a plant', point1: 'test: lots of info',
-      point2: 'data point 2', point3: 'data point 3', point4: 'data point 4',
-      point5: 'data point 5', link: '/Seaweed'}
-
-    ],
+    elements: [],
     page: 0,
 
     link: '/FoodPage'
@@ -129,7 +19,6 @@ class Food extends React.Component {
     fetch(url)
     .then(response => response.json())
     .then(data => {
-      console.log(data);
       const elements = data;
       this.setState({elements});
     })
@@ -180,9 +69,8 @@ class Food extends React.Component {
   };
 
   render() {
+      
     return (
-      
-      
       <div className="img-fluid" style={this.styles.background}>
         <h1 class="display-1 mb-4" style={this.styles.header}>Food ({this.state.elements.length})</h1>
 
