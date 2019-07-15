@@ -8,6 +8,7 @@ import {DiseasePage} from './pages/diseasePages';
 import {RestaurantPage} from './pages/restaurantPages'
 import logo from './home_image.jpg';
 import './App.css';
+import {Form,Button, FormControl} from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Switch, Link, NavLink } from "react-router-dom";
 
 class Navbar extends Component {
@@ -23,6 +24,10 @@ class Navbar extends Component {
             <li><NavLink to='/Restaurant' className="nav-link">Restaurant</NavLink></li>
             <li><NavLink to={'/About'} className="nav-link">About</NavLink></li>
           </ul>
+            <Form inline>
+            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+            <Button variant="outline-success">Search</Button>
+            </Form>
           </nav>
           <hr />
           <Switch>
