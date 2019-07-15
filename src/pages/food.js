@@ -7,7 +7,7 @@ import '../App.css';
 
 class Food extends React.Component {
   state = {
-    elements: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    elements: [],
     page: 0,
 
     link: '/FoodPage'
@@ -19,7 +19,6 @@ class Food extends React.Component {
     fetch(url)
     .then(response => response.json())
     .then(data => {
-      
       const elements = data;
       this.setState({elements});
     })
@@ -70,6 +69,7 @@ class Food extends React.Component {
   };
 
   render() {
+      
     return (
       <div className="img-fluid" style={this.styles.background}>
         <h1 class="display-1 mb-4" style={this.styles.header}>Food ({this.state.elements.length})</h1>
