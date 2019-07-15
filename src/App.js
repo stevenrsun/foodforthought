@@ -6,7 +6,7 @@ import Restaurant from './pages/restaurant';
 import {FoodPage} from './pages/foodPages';
 import {DiseasePage} from './pages/diseasePages';
 import {RestaurantPage} from './pages/restaurantPages'
-import logo from './home_image.jpg';
+import logo from './photos/home_image.jpg';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch, Link, NavLink } from "react-router-dom";
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {NavLink} from "react-router-dom";
-import backImage from '../food_photos/food_page_background.jpg'
+import backImage from '../photos/food_page_background.jpg'
 import {Link} from 'react-router-dom';
 
 export class FoodPage extends Component {
@@ -28,7 +28,7 @@ export class FoodPage extends Component {
     
         header: {
           textAlign: 'left',
-          color: 'aliceblue',
+          color: 'orange',
           fontSize: 100
         },
 

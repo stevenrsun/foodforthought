@@ -1,5 +1,5 @@
 import React from 'react';
-import backImage from '../food_photos/food_page_background.jpg';
+import backImage from '../photos/food_page_background.jpg';
 import {FoodCardGrid} from "../components/infocard.js";
 import {PageNav} from '../components/pageNav.js';
 import '../App.css';

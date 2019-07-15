@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {NavLink} from "react-router-dom";
-import backImage from '../food_photos/Red-blood-cells_1920x1080.jpg';
+import backImage from '../photos/disease_background.jpg';
 import {Link} from 'react-router-dom';
 
 export class DiseasePage extends Component {
@@ -28,7 +28,7 @@ export class DiseasePage extends Component {
     
         header: {
           textAlign: 'left',
-          color: 'aliceblue',
+          color: 'orange',
           fontSize: 100
         },
 
@@ -38,7 +38,7 @@ export class DiseasePage extends Component {
         },
 
         link: {
-            color: 'tomato',
+            color: 'orange',
             fontSize: 50
         }
     };

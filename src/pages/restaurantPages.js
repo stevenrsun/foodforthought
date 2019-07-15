@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {NavLink} from "react-router-dom";
-import backImage from '../food_photos/rest_image.jpg'
+import backImage from '../photos/rest_image.jpg'
 import {Link} from 'react-router-dom';
 
 export class RestaurantPage extends Component {

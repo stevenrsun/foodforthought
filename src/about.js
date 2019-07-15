@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Alex from './photos/Alex.jpeg';
-import Huylar from './photos/Huylar.png';
 import Kelvin from './photos/Kelvin.jpeg';
 import Murray from './photos/Murray.png';
 import Steven from './photos/Steven.jpeg';
