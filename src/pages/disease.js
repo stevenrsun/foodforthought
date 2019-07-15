@@ -75,7 +75,8 @@ class disease extends React.Component {
       
       
       <div className="img-fluid" style={this.styles.background}>
-        <h1 class="display-1 mb-4" style={this.styles.header}>Disease ({this.state.elements.length})</h1>
+        <h1 class="display-1 mb-4" style={this.styles.header}>Disease 
+        <small style={{color:'orange'}}> ({this.state.elements.length})</small></h1>
 
         <DiseaseCardGrid link={this.state.link} elements={this.state.elements} currentPage={this.state.page}/>
         <PageNav label='Disease Page Navigator' page={this.state.page} decrementPage = {this.decrementPage}

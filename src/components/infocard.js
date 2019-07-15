@@ -11,8 +11,8 @@ export class FoodCard extends Component {
 
     render() { 
         return ( 
-        <div class="card bg-light">
-            <div class="card-header font-weight-bold">{this.props.info.name}</div>
+        <div class="card bg-light border-light" >
+            <div class="card-header font-weight-bold" style={{fontSize: 25}}>{this.props.info.name}</div>
             <img class="card-img-top" src={this.props.info.images} style={this.state.style} alt="Card image cap"/>
             <div class="card-body">
                 <div class="list-group">
@@ -40,7 +40,7 @@ export class RestaurantCard extends Component {
     render() { 
         return ( 
         <div class="card bg-light">
-            <div class="card-header font-weight-bold">{this.props.info.name}</div>
+            <div class="card-header font-weight-bold" style={{fontSize: 25}}>{this.props.info.name}</div>
             <img class="card-img-top" src={this.props.info.images} style={this.state.style} alt="Card image cap"/>
             <div class="card-body">
                 <div class="list-group">
@@ -68,7 +68,7 @@ export class DiseaseCard extends Component {
     render() { 
         return ( 
         <div class="card bg-light">
-            <div class="card-header font-weight-bold">{this.props.info.name}</div>
+            <div class="card-header font-weight-bold" style={{fontSize: 25}}>{this.props.info.name}</div>
             <img class="card-img-top" src={this.props.info.images} style={this.state.style} alt="Card image cap"/>
             <div class="card-body">
                 <div class="list-group">

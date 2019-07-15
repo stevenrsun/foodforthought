@@ -72,7 +72,8 @@ class Food extends React.Component {
       
     return (
       <div className="img-fluid" style={this.styles.background}>
-        <h1 class="display-1 mb-4" style={this.styles.header}>Food ({this.state.elements.length})</h1>
+        <h1 class="display-1 mb-4" style={this.styles.header}>Food 
+        <small style={{color:'orange'}}> ({this.state.elements.length})</small></h1>
 
         <FoodCardGrid link={this.state.link} elements={this.state.elements} currentPage={this.state.page}/>
         <PageNav label='Food Page Navigator' page={this.state.page} decrementPage = {this.decrementPage}
