@@ -1,5 +1,5 @@
 import React from 'react';
-import backImage from '../food_photos/Red-blood-cells_1920x1080.jpg';
+import backImage from '../food_photos/disease_background.jpg';
 import {DiseaseCardGrid} from "../components/infocard.js";
 import {PageNav} from '../components/pageNav.js';
 import '../App.css';
