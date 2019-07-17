@@ -29,7 +29,7 @@ class Navbar extends Component {
             <Button variant="outline-success" onClick={this.getResults}>Search</Button>
             </Form>
           </nav>
-          <hr />
+          <hr/>
           <Switch>
               <Route exact path='/' component={Home} />
               <Route exact path='/Food' component={Food} />

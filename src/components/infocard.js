@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Text} from 'react-native';
 import {NavLink} from 'react-router-dom';
+//import Highlighter from "react-highlight-words";
 
 export class FoodCard extends Component {
     state = { 

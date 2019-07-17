@@ -12,9 +12,13 @@ class Food extends React.Component {
 
     this.state = {
       elements: [],
+      resetElements: [],
       page: 0,
       link: '/FoodPage',
-      dropdownOpen: false
+      dropdownOpen: false,
+      dropdownLabel: 'Filter',
+      min: '0',
+      max: '0'
     }
   }
   
@@ -24,8 +28,7 @@ class Food extends React.Component {
     fetch(url)
     .then(response => response.json())
     .then(data => {
-      const elements = data;
-      this.setState({elements});
+      this.setState({elements: data, resetElements: data});
     })
   }
   
@@ -79,31 +82,54 @@ toggle() {
     dropdownOpen: !prevState.dropdownOpen
   }));
 }
+
+changeFilterTag = (label) => {
+  this.setState({dropdownLabel: label.currentTarget.getAttribute("id")})
+}
+
+handleChange = ({target}) => {
+  this.setState({[target.name]: target.value})
+}
+
+handleReset = () => {
+  this.setState({elements: this.state.resetElements})
+}
+
+applyFilter = () => {
+  const attribute = this.state.dropdownLabel.charAt(0).toLowerCase() + this.state.dropdownLabel.slice(1);
+  var filterElements = this.state.elements.filter(dict => {
+      return (dict[attribute] >= this.state.min && dict[attribute] <= this.state.max)   
+    })
+  this.setState({elements: filterElements})
+}
+
   render() {
       
     return (
       <div className="img-fluid" style={this.styles.background}>
-        <h1 class="display-1 mb-4" style={this.styles.header}>Food 
+        <h1 class="display-1 mb-4" style={this.styles.header}>Food
         <small style={{color:'orange'}}> ({this.state.elements.length})</small></h1>
-        <div class="justify-content-md-center row">
-        <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-        <DropdownToggle caret>
-          Dropdown
-        </DropdownToggle>
-        <DropdownMenu>
-          <DropdownItem header>Header</DropdownItem>
-          <DropdownItem>Some Action</DropdownItem>
-          <DropdownItem disabled>Action (disabled)</DropdownItem>
-          <DropdownItem divider />
-          <DropdownItem>Foo Action</DropdownItem>
-          <DropdownItem>Bar Action</DropdownItem>
-          <DropdownItem>Quo Action</DropdownItem>
-        </DropdownMenu>
-      </Dropdown>
+        <div class="justify-content-md-center row mb-5">
+          <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+            <DropdownToggle color="warning" caret>
+              {this.state.dropdownLabel}
+            </DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem onClick={this.changeFilterTag} id='Calories'>Calories (g)</DropdownItem>
+              <DropdownItem onClick={this.changeFilterTag} id='Protein'>Protein (g)</DropdownItem>
+              <DropdownItem onClick={this.changeFilterTag} id='Carbs'>Carbs (g)</DropdownItem>
+              <DropdownItem onClick={this.changeFilterTag} id='Fat'>Fat (g)</DropdownItem>
+              <DropdownItem onClick={this.changeFilterTag} id='Sodium'>Sodium (mg)</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
           <form class="form-inline">
-          <label class="sr-only" for="inlineFormInputName2">Name</label>
-          <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe"></input>
+            <label class="sr-only" for="inlineFormInputName2">Name</label>
+            <input type="number" min="0" name="min" value={this.state.min} onChange={this.handleChange} class="form-control mb-2 ml-4 mr-sm-2" id="inlineFormInputName2" placeholder="Min" style={{width: '60px'}}></input>
+            <label class="sr-only" for="inlineFormInputName2">Name</label>
+            <input type="number" min="0" name="max" value={this.state.max} onChange={this.handleChange} class="form-control mb-2 ml-1 mr-sm-2" id="inlineFormInputName2" placeholder="Max" style={{width: '60px'}}></input>
           </form>
+          <button class="btn btn-warning ml-4" onClick={this.applyFilter} style={{height: '37px'}}>Apply</button>
+          <button class="btn btn-primary ml-3" onClick={this.handleReset} style={{height: '37px'}}>Reset</button>
         </div>
         <FoodCardGrid link={this.state.link} elements={this.state.elements} currentPage={this.state.page}/>
         <PageNav label='Food Page Navigator' page={this.state.page} decrementPage = {this.decrementPage}
