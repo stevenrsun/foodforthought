@@ -3,19 +3,24 @@ import backImage from '../photos/food_page_background.jpg';
 import {FoodCardGrid} from "../components/infocard.js";
 import {PageNav} from '../components/pageNav.js';
 import '../App.css';
-
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 class Food extends React.Component {
-  state = {
-    elements: [],
-    page: 0,
+  constructor(props) {
+    super(props);
+    this.toggle = this.toggle.bind(this);
 
-    link: '/FoodPage'
+    this.state = {
+      elements: [],
+      page: 0,
+      link: '/FoodPage',
+      dropdownOpen: false
+    }
   }
   
   componentDidMount() {
     let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/food';
-    console.log("first");
+
     fetch(url)
     .then(response => response.json())
     .then(data => {
@@ -68,20 +73,47 @@ class Food extends React.Component {
     },
   };
 
+
+toggle() {
+  this.setState(prevState => ({
+    dropdownOpen: !prevState.dropdownOpen
+  }));
+}
   render() {
       
     return (
       <div className="img-fluid" style={this.styles.background}>
         <h1 class="display-1 mb-4" style={this.styles.header}>Food 
         <small style={{color:'orange'}}> ({this.state.elements.length})</small></h1>
-
+        <div class="justify-content-md-center row">
+        <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+        <DropdownToggle caret>
+          Dropdown
+        </DropdownToggle>
+        <DropdownMenu>
+          <DropdownItem header>Header</DropdownItem>
+          <DropdownItem>Some Action</DropdownItem>
+          <DropdownItem disabled>Action (disabled)</DropdownItem>
+          <DropdownItem divider />
+          <DropdownItem>Foo Action</DropdownItem>
+          <DropdownItem>Bar Action</DropdownItem>
+          <DropdownItem>Quo Action</DropdownItem>
+        </DropdownMenu>
+      </Dropdown>
+          <form class="form-inline">
+          <label class="sr-only" for="inlineFormInputName2">Name</label>
+          <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe"></input>
+          </form>
+        </div>
         <FoodCardGrid link={this.state.link} elements={this.state.elements} currentPage={this.state.page}/>
         <PageNav label='Food Page Navigator' page={this.state.page} decrementPage = {this.decrementPage}
          incrementPage = {this.incrementPage} lastPage={this.state.elements.length/9} goFirstPage = {this.goFirstPage} goLastPage = {this.goLastPage}/>
         <p class="let" style={{fontSize: 30, color: 'aliceblue', textAlign: 'center'}}>of {Math.ceil(this.state.elements.length/9)}</p>
       </div> 
+      
     )
   }
 }
+
 
 export default Food
