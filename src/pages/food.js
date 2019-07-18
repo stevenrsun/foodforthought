@@ -41,7 +41,9 @@ class Food extends React.Component {
       {
         var found = false;
         for(let key in dict) {
-          if(dict[key].toString().includes(searchParams))
+          if(typeof(dict[key]) == 'string' && dict[key].includes(searchParams))
+            found = true;
+          else if(typeof(dict[key]) != 'string' && dict[key].toString().includes(searchParams))
             found = true;
         }
         return found;
