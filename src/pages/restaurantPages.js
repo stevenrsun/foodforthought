@@ -63,21 +63,21 @@ export class RestaurantPage extends Component {
         var foodDict = {name: "apple", protein: "0.3", fat: "0", carbs: "14", sodium: "1", calories: "52", images: "https://images-prod.healthline.com/hlcmsresource/images/topic_centers/Do_Apples_Affect_Diabetes_and_Blood_Sugar_Levels-732x549-thumbnail.jpg"}
         return ( 
             <div className="img-fluid" style={this.styles.background}>
-                <h1 class="display-1 ml-4" style={this.styles.header}>&nbsp;{this.state.dict.name}</h1>
+                <h1 class="display-1 ml-4" style={this.styles.header}>&nbsp;{this.state.dict.business_name}</h1>
                 <div class="row text-left ml-5 mt-5">
                     <img class="img-thumbnail ml-4" src = {this.state.dict.images} style = {this.styles.image}/>
                     <div class="col">
                         <div class="row">
                             <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Cost:</p>
-                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.cost}</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.price_range}</p>
                         </div>
                         <div class="row">
                             <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Cuisine:</p>
-                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.cuisine}</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.category}</p>
                         </div>
                         <div class="row">
                             <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Location:</p>
-                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.location}</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.address}</p>
                         </div>
                         <div class="row">
                             <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Rating/10:</p>
@@ -85,7 +85,7 @@ export class RestaurantPage extends Component {
                         </div>
                         <div class="row">
                             <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Yelp Reviews:</p>
-                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.yelp}</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.review_count}</p>
                         </div>
                     </div>
                     <div class="col text-right mr-5">
