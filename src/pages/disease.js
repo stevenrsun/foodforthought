@@ -193,7 +193,7 @@ class disease extends React.Component {
     
     return (
       <div className="img-fluid" style={this.styles.background}>
-        <h1 class="display-1 mb-4" style={this.styles.header}>Disease {this.state.causeFilter}
+        <h1 class="display-1 mb-4" style={this.styles.header}>Disease
         <small style={{color:'orange'}}> ({this.state.elements.length})</small></h1>
 
         <div class="justify-content-md-center row mb-5">
