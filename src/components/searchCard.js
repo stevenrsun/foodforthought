@@ -36,14 +36,12 @@ export class SearchCardGrid extends Component {
         var arr1 = [];
         let i = 0;
         while(i < this.props.elements.length) {
-            arr1[i] = <div class="col-4"> </div>;
+            arr1.push(<div class="row"><SearchCard elementDict = {this.props.elements[i]}/></div>)
             i++;
         }
         return ( 
             <div class="container">
-                <div class="row">
-                    {arr1}
-                </div>
+                {arr1}
             </div>
         );
     }
