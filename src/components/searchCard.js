@@ -5,7 +5,7 @@ export class SearchCard extends Component {
         keyMap = {'protein': 'Protein: ', 'fat': 'Fat: ', 'carbs': 'Carbs: ', 'sodium': 'Sodium: ',
                     'calories': 'Calories: ', 'age': 'Average age affected: ', 'cause': 'Causes: ',
                     'deaths': 'Deaths per year: ', 'symptom': 'Symptoms: ', 'frequency': 'Diagnosed per year: ',
-                    'address': 'Address: '},
+                    'address': 'Address: ', 'category': 'Cuisine: ', 'price_range': 'Cost: ', 'rating': 'Rating: ', 'review_count': 'Yelp Reviews: '},
         elementDict: this.props.dict
      }
     render() { 
