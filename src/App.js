@@ -24,10 +24,6 @@ class Navbar extends Component {
             <li><NavLink to='/Restaurant' className="nav-link">Restaurant</NavLink></li>
             <li><NavLink to={'/About'} className="nav-link">About</NavLink></li>
           </ul>
-            <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-success" onClick={this.getResults}>Search</Button>
-            </Form>
           </nav>
           <hr/>
           <Switch>
@@ -49,34 +45,51 @@ class Navbar extends Component {
   }
 }
 
-const Home = () => (
-  <div className="img-fluid" style={styles.image}>
+export class Home extends Component {
+  search() {
+    let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/search';
+    fetch(url, {
+      method: 'post',
+      body: ["apple"]
+    })
+    .then(response => response.json())
+    .then(data => {
+          console.log(data);
+        });
+        this.forceUpdate();
+  }
 
-    <div class="container-fluid">
-        <div class="row">
-          <h1 class="display-1" style = {styles.header}>
-            &nbsp;Food 
-            <small style={{color:'orange'}}> for Thought</small>
-          </h1>
-        </div>
-        <div class="row">
-          <p class="lead text-left" style={styles.text}><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bringing people closer to health and great food, 
-          <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;one click at a time.</p>
-        </div>
-        <div class="row">
-          <p class="lead text-left" style={styles.text}><br/>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Begin your journey with a category you're interested in:</p>
-        </div>
-        <div class="row">
-          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-          <a class="btn btn-warning ml-5 mt-2" href="/Food" role="button">Foods</a>
-          <a class="btn btn-warning ml-4 mt-2" href="/Restaurant" role="button">Restaurants</a>
-          <a class="btn btn-warning ml-4 mt-2" href="/Disease" role="button">Diseases</a>
-          <a class="btn btn-warning ml-4 mt-2" href="/About" role="button">About Us</a>
-        </div>
+  render() {
+    return (
+      <div className="img-fluid" style={styles.image}>
+
+      <div class="container-fluid">
+          <div class="row">
+            <h1 class="display-1" style = {styles.header}>
+              &nbsp;Food 
+              <small style={{color:'orange'}}> for Thought</small>
+            </h1>
+          </div>
+          <div class="row">
+            <p class="lead text-left" style={styles.text}><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bringing people closer to health and great food, 
+            <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;one click at a time.</p>
+          </div>
+          <div class="row">
+            <p class="lead text-left" style={styles.text}><br/>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Begin your journey with a category you're interested in:</p>
+          </div>
+          <div class="row">
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+            <Form inline>
+              <FormControl type="text" placeholder="Search for foods, restaurants, or diseases" className="mr-sm-2" style={{width: '350px'}} />
+              <Button variant="outline-success" onClick={this.search}>Search</Button>
+            </Form>
+          </div>
+      </div>
     </div>
-  </div>
-  
-);
+    )
+  }
+}
+
 
 var styles = {
   image: {

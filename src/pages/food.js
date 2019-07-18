@@ -31,6 +31,19 @@ class Food extends React.Component {
       this.setState({elements: data, resetElements: data});
     })
   }
+
+  search(term) {
+    let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/search';
+    fetch(url, {
+      method: 'post',
+      body: ['apple']
+    })
+    .then(response => response.json())
+    .then(data => {
+          console.log(data);
+        });
+        this.forceUpdate();
+  }
   
   incrementPage = () => {
     const page = this.state.page + 1;
@@ -103,8 +116,7 @@ applyFilter = () => {
   this.setState({elements: filterElements})
 }
 
-  render() {
-      
+render() {
     return (
       <div className="img-fluid" style={this.styles.background}>
         <h1 class="display-1 mb-4" style={this.styles.header}>Food
