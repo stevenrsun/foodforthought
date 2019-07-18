@@ -2,8 +2,11 @@ import React from 'react';
 import backImage from '../photos/food_page_background.jpg';
 import {FoodCardGrid} from "../components/infocard.js";
 import {PageNav} from '../components/pageNav.js';
+import {Form,Button, FormControl} from 'react-bootstrap';
+import {SearchCardGrid} from '../components/searchCard.js';
 import '../App.css';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+
 
 class Food extends React.Component {
   constructor(props) {
@@ -13,12 +16,14 @@ class Food extends React.Component {
     this.state = {
       elements: [],
       resetElements: [],
+      searchElements: [],
       page: 0,
       link: '/FoodPage',
       dropdownOpen: false,
       dropdownLabel: 'Attributes',
       min: '0',
-      max: '0'
+      max: '0',
+      searchParams: ''
     }
   }
   
@@ -33,6 +38,7 @@ class Food extends React.Component {
   }
 
   search = (searchParams) => {
+    console.log('hello')
     var searchElements = this.state.elements.filter(dict => 
       {
         var found = false;
@@ -143,6 +149,12 @@ render() {
         <h1 class="display-1 mb-4" style={this.styles.header}>Food
         <small style={{color:'orange'}}> ({this.state.elements.length})</small></h1>
         <div class="justify-content-md-center row mb-5">
+            <Form inline>
+                  <FormControl onSubmit={this.search} onChange={this.handleChange} name="searchParams" value={this.state.searchParams} type="text" placeholder="Search for food" className="mr-sm-2" style={{width: '350px'}} />
+                  <Button style={{color: 'black'}} variant="warning" onClick={this.search}>Search</Button>
+            </Form>
+        </div>
+        <div class="justify-content-md-center row mb-5">
           <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
             <DropdownToggle color="warning" caret>
               {this.state.dropdownLabel}
@@ -165,6 +177,7 @@ render() {
           <button class="btn btn-warning ml-4" onClick={this.sort} style={{height: '37px'}}>Sort</button>
           <button class="btn btn-primary ml-3" type="reset" onClick={this.handleReset} style={{height: '37px'}}>Reset</button>
         </div>
+        <SearchCardGrid elements={this.state.searchElements} params={this.state.searchParams}/>
         <FoodCardGrid link={this.state.link} elements={this.state.elements} currentPage={this.state.page}/>
         <PageNav label='Food Page Navigator' page={this.state.page} decrementPage = {this.decrementPage}
          incrementPage = {this.incrementPage} lastPage={this.state.elements.length/9} goFirstPage = {this.goFirstPage} goLastPage = {this.goLastPage}/>

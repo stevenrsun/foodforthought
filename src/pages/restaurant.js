@@ -48,14 +48,16 @@ class Restaurant extends React.Component {
   search = (searchParams) => {
     var searchElements = this.state.elements.filter(dict => 
       {
-        var found = false;
+        var found = true;
         for(let key in dict) {
-          if(dict[key].includes(this.state.searchParams))
+          if(typeof(dict[key]) == 'string' && dict[key].includes(searchParams))
+            found = true;
+          else if(typeof(dict[key]) != 'string' && dict[key].toString().includes(searchParams))
             found = true;
         }
         return found;
       });
-    this.setState({searchElements, elements: []})
+    this.setState({searchElements: searchElements, elements: []})
 
   }
 
@@ -276,8 +278,8 @@ class Restaurant extends React.Component {
         <small style={{color:'orange'}}> ({this.state.elements.length})</small></h1>
           <div class="justify-content-md-center row mb-5">
             <Form inline>
-                  <FormControl onChange={this.handleChange} name="searchParams" value={this.state.searchParams} type="text" placeholder="Search for retaurants" className="mr-sm-2" style={{width: '350px'}} />
-                  <Button style={{color: 'black'}} variant="warning" onSubmit={this.search}>Search</Button>
+                  <FormControl onSubmit={this.search} onChange={this.handleChange} name="searchParams" value={this.state.searchParams} type="text" placeholder="Search for retaurants" className="mr-sm-2" style={{width: '350px'}} />
+                  <Button style={{color: 'black'}} variant="warning" onClick={this.search}>Search</Button>
             </Form>
           </div>
           <div class="justify-content-md-center row mb-5">
@@ -298,7 +300,7 @@ class Restaurant extends React.Component {
           <button class="btn btn-warning ml-4" onClick={this.sort} style={{height: '37px'}}>Sort</button>
           <button class="btn btn-primary ml-3" onClick={this.handleReset} style={{height: '37px'}}>Reset</button>
         </div> 
-        <SearchCardGrid elements={this.state.searchElements} params={this.state.searchParams}/>
+        <SearchCardGrid elements={this.state.elements} params={this.state.searchParams}/>
         <RestaurantCardGrid link={this.state.link} elements={this.state.elements} currentPage={this.state.page}/>
         <PageNav label='Food Page Navigator' page={this.state.page} decrementPage = {this.decrementPage}
          incrementPage = {this.incrementPage} lastPage={this.state.elements.length/9} goFirstPage = {this.goFirstPage} goLastPage = {this.goLastPage}/>

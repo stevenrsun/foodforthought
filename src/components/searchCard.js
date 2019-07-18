@@ -14,10 +14,17 @@ export class SearchCard extends Component {
         for (let key in this.props.elementDict) {
             if(key in this.state.keyMap) {
                 var text = this.props.elementDict[key];
+                if(typeof(text) != 'string')
+                    text = text.toString();
                 var ind = text.indexOf(this.props.params);
-                var textFront = text.slice(0, ind);
-                var textEnd = text.slice(ind+this.props.params.length);
-                output.push(this.state.keyMap[key] + textFront + <div style={{color: 'orange'}}>this.props.params</div> + textEnd + ', ');
+                if(ind >= 0) {
+                    var textFront = text.slice(0, ind);
+                    var textEnd = text.slice(ind+this.props.params.length);
+                    output.push(<p>{this.state.keyMap[key]} {textFront}<span style={{backgroundColor: 'orange', display: 'inline'}}>{this.props.params}</span>{textEnd}</p>);
+                }
+                else
+                    output.push(<p>{this.state.keyMap[key]} {text} </p>)
+                
             }
             if(key.includes('name'))
                 nameKey = key;
