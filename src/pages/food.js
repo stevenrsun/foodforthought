@@ -20,8 +20,8 @@ class Food extends React.Component {
       min: '0',
       max: '0'
     }
-    this.search()
   }
+  
   
   componentDidMount() {
     let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/food';
@@ -37,13 +37,30 @@ class Food extends React.Component {
     let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/search';
     fetch(url, {
       method: 'post',
-      body: ['apple']
+      body: ["apple"]
     })
     .then(response => response.json())
     .then(data => {
           console.log(data);
         });
         this.forceUpdate();
+  }
+
+  sort = () => {
+    let attribute;
+    if (this.state.dropdownLabel === 'Attributes') {
+      attribute = 'name';
+    }
+    else {
+      attribute = this.state.dropdownLabel.charAt(0).toLowerCase() + this.state.dropdownLabel.slice(1);
+    }
+    
+    let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/food?order_by=' + attribute
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      this.setState({elements: data});
+    })
   }
   
   incrementPage = () => {
@@ -142,6 +159,7 @@ render() {
             <input type="number" min="0" name="max" value={this.state.max} onChange={this.handleChange} class="form-control mb-2 ml-1 mr-sm-2" id="inlineFormInputName2" placeholder="Max" style={{width: '60px'}}></input>
           </form>
           <button class="btn btn-warning ml-4" onClick={this.applyFilter} style={{height: '37px'}}>Filter</button>
+          <button class="btn btn-warning ml-4" onClick={this.sort} style={{height: '37px'}}>Sort</button>
           <button class="btn btn-primary ml-3" onClick={this.handleReset} style={{height: '37px'}}>Reset</button>
         </div>
         <FoodCardGrid link={this.state.link} elements={this.state.elements} currentPage={this.state.page}/>

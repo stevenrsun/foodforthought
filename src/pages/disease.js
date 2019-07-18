@@ -6,7 +6,6 @@ import '../App.css';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 class disease extends React.Component {
-
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
@@ -25,7 +24,6 @@ class disease extends React.Component {
   
   componentDidMount() {
     let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/disease';
-    console.log("first");
     fetch(url)
     .then(response => response.json())
     .then(data => {
@@ -34,7 +32,24 @@ class disease extends React.Component {
       this.setState({elements});
     })
   }
-  
+
+  sort = () => {
+    let attribute;
+    if (this.state.dropdownLabel === 'Attributes') {
+      attribute = 'name';
+    }
+    else {
+      attribute = this.state.filterKey;
+    }
+    let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/disease?order_by=' + attribute;
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      this.setState({elements: data, resetElements: data});
+    })
+  }
+
   incrementPage = () => {
     const page = this.state.page + 1;
     this.setState({page});
@@ -131,6 +146,7 @@ class disease extends React.Component {
             <input type="number" min="0" name="max" value={this.state.max} onChange={this.handleChange} class="form-control mb-2 ml-1 mr-sm-2" id="inlineFormInputName2" placeholder="Max" style={{width: '60px'}}></input>
           </form>
           <button class="btn btn-warning ml-4" onClick={this.applyFilter} style={{height: '37px'}}>Filter</button>
+          <button class="btn btn-warning ml-4" onClick={this.sort} style={{height: '37px'}}>Sort</button>
           <button class="btn btn-primary ml-3" onClick={this.handleReset} style={{height: '37px'}}>Reset</button>
         </div>
 
