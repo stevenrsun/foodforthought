@@ -5,6 +5,7 @@ import {DiseaseCardGrid} from "../components/infocard.js";
 import {PageNav} from '../components/pageNav.js';
 import '../App.css';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { thisExpression } from '@babel/types';
 
 class disease extends React.Component {
   constructor(props) {
@@ -27,32 +28,40 @@ class disease extends React.Component {
       selectedOptionsCause: []
     }
   }
+
+  compare = (a, b) => {
+    let key = 'name';
+    if (this.state.filterKey != 'init') {
+      key = this.state.filterKey;
+    }
+    if ( a[key] < b[key] ){
+      return -1;
+    }
+    if ( a[key] > b[key] ){
+      return 1;
+    }
+    return 0;
+  }
   
   componentDidMount() {
     let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/disease';
     fetch(url)
     .then(response => response.json())
     .then(data => {
-      console.log(data);
       this.setState({elements: data, resetElements: data});
     })
   }
 
   sort = () => {
-    let attribute;
-    if (this.state.dropdownLabel === 'Attributes') {
-      attribute = 'name';
-    }
-    else {
-      attribute = this.state.filterKey;
-    }
-    let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/disease?order_by=' + attribute;
-    fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      this.setState({elements: data, resetElements: data});
-    })
+    // let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/disease?order_by=' + attribute;
+    // fetch(url)
+    // .then(response => response.json())
+    // .then(data => {
+    //   console.log(data);
+    //   this.setState({elements: data});
+    // })
+    
+    this.setState({elements: this.state.elements.sort(this.compare)});
   }
 
   incrementPage = () => {
