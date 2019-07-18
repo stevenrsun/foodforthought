@@ -20,6 +20,7 @@ class Food extends React.Component {
       min: '0',
       max: '0'
     }
+    this.search()
   }
   
   componentDidMount() {
@@ -32,7 +33,7 @@ class Food extends React.Component {
     })
   }
 
-  search(term) {
+  search() {
     let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/search';
     fetch(url, {
       method: 'post',

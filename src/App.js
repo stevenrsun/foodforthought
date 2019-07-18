@@ -46,17 +46,24 @@ class Navbar extends Component {
 }
 
 export class Home extends Component {
-  search() {
+  state = {
+    searchParams: ''
+  }
+
+  handleChange = ({target}) => {
+    this.setState({[target.name]: target.value})
+  }
+
+  search(value) {
     let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/search';
     fetch(url, {
       method: 'post',
-      body: ["apple"]
+      body: [value]
     })
     .then(response => response.json())
     .then(data => {
           console.log(data);
-        });
-        this.forceUpdate();
+    });
   }
 
   render() {
@@ -66,7 +73,7 @@ export class Home extends Component {
       <div class="container-fluid">
           <div class="row">
             <h1 class="display-1" style = {styles.header}>
-              &nbsp;Food 
+              &nbsp;Food
               <small style={{color:'orange'}}> for Thought</small>
             </h1>
           </div>
@@ -80,8 +87,8 @@ export class Home extends Component {
           <div class="row">
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
             <Form inline>
-              <FormControl type="text" placeholder="Search for foods, restaurants, or diseases" className="mr-sm-2" style={{width: '350px'}} />
-              <Button variant="outline-success" onClick={this.search}>Search</Button>
+              <FormControl onChange={this.handleChange} name="searchParams" value={this.state.searchParams} type="text" placeholder="Search for foods, restaurants, or diseases" className="mr-sm-2" style={{width: '350px'}} />
+              <Button variant="outline-success" onClick={this.search(this.searchParams)}>Search</Button>
             </Form>
           </div>
       </div>
