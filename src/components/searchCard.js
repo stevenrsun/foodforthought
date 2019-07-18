@@ -28,5 +28,25 @@ export class SearchCard extends Component {
         );
     }
 }
+
+export class SearchCardGrid extends Component {
+    state = {
+    }
+    render() {
+        var arr1 = [];
+        let i = 0;
+        while(i < this.props.elements.length) {
+            arr1[i] = <div class="col-4"> </div>;
+            i++;
+        }
+        return ( 
+            <div class="container">
+                <div class="row">
+                    {arr1}
+                </div>
+            </div>
+        );
+    }
+}
  
 export default SearchCard;
