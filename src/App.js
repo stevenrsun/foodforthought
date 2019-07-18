@@ -55,8 +55,8 @@ export class Home extends Component {
     this.setState({[target.name]: target.value})
   }
 
-  search(value) {
-    const pages = ['food', 'disease', 'restaurant'];
+  search = (value) => {
+    /*const pages = ['food', 'disease', 'restaurant'];
     var idx;
     for (idx in pages) {
       let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/' + pages[idx];
@@ -65,8 +65,8 @@ export class Home extends Component {
       .then(data => {
         console.log(data);
         this.setState({elements: data});
-      })
-    }
+      })*/
+  
   
     // let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/search';
     // fetch(url, {
@@ -99,9 +99,10 @@ export class Home extends Component {
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
             <div className="ml-4">
             <Form inline>
-              <FormControl onChange={this.handleChange} name="searchParams" value={this.state.searchParams} type="text" placeholder="Search for foods, restaurants, or diseases" className="mr-sm-2" style={{width: '350px'}} />
-              <Button to={{pathname: '/DiseasePage/8', state: {dict: diseaseDict}}} style={{color: 'black'}} variant="warning" onClick={this.search(this.state.searchParams)}>Search</Button>
+              <FormControl onChange={this.handleChange} name="searchParams" value={this.state.searchParams} type="text" placeholder="This does nothing but looks nice :)" className="mr-sm-2" style={{width: '350px'}} />
+              <Button style={{color: 'black'}} variant="warning" onClick={this.search(this.state.searchParams)}>Search</Button>
             </Form>
+            <p>{this.state.workInProgress}</p>
             </div>
           </div>
       </div>
