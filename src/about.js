@@ -21,6 +21,7 @@ export default class About extends Component {
         "Total"               : { commits: 0, closed_issues: 0, unit_tests: 0}
       };        
       this.getCommits(1)
+      this.getIssues(1)
   }
   getCommits(pagenum) {
     let url = "https://gitlab.com/api/v4/projects/12990737/repository/commits?all=true&per_page=100&page=" + pagenum;

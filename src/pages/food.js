@@ -20,6 +20,7 @@ class Food extends React.Component {
       min: '0',
       max: '0'
     }
+    this.search()
   }
   
   componentDidMount() {
@@ -30,6 +31,19 @@ class Food extends React.Component {
     .then(data => {
       this.setState({elements: data, resetElements: data});
     })
+  }
+
+  search() {
+    let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/search';
+    fetch(url, {
+      method: 'post',
+      body: ['apple']
+    })
+    .then(response => response.json())
+    .then(data => {
+          console.log(data);
+        });
+        this.forceUpdate();
   }
   
   incrementPage = () => {
@@ -103,8 +117,7 @@ applyFilter = () => {
   this.setState({elements: filterElements})
 }
 
-  render() {
-      
+render() {
     return (
       <div className="img-fluid" style={this.styles.background}>
         <h1 class="display-1 mb-4" style={this.styles.header}>Food
