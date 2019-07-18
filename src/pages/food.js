@@ -16,7 +16,7 @@ class Food extends React.Component {
       page: 0,
       link: '/FoodPage',
       dropdownOpen: false,
-      dropdownLabel: 'Filter',
+      dropdownLabel: 'Attributes',
       min: '0',
       max: '0'
     }
@@ -128,7 +128,7 @@ applyFilter = () => {
             <label class="sr-only" for="inlineFormInputName2">Name</label>
             <input type="number" min="0" name="max" value={this.state.max} onChange={this.handleChange} class="form-control mb-2 ml-1 mr-sm-2" id="inlineFormInputName2" placeholder="Max" style={{width: '60px'}}></input>
           </form>
-          <button class="btn btn-warning ml-4" onClick={this.applyFilter} style={{height: '37px'}}>Apply</button>
+          <button class="btn btn-warning ml-4" onClick={this.applyFilter} style={{height: '37px'}}>Filter</button>
           <button class="btn btn-primary ml-3" onClick={this.handleReset} style={{height: '37px'}}>Reset</button>
         </div>
         <FoodCardGrid link={this.state.link} elements={this.state.elements} currentPage={this.state.page}/>

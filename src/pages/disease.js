@@ -3,15 +3,24 @@ import backImage from '../photos/disease_background.jpg';
 import {DiseaseCardGrid} from "../components/infocard.js";
 import {PageNav} from '../components/pageNav.js';
 import '../App.css';
-
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 class disease extends React.Component {
-  state = {
-    elements: [],
 
-    page: 0,
+  constructor(props) {
+    super(props);
+    this.toggle = this.toggle.bind(this);
 
-    link: '/DiseasePage'
+    this.state = {
+      elements: [],
+      resetElements: [],
+      page: 0,
+      link: '/DiseasePage',
+      dropdownOpen: false,
+      dropdownLabel: 'Attributes',
+      min: '0',
+      max: '0'
+    }
   }
   
   componentDidMount() {
@@ -70,13 +79,60 @@ class disease extends React.Component {
     },
   };
 
+  toggle() {
+    this.setState(prevState => ({
+      dropdownOpen: !prevState.dropdownOpen
+    }));
+  }
+  
+  changeFilterTag = (label) => {
+    this.setState({dropdownLabel: label.currentTarget.getAttribute("id")})
+  }
+  
+  handleChange = ({target}) => {
+    this.setState({[target.name]: target.value})
+  }
+  
+  handleReset = () => {
+    this.setState({elements: this.state.resetElements})
+  }
+  
+  applyFilter = () => {
+    const attribute = this.state.dropdownLabel.charAt(0).toLowerCase() + this.state.dropdownLabel.slice(1);
+    var filterElements = this.state.elements.filter(dict => {
+        return (dict[attribute] >= this.state.min && dict[attribute] <= this.state.max)   
+      })
+    this.setState({elements: filterElements})
+  }
+  
   render() {
     return (
-      
-      
       <div className="img-fluid" style={this.styles.background}>
         <h1 class="display-1 mb-4" style={this.styles.header}>Disease 
         <small style={{color:'orange'}}> ({this.state.elements.length})</small></h1>
+
+        <div class="justify-content-md-center row mb-5">
+          <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+            <DropdownToggle color="warning" caret>
+              {this.state.dropdownLabel}
+            </DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem onClick={this.changeFilterTag} id='Average age affected'>Average age affected</DropdownItem>
+              <DropdownItem onClick={this.changeFilterTag} id='Causes'>Causes</DropdownItem>
+              <DropdownItem onClick={this.changeFilterTag} id='Deaths per year'>Deaths per year</DropdownItem>
+              <DropdownItem onClick={this.changeFilterTag} id='Symptoms'>Symptoms</DropdownItem>
+              <DropdownItem onClick={this.changeFilterTag} id='Diagnosed per year'>Diagnosed per year</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+          <form class="form-inline">
+            <label class="sr-only" for="inlineFormInputName2">Name</label>
+            <input type="number" min="0" name="min" value={this.state.min} onChange={this.handleChange} class="form-control mb-2 ml-4 mr-sm-2" id="inlineFormInputName2" placeholder="Min" style={{width: '60px'}}></input>
+            <label class="sr-only" for="inlineFormInputName2">Name</label>
+            <input type="number" min="0" name="max" value={this.state.max} onChange={this.handleChange} class="form-control mb-2 ml-1 mr-sm-2" id="inlineFormInputName2" placeholder="Max" style={{width: '60px'}}></input>
+          </form>
+          <button class="btn btn-warning ml-4" onClick={this.applyFilter} style={{height: '37px'}}>Filter</button>
+          <button class="btn btn-primary ml-3" onClick={this.handleReset} style={{height: '37px'}}>Reset</button>
+        </div>
 
         <DiseaseCardGrid link={this.state.link} elements={this.state.elements} currentPage={this.state.page}/>
         <PageNav label='Disease Page Navigator' page={this.state.page} decrementPage = {this.decrementPage}
