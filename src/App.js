@@ -47,6 +47,7 @@ class Navbar extends Component {
 
 export class Home extends Component {
   state = {
+    elements: [],
     searchParams: ''
   }
 
@@ -55,21 +56,31 @@ export class Home extends Component {
   }
 
   search(value) {
-    let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/search';
-    fetch(url, {
-      method: 'post',
-      body: [value]
-    })
-    .then(response => response.json())
-    .then(data => {
-          console.log(data);
-    });
+    const pages = ['food', 'disease', 'restaurant'];
+    var idx;
+    for (idx in pages) {
+      let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/' + pages[idx];
+      fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        this.setState({elements: data});
+      })
+    }
+  
+    // let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/search';
+    // fetch(url, {
+    //   method: 'post',
+    //   header: '',
+    //   body: [value]
+    // })
+    // .then(res => res.text())          // convert to plain text
+    // .then(text => console.log(text)) 
   }
 
   render() {
     return (
       <div className="img-fluid" style={styles.image}>
-
       <div class="container-fluid">
           <div class="row">
             <h1 class="display-1" style = {styles.header}>
@@ -89,7 +100,7 @@ export class Home extends Component {
             <div className="ml-4">
             <Form inline>
               <FormControl onChange={this.handleChange} name="searchParams" value={this.state.searchParams} type="text" placeholder="Search for foods, restaurants, or diseases" className="mr-sm-2" style={{width: '350px'}} />
-              <Button style={{color: 'black'}} variant="warning" onClick={this.search(this.searchParams)}>Search</Button>
+              <Button to={{pathname: '/DiseasePage/8', state: {dict: diseaseDict}}} style={{color: 'black'}} variant="warning" onClick={this.search(this.state.searchParams)}>Search</Button>
             </Form>
             </div>
           </div>

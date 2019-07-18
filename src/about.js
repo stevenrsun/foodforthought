@@ -8,7 +8,6 @@ import Steven from './photos/Steven.jpeg';
 import William from './photos/William.jpeg';
 import {Jumbotron, Table, Container} from 'reactstrap';
 
-
 export default class About extends Component {
   constructor(props) {
     super(props);
