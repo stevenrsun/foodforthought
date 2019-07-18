@@ -3,6 +3,8 @@ import Select from 'react-select';
 import backImage from '../photos/rest_image.jpg';
 import {RestaurantCardGrid} from "../components/infocard.js";
 import {PageNav} from '../components/pageNav.js';
+import {SearchCardGrid} from '../components/searchCard.js';
+import {Form,Button, FormControl} from 'react-bootstrap';
 import '../App.css';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
@@ -14,6 +16,7 @@ class Restaurant extends React.Component {
     this.state = {
       elements: [],
       resetElements: [],
+      searchElements: [],
       page: 0,
       link: '/RestaurantPage',
       dropdownOpen: false,
@@ -27,7 +30,8 @@ class Restaurant extends React.Component {
       max: null,
       selectedOptionsAddress: [],
       selectedOptionsCost: [],
-      selectedOptionsCuisine: []
+      selectedOptionsCuisine: [],
+      searchParams: ''
     }
   }
   
@@ -39,6 +43,20 @@ class Restaurant extends React.Component {
       console.log(data);
       this.setState({elements: data, resetElements: data});
     })
+  }
+
+  search = (searchParams) => {
+    var searchElements = this.state.elements.filter(dict => 
+      {
+        var found = false;
+        for(let key in dict) {
+          if(dict[key].includes(this.state.searchParams))
+            found = true;
+        }
+        return found;
+      });
+    this.setState({searchElements, elements: []})
+
   }
 
   compare = (a, b) => {
@@ -124,7 +142,8 @@ class Restaurant extends React.Component {
   
   handleReset = () => {
     this.setState({
-      elements: this.state.resetElements, 
+      elements: this.state.resetElements,
+      searchElements: [], 
       cuisineFilter: [], 
       locationFilter: [], 
       costFilter: [],
@@ -255,8 +274,13 @@ class Restaurant extends React.Component {
       <div className="img-fluid" style={this.styles.background}>
         <h1 class="display-1 mb-4" style={this.styles.header}>Restaurant {this.state.costFilter}
         <small style={{color:'orange'}}> ({this.state.elements.length})</small></h1>
-        
-        { <div class="justify-content-md-center row mb-5">
+          <div class="justify-content-md-center row mb-5">
+            <Form inline>
+                  <FormControl onChange={this.handleChange} name="searchParams" value={this.state.searchParams} type="text" placeholder="Search for retaurants" className="mr-sm-2" style={{width: '350px'}} />
+                  <Button style={{color: 'black'}} variant="warning" onSubmit={this.search}>Search</Button>
+            </Form>
+          </div>
+          <div class="justify-content-md-center row mb-5">
           <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
             <DropdownToggle color="warning" caret>
               {this.state.dropdownLabel}
@@ -273,8 +297,8 @@ class Restaurant extends React.Component {
           <button class="btn btn-warning ml-4" onClick={this.applyFilter} style={{height: '37px'}}>Filter</button>
           <button class="btn btn-warning ml-4" onClick={this.sort} style={{height: '37px'}}>Sort</button>
           <button class="btn btn-primary ml-3" onClick={this.handleReset} style={{height: '37px'}}>Reset</button>
-        </div> }
-
+        </div> 
+        <SearchCardGrid elements={this.state.searchElements} params={this.state.searchParams}/>
         <RestaurantCardGrid link={this.state.link} elements={this.state.elements} currentPage={this.state.page}/>
         <PageNav label='Food Page Navigator' page={this.state.page} decrementPage = {this.decrementPage}
          incrementPage = {this.incrementPage} lastPage={this.state.elements.length/9} goFirstPage = {this.goFirstPage} goLastPage = {this.goLastPage}/>

@@ -41,12 +41,12 @@ class Food extends React.Component {
       {
         var found = false;
         for(let key in dict) {
-          if(dict[key].includes(searchParams))
+          if(dict[key].toString().includes(searchParams))
             found = true;
         }
         return found;
       });
-    this.setState({searchElements, elements: []})
+    this.setState({searchElements: searchElements, elements: []})
 
   }
 
@@ -151,7 +151,7 @@ render() {
         <small style={{color:'orange'}}> ({this.state.elements.length})</small></h1>
         <div class="justify-content-md-center row mb-5">
           <Form inline>
-                <FormControl onChange={this.handleChange} name="searchParams" value={this.state.searchParams} type="text" placeholder="Search for foods" className="mr-sm-2" style={{width: '350px'}} />
+                <FormControl onSubmit={this.search} onChange={this.handleChange} name="searchParams" value={this.state.searchParams} type="text" placeholder="Search for foods" className="mr-sm-2" style={{width: '350px'}} />
                 <Button style={{color: 'black'}} variant="warning" onClick={this.search}>Search</Button>
           </Form>
         </div>
