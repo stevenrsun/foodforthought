@@ -2,11 +2,15 @@
 
     export class SearchResults extends Component {
         state = { 
-            elements: this.props.elements
+            elements: this.props.elements,
+            params: ''
          }
+        componentDidMount() {
+            this.setState({params: this.props.location.state.params})
+        }
         render() { 
             return ( 
-                hello
+                this.state.params
             );
         }
     }
