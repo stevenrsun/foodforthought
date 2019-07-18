@@ -22,11 +22,20 @@ class disease extends React.Component {
       causeFilter: [],
       symptomFilter: [],
       filterKey: 'init',
-      min: '0',
-      max: '0',
+      min: null,
+      max: null,
       selectedOptionsSymptom: [],
       selectedOptionsCause: []
     }
+  }
+  
+  componentDidMount() {
+    let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/disease';
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      this.setState({elements: data, resetElements: data});
+    })
   }
 
   compare = (a, b) => {
@@ -42,25 +51,8 @@ class disease extends React.Component {
     }
     return 0;
   }
-  
-  componentDidMount() {
-    let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/disease';
-    fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      this.setState({elements: data, resetElements: data});
-    })
-  }
 
   sort = () => {
-    // let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/disease?order_by=' + attribute;
-    // fetch(url)
-    // .then(response => response.json())
-    // .then(data => {
-    //   console.log(data);
-    //   this.setState({elements: data});
-    // })
-    
     this.setState({elements: this.state.elements.sort(this.compare)});
   }
 
@@ -129,7 +121,15 @@ class disease extends React.Component {
   }
   
   handleReset = () => {
-    this.setState({elements: this.state.resetElements, causeFilter: [], symptomFilter: [], selectedOptionsCause: [], selectedOptionsSymptom: []})
+    this.setState({
+      elements: this.state.resetElements, 
+      causeFilter: [], 
+      symptomFilter: [], 
+      selectedOptionsCause: [], 
+      selectedOptionsSymptom: [],
+      min: null,
+      max: null
+    })
   }
   
   applyFilter = () => {

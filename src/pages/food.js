@@ -22,7 +22,6 @@ class Food extends React.Component {
     }
   }
   
-  
   componentDidMount() {
     let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/food';
 
@@ -46,22 +45,40 @@ class Food extends React.Component {
         this.forceUpdate();
   }
 
-  sort = () => {
-    let attribute;
-    if (this.state.dropdownLabel === 'Attributes') {
-      attribute = 'name';
+  compare = (a, b) => {
+    let key = 'name';
+    if (this.state.dropdownLabel != 'Attributes') {
+      key = this.state.dropdownLabel.charAt(0).toLowerCase() + this.state.dropdownLabel.slice(1);
     }
-    else {
-      attribute = this.state.dropdownLabel.charAt(0).toLowerCase() + this.state.dropdownLabel.slice(1);
+    if ( a[key] < b[key] ){
+      return -1;
     }
-    
-    let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/food?order_by=' + attribute
-    fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      this.setState({elements: data});
-    })
+    if ( a[key] > b[key] ){
+      return 1;
+    }
+    return 0;
   }
+
+  sort = () => {
+    this.setState({elements: this.state.elements.sort(this.compare)});
+  }
+
+  // sort = () => {
+  //   let attribute;
+  //   if (this.state.dropdownLabel === 'Attributes') {
+  //     attribute = 'name';
+  //   }
+  //   else {
+  //     attribute = this.state.dropdownLabel.charAt(0).toLowerCase() + this.state.dropdownLabel.slice(1);
+  //   }
+    
+  //   let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/food?order_by=' + attribute
+  //   fetch(url)
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     this.setState({elements: data});
+  //   })
+  // }
   
   incrementPage = () => {
     const page = this.state.page + 1;

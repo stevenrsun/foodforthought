@@ -86,10 +86,12 @@ export class Home extends Component {
           </div>
           <div class="row">
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+            <div className="ml-4">
             <Form inline>
               <FormControl onChange={this.handleChange} name="searchParams" value={this.state.searchParams} type="text" placeholder="Search for foods, restaurants, or diseases" className="mr-sm-2" style={{width: '350px'}} />
-              <Button variant="outline-success" onClick={this.search(this.searchParams)}>Search</Button>
+              <Button style={{color: 'black'}} variant="warning" onClick={this.search(this.searchParams)}>Search</Button>
             </Form>
+            </div>
           </div>
       </div>
     </div>
