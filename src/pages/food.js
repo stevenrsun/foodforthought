@@ -137,7 +137,8 @@ applyFilter = () => {
 render() {
     return (
       <div className="img-fluid" style={this.styles.background}>
-        <h1 class="display-1 mb-4" style={this.styles.header}>Food
+        <h1 class="display-1 mb-4" style={this.styles.header}>
+        <strong className="highlighted-text">Food</strong>
         <small style={{color:'orange'}}> ({this.state.elements.length})</small></h1>
         <div class="justify-content-md-center row mb-5">
           <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>

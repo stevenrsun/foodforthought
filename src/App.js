@@ -10,7 +10,7 @@ import logo from './photos/home_image.jpg';
 import './App.css';
 import {Form,Button, FormControl} from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Switch, Link, NavLink } from "react-router-dom";
-import Highlighter from "react-highlight-words";
+import { SearchResults } from './pages/searchResults';
 
 class Navbar extends Component {
   render() {
@@ -39,6 +39,7 @@ class Navbar extends Component {
               <Route path='/DiseasePage/:id' component={DiseasePage}/>
               <Route path='/RestaurantPage' component={RestaurantPage} />
               <Route path='/RestaurantPage/:id' component={RestaurantPage}/>
+              <Route path='/SearchResults' component={SearchResults}/>
           </Switch>
         </div>
       </Router>
@@ -81,14 +82,8 @@ export class Home extends Component {
   }
 
   render() {
-    var diseaseDict = {name: "acne", symptom: "too many", age: "20", cause: "immune system overreacting", deaths: "0", frequency: "52000000", images: "https://cdn1.medicalnewstoday.com/content/images/articles/321/321218/jawline-acne.jpg"}
     return (
       <div className="img-fluid" style={styles.image}>
-      <Highlighter
-      highlightClassName="YourHighlightClass"
-      searchWords={["and", "or", "the"]}
-      autoEscape={true}
-      textToHighlight="The dog is chasing the cat. Or perhaps they're just playing?"/>
       <div class="container-fluid">
           <div class="row">
             <h1 class="display-1" style = {styles.header}>
@@ -108,7 +103,9 @@ export class Home extends Component {
             <div className="ml-4">
             <Form inline>
               <FormControl onChange={this.handleChange} name="searchParams" value={this.state.searchParams} type="text" placeholder="Search for foods, restaurants, or diseases" className="mr-sm-2" style={{width: '350px'}} />
-              <Button href='/Food' style={{color: 'black'}} variant="warning" onClick={this.search(this.state.searchParams)}>Search</Button>
+              <Link to={{pathname: '/SearchResults', state: {params: this.state.searchParams}}}>
+                <Button style={{color: 'black'}} variant="warning" onSubmit={this.search(this.state.searchParams)}>Search</Button>
+              </Link>
             </Form>
             </div>
           </div>
