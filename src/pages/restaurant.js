@@ -15,17 +15,19 @@ class Restaurant extends React.Component {
       elements: [],
       resetElements: [],
       page: 0,
-      link: '/DiseasePage',
+      link: '/RestaurantPage',
       dropdownOpen: false,
       midDropdownOpen: false,
       dropdownLabel: 'Attributes',
       cuisineFilter: [],
       locationFilter: [],
+      costFilter: [],
       filterKey: 'init',
       min: null,
       max: null,
-      selectedOptionsSymptom: [],
-      selectedOptionsCause: []
+      selectedOptionsAddress: [],
+      selectedOptionsCost: [],
+      selectedOptionsCuisine: []
     }
   }
   
@@ -125,15 +127,17 @@ class Restaurant extends React.Component {
       elements: this.state.resetElements, 
       cuisineFilter: [], 
       locationFilter: [], 
+      costFilter: [],
       selectedOptionsCuisine: [], 
       selectedOptionsLocation: [],
+      selectedOptionsCost: [],
       min: null,
       max: null
     })
   }
   
   applyFilter = () => {
-    if(this.state.dropdownLabel != 'Cuisine' && this.state.dropdownLabel != 'Location') {
+    if(this.state.dropdownLabel === 'Rating' || this.state.dropdownLabel === 'Yelp Reviews') {
       var elements = this.state.elements.filter(dict => {
           return (dict[this.state.filterKey] >= this.state.min && dict[this.state.filterKey] <= this.state.max)   
         })
@@ -142,36 +146,48 @@ class Restaurant extends React.Component {
     else {
       var elements = this.state.elements.filter(dict => {
           var pass = true;
+          var found = false;
           let i;
           for(i=0; i<this.state.cuisineFilter.length; i++)
-            if(!dict['cuisine'].includes(this.state.cuisineFilter[i]))
+            if(!dict['category'].includes(this.state.cuisineFilter[i]))
               pass = false;
           for(i=0; i<this.state.locationFilter.length; i++)
-            if(!dict['location'].includes(this.state.locationFilter[i]))
+            if(!dict['address'].includes(this.state.locationFilter[i]))
               pass = false;
+          for(i=0; i<this.state.costFilter.length; i++) {
+            if(dict['price_range'] === (this.state.costFilter[i]))
+              found = true;
+            pass = found;
+          }
           return pass;
       })
       this.setState({elements})
     }
   }
 
-  handleSelectCause = (selectedOptionsCause) => {
-    this.setState({selectedOptionsCause});
-    if(this.state.dropdownLabel === 'Causes' && selectedOptionsCause != null)
-      this.setState({causeFilter: selectedOptionsCause.map(o => o.value)})
+  handleSelectCost = (selectedOptionsCost) => {
+    this.setState({selectedOptionsCost});
+    if(this.state.dropdownLabel === 'Cost' && selectedOptionsCost != null)
+      this.setState({costFilter: selectedOptionsCost.map(o => o.value)})
   }
 
-  handleSelectSymptom = (selectedOptionsSymptom) => {
-    this.setState({selectedOptionsSymptom})
-    if(this.state.dropdownLabel === 'Symptoms' && selectedOptionsSymptom!= null)
-      this.setState({symptomFilter: selectedOptionsSymptom.map(o => o.value)})
+  handleSelectAddress = (selectedOptionsAddress) => {
+    this.setState({selectedOptionsAddress})
+    if(this.state.dropdownLabel === 'Location' && selectedOptionsAddress!= null)
+      this.setState({locationFilter: selectedOptionsAddress.map(o => o.value)})
+  }
+
+  handleSelectCuisine = (selectedOptionsCuisine) => {
+    this.setState({selectedOptionsCuisine})
+    if(this.state.dropdownLabel === 'Cuisine' && selectedOptionsCuisine!= null)
+      this.setState({cuisineFilter: selectedOptionsCuisine.map(o => o.value)})
   }
 
   render() {
     var filterComp;
     var dropdownSet = new Set();
     var dropdownList = [];
-    if(this.state.dropdownLabel === 'Causes') {
+    if(this.state.dropdownLabel === 'Cost') {
       let i;
       for (i=0; i<this.state.elements.length; i++) {
         var dict = this.state.elements[i];
@@ -186,10 +202,10 @@ class Restaurant extends React.Component {
         dictList.push({value: dropdownList[i], label: dropdownList[i].charAt(0).toUpperCase() + dropdownList[i].slice(1)});
       }
       filterComp = <div style={{width: '700px'}}>
-      <Select className="ml-2" isMulti closeMenuOnSelect={false} value={this.state.selectedOptionsCause} onChange={this.handleSelectCause} options={dictList}/>
+      <Select className="ml-2" isMulti closeMenuOnSelect={false} value={this.state.selectedOptionsCost} onChange={this.handleSelectCost} options={dictList}/>
       </div>;
     }
-    else if(this.state.dropdownLabel === 'Symptoms') {
+    else if(this.state.dropdownLabel === 'Cuisine') {
       let i;
       for (i=0; i<this.state.elements.length; i++) {
         var dict = this.state.elements[i];
@@ -204,7 +220,25 @@ class Restaurant extends React.Component {
         dictList.push({value: dropdownList[i], label: dropdownList[i].charAt(0).toUpperCase() + dropdownList[i].slice(1)});
       }
       filterComp = <div style={{width: '700px'}}>
-      <Select className="ml-2" isMulti closeMenuOnSelect={false} value={this.state.selectedOptionsSymptom} onChange={this.handleSelectSymptom} options={dictList}/>
+      <Select className="ml-2" isMulti closeMenuOnSelect={false} value={this.state.selectedOptionsCuisine} onChange={this.handleSelectCuisine} options={dictList}/>
+      </div>;
+    }
+    else if(this.state.dropdownLabel === 'Location') {
+      let i;
+      for (i=0; i<this.state.elements.length; i++) {
+        var dict = this.state.elements[i];
+        var attributes = dict[this.state.filterKey].split(',');
+        let j;
+        for(j=0; j<attributes.length; j++)
+          dropdownSet.add(attributes[j]);
+      }
+      dropdownList = Array.from(dropdownSet);
+      var dictList = [];
+      for(i=0; i<dropdownList.length; i++){
+        dictList.push({value: dropdownList[i], label: dropdownList[i].charAt(0).toUpperCase() + dropdownList[i].slice(1)});
+      }
+      filterComp = <div style={{width: '700px'}}>
+      <Select className="ml-2" isMulti closeMenuOnSelect={false} value={this.state.selectedOptionsAddress} onChange={this.handleSelectAddress} options={dictList}/>
       </div>;
     }
     else {
@@ -219,27 +253,27 @@ class Restaurant extends React.Component {
       
       
       <div className="img-fluid" style={this.styles.background}>
-        <h1 class="display-1 mb-4" style={this.styles.header}>Restaurant 
+        <h1 class="display-1 mb-4" style={this.styles.header}>Restaurant {this.state.costFilter}
         <small style={{color:'orange'}}> ({this.state.elements.length})</small></h1>
         
-        {/* <div class="justify-content-md-center row mb-5">
+        { <div class="justify-content-md-center row mb-5">
           <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
             <DropdownToggle color="warning" caret>
               {this.state.dropdownLabel}
             </DropdownToggle>
             <DropdownMenu>
-              <DropdownItem onClick={this.changeFilterTag} id='Average age affected' fkey='age'>Average age affected</DropdownItem>
-              <DropdownItem onClick={this.changeFilterTag} id='Causes' fkey='cause'>Causes</DropdownItem>
-              <DropdownItem onClick={this.changeFilterTag} id='Deaths per year' fkey='deaths'>Deaths per year</DropdownItem>
-              <DropdownItem onClick={this.changeFilterTag} id='Symptoms' fkey='symptom'>Symptoms</DropdownItem>
-              <DropdownItem onClick={this.changeFilterTag} id='Diagnosed per year' fkey='frequency'>Diagnosed per year</DropdownItem>
+              <DropdownItem onClick={this.changeFilterTag} id='Cost' fkey='price_range'>Cost</DropdownItem>
+              <DropdownItem onClick={this.changeFilterTag} id='Cuisine' fkey='category'>Cuisine</DropdownItem>
+              <DropdownItem onClick={this.changeFilterTag} id='Location' fkey='address'>Location</DropdownItem>
+              <DropdownItem onClick={this.changeFilterTag} id='Rating' fkey='rating'>Rating</DropdownItem>
+              <DropdownItem onClick={this.changeFilterTag} id='Yelp Reviews' fkey='review_count'>Yelp Reviews</DropdownItem>
             </DropdownMenu>
           </Dropdown>
           {filterComp}
           <button class="btn btn-warning ml-4" onClick={this.applyFilter} style={{height: '37px'}}>Filter</button>
           <button class="btn btn-warning ml-4" onClick={this.sort} style={{height: '37px'}}>Sort</button>
           <button class="btn btn-primary ml-3" onClick={this.handleReset} style={{height: '37px'}}>Reset</button>
-        </div> */}
+        </div> }
 
         <RestaurantCardGrid link={this.state.link} elements={this.state.elements} currentPage={this.state.page}/>
         <PageNav label='Food Page Navigator' page={this.state.page} decrementPage = {this.decrementPage}
