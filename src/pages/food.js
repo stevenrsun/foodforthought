@@ -62,23 +62,6 @@ class Food extends React.Component {
   sort = () => {
     this.setState({elements: this.state.elements.sort(this.compare)});
   }
-
-  // sort = () => {
-  //   let attribute;
-  //   if (this.state.dropdownLabel === 'Attributes') {
-  //     attribute = 'name';
-  //   }
-  //   else {
-  //     attribute = this.state.dropdownLabel.charAt(0).toLowerCase() + this.state.dropdownLabel.slice(1);
-  //   }
-    
-  //   let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/food?order_by=' + attribute
-  //   fetch(url)
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     this.setState({elements: data});
-  //   })
-  // }
   
   incrementPage = () => {
     const page = this.state.page + 1;
@@ -177,7 +160,7 @@ render() {
           </form>
           <button class="btn btn-warning ml-4" onClick={this.applyFilter} style={{height: '37px'}}>Filter</button>
           <button class="btn btn-warning ml-4" onClick={this.sort} style={{height: '37px'}}>Sort</button>
-          <button class="btn btn-primary ml-3" onClick={this.handleReset} style={{height: '37px'}}>Reset</button>
+          <button class="btn btn-primary ml-3" type="reset" onClick={this.handleReset} style={{height: '37px'}}>Reset</button>
         </div>
         <FoodCardGrid link={this.state.link} elements={this.state.elements} currentPage={this.state.page}/>
         <PageNav label='Food Page Navigator' page={this.state.page} decrementPage = {this.decrementPage}
