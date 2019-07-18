@@ -10,6 +10,7 @@ import logo from './photos/home_image.jpg';
 import './App.css';
 import {Form,Button, FormControl} from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Switch, Link, NavLink } from "react-router-dom";
+import Highlighter from "react-highlight-words";
 
 class Navbar extends Component {
   render() {
@@ -55,16 +56,17 @@ export class Home extends Component {
     this.setState({[target.name]: target.value})
   }
 
-  search(value) {
+  search = (value) => {
     const pages = ['food', 'disease', 'restaurant'];
-    var idx;
-    for (idx in pages) {
+    let idx;
+    for (idx = 0; idx < pages.length; idx++) {
       let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/' + pages[idx];
       fetch(url)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
-        this.setState({elements: data});
+        console.log(this.state.searchParams);
+        // console.log(data);
+        // this.setState({elements: data});
       })
     }
   
@@ -79,8 +81,14 @@ export class Home extends Component {
   }
 
   render() {
+    var diseaseDict = {name: "acne", symptom: "too many", age: "20", cause: "immune system overreacting", deaths: "0", frequency: "52000000", images: "https://cdn1.medicalnewstoday.com/content/images/articles/321/321218/jawline-acne.jpg"}
     return (
       <div className="img-fluid" style={styles.image}>
+      <Highlighter
+      highlightClassName="YourHighlightClass"
+      searchWords={["and", "or", "the"]}
+      autoEscape={true}
+      textToHighlight="The dog is chasing the cat. Or perhaps they're just playing?"/>
       <div class="container-fluid">
           <div class="row">
             <h1 class="display-1" style = {styles.header}>
@@ -100,7 +108,7 @@ export class Home extends Component {
             <div className="ml-4">
             <Form inline>
               <FormControl onChange={this.handleChange} name="searchParams" value={this.state.searchParams} type="text" placeholder="Search for foods, restaurants, or diseases" className="mr-sm-2" style={{width: '350px'}} />
-              <Button to={{pathname: '/DiseasePage/8', state: {dict: diseaseDict}}} style={{color: 'black'}} variant="warning" onClick={this.search(this.state.searchParams)}>Search</Button>
+              <Button href='/Food' style={{color: 'black'}} variant="warning" onClick={this.search(this.state.searchParams)}>Search</Button>
             </Form>
             </div>
           </div>
