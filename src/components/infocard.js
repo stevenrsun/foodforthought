@@ -41,15 +41,15 @@ export class RestaurantCard extends Component {
     render() { 
         return ( 
         <div class="card bg-light">
-            <div class="card-header font-weight-bold" style={{fontSize: 25}}>{this.props.info.name}</div>
+            <div class="card-header font-weight-bold" style={{fontSize: 25}}>{this.props.info.business_name}</div>
             <img class="card-img-top" src={this.props.info.images} style={this.state.style} alt="Card image cap"/>
             <div class="card-body">
                 <div class="list-group">
-                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Cost:</Text>&nbsp;{this.props.info.cost}</div>
-                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Cuisine:</Text>&nbsp;{this.props.info.cuisine}</div>
-                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Location:</Text>&nbsp;{this.props.info.location}</div>
+                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Cost:</Text>&nbsp;{this.props.info.price_range}</div>
+                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Cuisine:</Text>&nbsp;{this.props.info.category}</div>
+                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Location:</Text>&nbsp;{this.props.info.address}</div>
                     <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Rating/10:</Text>&nbsp;{this.props.info.rating}</div>
-                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Yelp Reviews:</Text>&nbsp;{this.props.info.yelp}</div>
+                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Yelp Reviews:</Text>&nbsp;{this.props.info.review_count}</div>
                 </div>
                 <div class="card-text"><p></p></div>
                 <NavLink to={{pathname: this.props.link, state: {dict: this.props.info}}} class="card-link">More Info</NavLink>
