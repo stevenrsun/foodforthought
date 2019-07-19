@@ -10,13 +10,14 @@ export class SearchCard extends Component {
         keyMap: {'name': 'Name: ', 'business_name': 'Name: ', 'protein': 'Protein: ', 'fat': 'Fat: ', 'carbs': 'Carbs: ', 'sodium': 'Sodium: ',
                     'calories': 'Calories: ', 'age': 'Average age affected: ', 'cause': 'Causes: ',
                     'deaths': 'Deaths per year: ', 'symptom': 'Symptoms: ', 'frequency': 'Diagnosed per year: ',
-                    'address': 'Address: ', 'category': 'Cuisine: ', 'price_range': 'Cost: ', 'rating': 'Rating: ', 'review_count': 'Yelp Reviews: '}
+                    'address': 'Address: ', 'category': 'Cuisine: ', 'price_range': 'Cost: ', 'rating': 'Rating: ', 'review_count': 'Yelp Reviews: '},
+        myParams: this.props.params
      }
 
     render() { 
         var output = [];
         var nameKey = '';
-        var params = this.props.params.split(' ');
+        var params = this.state.myParams.split(' ');
         for(let key in this.props.elementDict) {
             if(key in this.state.keyMap) {
                 var text = this.props.elementDict[key];
@@ -31,42 +32,74 @@ export class SearchCard extends Component {
                         paramsToHighlight.push(params[i]);
                         paramsToHighlightIndices.push(text.indexOf(params[i]));
                     }
-                }
-                paramsToHighlightIndices.sort();
-                var splitText = [];
-                for(i=0; i<paramsToHighlightIndices.length; i++){
-                    var newText;
-                    if(i=0 && paramsToHighlightIndices[i] != 0)
-                        newText = text.slice(0, paramsToHighlight[i]);
-                    else if(i=0)
-                        newText = text.slice(0, 8);
-                    else if(i=paramsToHighlightIndices.length - 1)
-                        newText = text.slice(paramsToHighlightIndices[i]);
-                    else
-                        newText = text.slice(paramsToHighlightIndices[i], paramsToHighlightIndices[i + 1]);
-                    splitText.push(newText);
-                    if(i != paramsToHighlightIndices.length - 1)
-                        text = text.slice(paramsToHighlightIndices[i+1]);
-                }
-                var line = [];
-                line.push(<Text>{this.state.keyMap[key]}</Text>)
-                let j;
-                var included = false;
-                for(i=0; i<paramsToHighlight.length; i++) {
-                    if(permaText.includes(paramsToHighlight[i]))
-                        included = true;
-                }
-                if(included)
-                    for(j=0; j<splitText.length; j++) {
-                        if(j%2 != 0) 
-                            line.push(<Text>{splitText[j]}</Text>)
-                        else
-                            line.push(<Text style={{fontWeight: 'bold'}}>{splitText[j]}</Text>)
+                }        
+                
+                if(paramsToHighlightIndices.length > 0) {
+                    var indicesToParams = {};       
+                    for(i=0; i<paramsToHighlightIndices.length; i++) {
+                        var keyNum = paramsToHighlightIndices[i];
+                        indicesToParams[keyNum] = paramsToHighlight[i];
                     }
-                else
+                    console.log(indicesToParams) 
+                    paramsToHighlightIndices.sort();
+                    var splitText = [];
+                    var prevIndex = 0;
+                    var firstBold = true;
+                    for(i=0; i<paramsToHighlightIndices.length; i++){
+                        console.log('previndex ' + prevIndex)
+                        var newText;
+                        console.log('indices:' + paramsToHighlightIndices[0])
+                        if(i==0 && paramsToHighlightIndices[0] != 0){
+                            firstBold = false;
+                            console.log('this shouldnt log')
+                            splitText.push(text.slice(0, paramsToHighlightIndices[i]));
+                            newText = text.slice(paramsToHighlightIndices[i], paramsToHighlightIndices[i] + indicesToParams[paramsToHighlightIndices[i]].length)
+                            prevIndex = paramsToHighlightIndices[i] + indicesToParams[paramsToHighlightIndices[i]].length;
+                        }
+                        else if(i==0){
+                            console.log("hey fuck you man")
+                            newText = text.slice(0, indicesToParams[paramsToHighlightIndices[i]].length);
+                            console.log(newText)
+                            prevIndex = indicesToParams[paramsToHighlightIndices[i]].length;
+                        }
+                        else if(i < paramsToHighlightIndices.length){
+                            console.log("middle of list found")
+                            newText = text.slice(prevIndex, paramsToHighlightIndices[i]);
+                            prevIndex = paramsToHighlightIndices[i];
+                        }
+
+                        splitText.push(newText);
+                        console.log(splitText)
+                    }
+                    splitText.push(text.slice(prevIndex));
+                    console.log(splitText)
+                    var line = [];
+                    line.push(<Text>{this.state.keyMap[key]}</Text>)
+                    let j;
+                    if(firstBold)
+                        for(j=0; j<splitText.length; j++) {
+                            if(j%2 != 0) 
+                                line.push(<Text>{splitText[j]}</Text>)
+                            else
+                                line.push(<Text style={{fontWeight: 'bold'}}>{splitText[j]}</Text>)
+                        }
+                    else
+                        for(j=0; j<splitText.length; j++) {
+                            if(j%2 == 0) 
+                                line.push(<Text>{splitText[j]}</Text>)
+                            else
+                                line.push(<Text style={{fontWeight: 'bold'}}>{splitText[j]}</Text>)
+                        }
+                    line.push(<Text><br/></Text>)
+                    output.push(line);
+                }
+                else {
+                    var line = [];
+                    line.push(<Text>{this.state.keyMap[key]}</Text>)
                     line.push(<Text>{permaText}</Text>)
-                line.push(<Text><br/></Text>)
-                output.push(line);
+                    line.push(<Text><br/></Text>)
+                    output.push(line);
+                }
             }
         }
         return ( 
