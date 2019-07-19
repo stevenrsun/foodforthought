@@ -8,8 +8,6 @@ import {Form,Button, FormControl} from 'react-bootstrap';
 import '../App.css';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
-
-
 class Restaurant extends React.Component {
   constructor(props) {
     super(props);
@@ -62,7 +60,6 @@ class Restaurant extends React.Component {
         return found;
       });
     this.setState({searchElements: searchElements, elements: []})
-
   }
 
   compare = (a, b) => {

@@ -3,7 +3,9 @@ import Select from 'react-select';
 import backImage from '../photos/disease_background.jpg';
 import {DiseaseCardGrid} from "../components/infocard.js";
 import {PageNav} from '../components/pageNav.js';
+import {SearchCardGrid} from '../components/searchCard.js';
 import '../App.css';
+import {Form,Button, FormControl} from 'react-bootstrap';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { thisExpression } from '@babel/types';
 
@@ -14,6 +16,7 @@ class disease extends React.Component {
     this.state = {
       elements: [],
       resetElements: [],
+      searchElements: [],
       page: 0,
       link: '/DiseasePage',
       dropdownOpen: false,
@@ -25,7 +28,8 @@ class disease extends React.Component {
       min: null,
       max: null,
       selectedOptionsSymptom: [],
-      selectedOptionsCause: []
+      selectedOptionsCause: [],
+      searchParams: ''
     }
   }
   
@@ -166,6 +170,25 @@ class disease extends React.Component {
     if(this.state.dropdownLabel === 'Symptoms' && selectedOptionsSymptom!= null)
       this.setState({symptomFilter: selectedOptionsSymptom.map(o => o.value)})
   }
+
+  search = () => {
+    var params = this.state.searchParams.split(' ');
+    var searchElements = this.state.elements.filter(dict => 
+      {
+        var found = false;
+        for(let key in dict) {
+          let i;
+          for(i=0; i<params.length; i++) {
+            if(typeof(dict[key]) == 'string' && dict[key].toLowerCase().includes((params[i]).toLowerCase()))
+              found = true;
+            else if(typeof(dict[key]) != 'string' && dict[key].toString().toLowerCase().includes((params[i]).toLowerCase()))
+              found = true;
+          }
+        }
+        return found;
+      });
+    this.setState({searchElements: searchElements, elements: []})
+  }
   
   render = () => {
     var filterComp;
@@ -214,11 +237,18 @@ class disease extends React.Component {
       <label class="sr-only" for="inlineFormInputName2">Name</label>
       <input type="number" min="0" name="max" value={this.state.max} onChange={this.handleChange} class="form-control mb-2 ml-1 mr-sm-2" id="inlineFormInputName2" placeholder="Max" style={{width: '60px'}}></input>
       </form>;
-    
+    var numElements = Math.max(this.state.elements.length, this.state.searchElements.length);
     return (
       <div className="img-fluid" style={this.styles.background}>
         <h1 class="display-1 mb-4" style={this.styles.header}>Disease
-        <small style={{color:'orange'}}> ({this.state.elements.length})</small></h1>
+        <small style={{color:'orange'}}> ({numElements})</small></h1>
+
+        <div class="justify-content-md-center row mb-5">
+            <Form inline>
+                  <FormControl onSubmit={this.search} onChange={this.handleChange} name="searchParams" value={this.state.searchParams} type="text" placeholder="Search for diseases" className="mr-sm-2" style={{width: '350px'}} />
+                  <Button style={{color: 'black'}} variant="warning" onClick={this.search}>Search</Button>
+            </Form>
+          </div>
 
         <div class="justify-content-md-center row mb-5">
           <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
@@ -238,6 +268,7 @@ class disease extends React.Component {
           <button class="btn btn-warning ml-4" onClick={this.sort} style={{height: '37px'}}>Sort</button>
           <button class="btn btn-primary ml-3" onClick={this.handleReset} style={{height: '37px'}}>Reset</button>
         </div>
+        <SearchCardGrid link={this.state.link} elements={this.state.searchElements} params={this.state.searchParams}/>
         <DiseaseCardGrid link={this.state.link} elements={this.state.elements} currentPage={this.state.page}/>
         <PageNav label='Disease Page Navigator' page={this.state.page} decrementPage = {this.decrementPage}
          incrementPage = {this.incrementPage} lastPage={this.state.elements.length/9} goFirstPage = {this.goFirstPage} goLastPage = {this.goLastPage}/>
