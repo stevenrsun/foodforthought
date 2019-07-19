@@ -37,15 +37,15 @@ class Food extends React.Component {
     })
   }
 
-  search = (searchParams) => {
-    console.log('hello')
+  search = () => {
+    console.log('searchParams')
     var searchElements = this.state.elements.filter(dict => 
       {
         var found = false;
         for(let key in dict) {
-          if(typeof(dict[key]) == 'string' && dict[key].includes(searchParams))
+          if(typeof(dict[key]) == 'string' && dict[key].includes(this.state.searchParams))
             found = true;
-          else if(typeof(dict[key]) != 'string' && dict[key].toString().includes(searchParams))
+          else if(typeof(dict[key]) != 'string' && dict[key].toString().includes(this.state.searchParams))
             found = true;
         }
         return found;
@@ -132,7 +132,7 @@ handleChange = ({target}) => {
 }
 
 handleReset = () => {
-  this.setState({elements: this.state.resetElements})
+  this.setState({elements: this.state.resetElements, searchElements: []})
 }
 
 applyFilter = () => {
@@ -144,10 +144,11 @@ applyFilter = () => {
 }
 
 render() {
+    var numElements = Math.max(this.state.elements.length, this.state.searchElements.length);
     return (
       <div className="img-fluid" style={this.styles.background}>
         <h1 class="display-1 mb-4" style={this.styles.header}>Food
-        <small style={{color:'orange'}}> ({this.state.elements.length})</small></h1>
+        <small style={{color:'orange'}}> ({numElements})</small></h1>
         <div class="justify-content-md-center row mb-5">
             <Form inline>
                   <FormControl onSubmit={this.search} onChange={this.handleChange} name="searchParams" value={this.state.searchParams} type="text" placeholder="Search for food" className="mr-sm-2" style={{width: '350px'}} />
@@ -177,7 +178,7 @@ render() {
           <button class="btn btn-warning ml-4" onClick={this.sort} style={{height: '37px'}}>Sort</button>
           <button class="btn btn-primary ml-3" type="reset" onClick={this.handleReset} style={{height: '37px'}}>Reset</button>
         </div>
-        <SearchCardGrid elements={this.state.searchElements} params={this.state.searchParams}/>
+        <SearchCardGrid link={this.state.link} elements={this.state.searchElements} params={this.state.searchParams}/>
         <FoodCardGrid link={this.state.link} elements={this.state.elements} currentPage={this.state.page}/>
         <PageNav label='Food Page Navigator' page={this.state.page} decrementPage = {this.decrementPage}
          incrementPage = {this.incrementPage} lastPage={this.state.elements.length/9} goFirstPage = {this.goFirstPage} goLastPage = {this.goLastPage}/>

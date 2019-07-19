@@ -45,15 +45,19 @@ class Restaurant extends React.Component {
     })
   }
 
-  search = (searchParams) => {
+  search = () => {
+    var params = this.state.searchParams.split(' ');
     var searchElements = this.state.elements.filter(dict => 
       {
-        var found = true;
+        var found = false;
         for(let key in dict) {
-          if(typeof(dict[key]) == 'string' && dict[key].includes(searchParams))
-            found = true;
-          else if(typeof(dict[key]) != 'string' && dict[key].toString().includes(searchParams))
-            found = true;
+          let i;
+          for(i=0; i<params.length; i++) {
+            if(typeof(dict[key]) == 'string' && dict[key].toLowerCase().includes((params[i]).toLowerCase()))
+              found = true;
+            else if(typeof(dict[key]) != 'string' && dict[key].toString().toLowerCase().includes((params[i]).toLowerCase()))
+              found = true;
+          }
         }
         return found;
       });
@@ -205,6 +209,7 @@ class Restaurant extends React.Component {
   }
 
   render() {
+    var numElements = Math.max(this.state.elements.length, this.state.searchElements.length);
     var filterComp;
     var dropdownSet = new Set();
     var dropdownList = [];
@@ -275,7 +280,7 @@ class Restaurant extends React.Component {
       
       <div className="img-fluid" style={this.styles.background}>
         <h1 class="display-1 mb-4" style={this.styles.header}>Restaurant {this.state.costFilter}
-        <small style={{color:'orange'}}> ({this.state.elements.length})</small></h1>
+        <small style={{color:'orange'}}> ({numElements})</small></h1>
           <div class="justify-content-md-center row mb-5">
             <Form inline>
                   <FormControl onSubmit={this.search} onChange={this.handleChange} name="searchParams" value={this.state.searchParams} type="text" placeholder="Search for retaurants" className="mr-sm-2" style={{width: '350px'}} />
@@ -300,7 +305,7 @@ class Restaurant extends React.Component {
           <button class="btn btn-warning ml-4" onClick={this.sort} style={{height: '37px'}}>Sort</button>
           <button class="btn btn-primary ml-3" onClick={this.handleReset} style={{height: '37px'}}>Reset</button>
         </div> 
-        <SearchCardGrid elements={this.state.elements} params={this.state.searchParams}/>
+        <SearchCardGrid link={this.state.link} elements={this.state.searchElements} params={this.state.searchParams}/>
         <RestaurantCardGrid link={this.state.link} elements={this.state.elements} currentPage={this.state.page}/>
         <PageNav label='Food Page Navigator' page={this.state.page} decrementPage = {this.decrementPage}
          incrementPage = {this.incrementPage} lastPage={this.state.elements.length/9} goFirstPage = {this.goFirstPage} goLastPage = {this.goLastPage}/>
