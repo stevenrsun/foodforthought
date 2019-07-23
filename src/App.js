@@ -12,6 +12,7 @@ import {Form,Button, FormControl} from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Switch, Link, NavLink } from "react-router-dom";
 import { SearchResults } from './pages/searchResults';
 
+
 class Navbar extends Component {
   render() {
     return (
@@ -50,42 +51,30 @@ class Navbar extends Component {
 export class Home extends Component {
   state = {
     elements: [],
-    searchParams: ''
+    searchParams: '',
+    searchResult: []
   }
 
   handleChange = ({target}) => {
     this.setState({[target.name]: target.value})
   }
 
-  search = (value) => {
-    /*const pages = ['food', 'disease', 'restaurant'];
-    var idx;
-    for (idx in pages) {
-    const pages = ['food', 'disease', 'restaurant'];
-    let idx;
-    for (idx = 0; idx < pages.length; idx++) {
-      let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/' + pages[idx];
-      fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        this.setState({elements: data});
-      })*/
-  
-        console.log(this.state.searchParams);
-        // console.log(data);
-        // this.setState({elements: data});
-      
-    
-  
-    // let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/search';
-    // fetch(url, {
-    //   method: 'post',
-    //   header: '',
-    //   body: [value]
-    // })
-    // .then(res => res.text())          // convert to plain text
-    // .then(text => console.log(text)) 
+
+  search = (value) => {  
+    let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/search';
+    fetch(url, { 
+      method: 'post',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+         body: JSON.stringify(value)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      this.setState({searchResult: data});
+    })
   }
 
   render() {
@@ -110,8 +99,8 @@ export class Home extends Component {
             <div className="ml-4">
             <Form inline>
               <FormControl onChange={this.handleChange} name="searchParams" value={this.state.searchParams} type="text" placeholder="Search for foods, restaurants, or diseases" className="mr-sm-2" style={{width: '350px'}} />
-              <Link to={{pathname: '/SearchResults', state: {params: this.state.searchParams}}}>
-                <Button style={{color: 'black'}} variant="warning" onSubmit={this.search(this.state.searchParams)}>Search</Button>
+              <Link to={{pathname: '/SearchResults', state: {params: this.state.searchParams, result: this.state.searchResult}}}>
+                <Button style={{color: 'black'}} variant="warning" onClick={this.search(this.state.searchParams)}>Search</Button>
               </Link>
             </Form>
             <p>{this.state.workInProgress}</p>

@@ -5,19 +5,18 @@
     export class SearchResults extends Component {
         state = { 
             elements: this.props.elements,
-            params: ''
+            params: '',
+            results: []
          }
         componentDidMount() {
-            this.setState({params: this.props.location.state.params})
+            this.setState({params: this.props.location.state.params, results: this.props.location.state.result})
         }
         render() { 
-            return ( <div>
-                <Highlighter
-    highlightClassName="YourHighlightClass"
-    searchWords={["and", "or", "the"]}
-    autoEscape={true}
-    textToHighlight="The dog is chasing the cat. Or perhaps they're just playing?"
-  /></div>
+            return ( 
+                <div>
+                    {this.state.params} <br/>
+                    {this.state.results}
+                </div>
             );
         }
     }
