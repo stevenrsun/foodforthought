@@ -12,6 +12,7 @@ import './App.css';
 import {Form,Button, FormControl} from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Switch, Link, NavLink } from "react-router-dom";
 import { SearchResults } from './pages/searchResults';
+import * as d3 from 'd3';
 
 class Navbar extends Component {
   render() {
@@ -34,7 +35,7 @@ class Navbar extends Component {
               <Route exact path='/Food' component={Food} />
               <Route exact path='/Restaurant' component={Restaurant} />
               <Route exact path='/Disease' component={Disease} />
-              <Route exact path='/Visualization' component={Visualizations} />
+              <Route exact path='/Visualizations' component={Visualizations} />
               <Route exact path='/About' component={About} />
               <Route path='/FoodPage' component={FoodPage} />
               <Route path='/FoodPage/:id' component={FoodPage}/>

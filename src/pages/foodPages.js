@@ -73,7 +73,6 @@ export class FoodPage extends Component {
         }
         return this.state.elements[0];
     }*/
-    
 
     render() { 
         var diseaseDict = {name: "acne", symptom: "too many", age: "20", cause: "immune system overreacting", deaths: "0", frequency: "52000000", images: "https://cdn1.medicalnewstoday.com/content/images/articles/321/321218/jawline-acne.jpg"}

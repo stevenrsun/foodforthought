@@ -1,5 +1,4 @@
     import React, { Component } from 'react';
-    import Highlighter from 'react-highlight-words';
 
 
     export class SearchResults extends Component {
@@ -14,7 +13,7 @@
         render() { 
             return ( 
                 <div>
-                    {this.state.params} <br/>
+                    {this.state.params} <br/> akldjalkf
                     {this.state.results}
                 </div>
             );
