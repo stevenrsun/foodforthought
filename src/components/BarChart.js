@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import * as d3 from "d3";
 import d3Tip  from "d3-tip";
 
-import "./css/BarChart.css";
 
 //This code is modified from Simple d3.js bar chart D3: http://bl.ocks.org/d3noob/8952219#bar-data.csv
 //with rainbow function from this codepen: https://codepen.io/chadoh/pen/NRXpKw
@@ -111,25 +110,12 @@ class BarChart extends Component
     }
   }
 
-  getCustomTag ()
-  {
-    if (this.props.label === "dogActivitiesBar")
-    {
-      return <dogActivitiesBar/>
-    }
-    else
-    if (this.props.label === "IssueBarChart")
-    {
-      return <issueBarChart/>
-    }
-  }
 
   render()
   {
     return (
       <div>
 
-      {this.getCustomTag()}
       <h2>{this.state.bottomText}</h2>
         <br/>
       </div>
