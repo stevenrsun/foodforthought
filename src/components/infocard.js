@@ -48,7 +48,7 @@ export class RestaurantCard extends Component {
                     <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Cost:</Text>&nbsp;{this.props.info.price_range}</div>
                     <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Cuisine:</Text>&nbsp;{this.props.info.category}</div>
                     <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Location:</Text>&nbsp;{this.props.info.address}</div>
-                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Rating/10:</Text>&nbsp;{this.props.info.rating}</div>
+                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Rating/5:</Text>&nbsp;{this.props.info.rating}</div>
                     <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Yelp Reviews:</Text>&nbsp;{this.props.info.review_count}</div>
                 </div>
                 <div class="card-text"><p></p></div>

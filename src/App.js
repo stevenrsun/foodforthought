@@ -6,6 +6,7 @@ import Restaurant from './pages/restaurant';
 import {FoodPage} from './pages/foodPages';
 import {DiseasePage} from './pages/diseasePages';
 import {RestaurantPage} from './pages/restaurantPages'
+import {Visualizations} from './pages/visualizations'
 import logo from './photos/home_image.jpg';
 import './App.css';
 import {Form,Button, FormControl} from 'react-bootstrap';
@@ -22,8 +23,8 @@ class Navbar extends Component {
             <li><NavLink to={'/'} className="nav-link"> Home </NavLink></li>
             <li><NavLink to={'/Food'} className="nav-link">Food</NavLink></li>
             <li><NavLink to={'/Disease'} className="nav-link">Disease</NavLink></li>
-            <li><NavLink to='/Restaurant' className="nav-link">Restaurant</NavLink></li>
-            <li><NavLink to='/Restaurant' className="nav-link">Visualizations</NavLink></li>
+            <li><NavLink to={'/Restaurant'} className="nav-link">Restaurant</NavLink></li>
+            <li><NavLink to={'/Visualizations'} className="nav-link">Visualizations</NavLink></li>
             <li><NavLink to={'/About'} className="nav-link">About</NavLink></li>
           </ul>
           </nav>
