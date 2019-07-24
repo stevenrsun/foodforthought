@@ -5,6 +5,8 @@ import {Link} from 'react-router-dom';
 
 export class FoodPage extends Component {
     state = { 
+        diseaseElements: [],
+        restaurantElements: [],
         dict: {name: "", images: "", protein: "", carbs: "", 
                 fat: "", calories: "", restaurants: "", diseases: "", sodium: "", id: ""}
     }
@@ -44,6 +46,21 @@ export class FoodPage extends Component {
     };
 
     componentDidMount () {
+        let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/disease';
+
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          this.setState({diseaseElements: data});
+        })
+
+        url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/restaurant';
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          this.setState({restaurantElements: data});
+        })
+        // update dictionary
         const {dict} = this.props.location.state;
         this.setState({dict});
     }
