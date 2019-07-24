@@ -59,35 +59,22 @@ export class Home extends Component {
     this.setState({[target.name]: target.value})
   }
 
-  search = (value) => {
-    /*const pages = ['food', 'disease', 'restaurant'];
-    var idx;
-    for (idx in pages) {
-    const pages = ['food', 'disease', 'restaurant'];
-    let idx;
-    for (idx = 0; idx < pages.length; idx++) {
-      let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/' + pages[idx];
-      fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        this.setState({elements: data});
-      })*/
-  
-        console.log(this.state.searchParams);
-        // console.log(data);
-        // this.setState({elements: data});
-      
-    
-  
+
+  search = (value) => {  
     // let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/search';
-    // fetch(url, {
+    // fetch(url, { 
     //   method: 'post',
-    //   header: '',
+    //   headers: {
+    //     'Accept': 'application/json, text/plain, */*',
+    //     'Content-Type': 'application/json'
+    //   },
+    //   // body: JSON.stringify([value])
     //   body: [value]
     // })
-    // .then(res => res.text())          // convert to plain text
-    // .then(text => console.log(text)) 
+    // .then(response => response.json())
+    // .then(data => {
+    //   this.setState({searchResult: data});
+    // })
   }
 
   render() {

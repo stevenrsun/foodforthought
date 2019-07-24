@@ -63,9 +63,9 @@ class Restaurant extends React.Component {
   }
 
   compare = (a, b) => {
-    let key = 'name';
-    if (this.state.dropdownLabel != 'Attributes') {
-      key = this.state.dropdownLabel.charAt(0).toLowerCase() + this.state.dropdownLabel.slice(1);
+    let key = 'business_name';
+    if (this.state.filterKey != 'init') {
+      key = this.state.filterKey;
     }
     if ( a[key] < b[key] ){
       return -1;
