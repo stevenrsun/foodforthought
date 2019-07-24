@@ -61,20 +61,20 @@ export class Home extends Component {
 
 
   search = (value) => {  
-    let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/search';
-    fetch(url, { 
-      method: 'post',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      },
-         body: JSON.stringify(value)
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      this.setState({searchResult: data});
-    })
+    // let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/search';
+    // fetch(url, { 
+    //   method: 'post',
+    //   headers: {
+    //     'Accept': 'application/json, text/plain, */*',
+    //     'Content-Type': 'application/json'
+    //   },
+    //   // body: JSON.stringify([value])
+    //   body: [value]
+    // })
+    // .then(response => response.json())
+    // .then(data => {
+    //   this.setState({searchResult: data});
+    // })
   }
 
   render() {
