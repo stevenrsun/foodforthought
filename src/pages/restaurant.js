@@ -63,7 +63,7 @@ class Restaurant extends React.Component {
   }
 
   compare = (a, b) => {
-    let key = 'name';
+    let key = 'business_name';
     if (this.state.filterKey != 'init') {
       key = this.state.filterKey;
     }
