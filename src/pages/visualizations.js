@@ -39,19 +39,6 @@ export class Visualizations extends Component
     );
   }
 
-  async componentDidMount()
-  {
-    let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/food';
-
-    fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      this.setState({
-          foodData: data,
-          foodBarDataLoaded : true});
-    })
-}
-
 
 
 

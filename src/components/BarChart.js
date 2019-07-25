@@ -23,6 +23,7 @@ class BarChart extends Component
       // call API
       let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/food';
       const response = await fetch(url);
+      // wait for response
       if (!response.ok) {
         throw Error(response.statusText);
       }
@@ -32,16 +33,16 @@ class BarChart extends Component
       console.log(error);
     }
 
-    var arr = []
+    var labels = []
+    var values = []
     for (let i=0; i < this.state.data.length; i++) {
-      const it = parseInt(this.state.data[i]['calories']);
-      arr.push(it)
+      labels.push(this.state.data[i]['name'])
+      values.push(this.state.data[i]['calories'])
     }
-
-    this.drawBarChart(arr);
+    this.drawBarChart(labels, values);
   }
 
-  drawBarChart(data)  {
+  drawBarChart(labels, data)  {
     const canvasHeight = 400
     const canvasWidth = 600
     const scale = 5
