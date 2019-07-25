@@ -60,7 +60,8 @@ export class Visualizations extends Component
         <Tabs className="tab" activeKey={this.state.activeTab} onSelect={this.handleSelect}>
             <Tab className="tabBackground" eventKey="foodKey" title="Food title">
             <br/>
-                {this.foodBar()}
+                {/* {this.foodBar()} */}
+                <BarChart />
             <br/>
             </Tab>
         </Tabs>
