@@ -11,29 +11,33 @@ class BarChart extends Component
 {
   constructor(props) {
     super(props);
-    this.state =
-    {
+    this.state = {
       isLoaded: false,
       bottomText: "Loading...",
+      data: []
     };
   }
 
-  componentDidMount() {
-    var arr = new Array();
-    var fetchedData
-    // call API
-    let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/food';
-    fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      fetchedData = data;
-    })
-    for (let i=0; i < 5; i++) {
-      const it = parseInt(fetchedData[i]['calories']);
+  async componentDidMount() {
+    try {
+      // call API
+      let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/food';
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      const json = await response.json();
+      this.setState({ data: json });
+    } catch (error) {
+      console.log(error);
+    }
+
+    var arr = []
+    for (let i=0; i < this.state.data.length; i++) {
+      const it = parseInt(this.state.data[i]['calories']);
       arr.push(it)
     }
-    // arr = [ 50, 56, 43, 53, 52 ]
-    console.log(arr);
+
     this.drawBarChart(arr);
   }
 
