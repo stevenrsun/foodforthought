@@ -85,19 +85,19 @@ export class FoodPage extends Component {
                     <div class="col">
                         <div class="row">
                             <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Protein:</p>
-                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.protein}</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.protein} g</p>
                         </div>
                         <div class="row">
                             <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Fat:</p>
-                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.fat}</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.fat} g</p>
                         </div>
                         <div class="row">
                             <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Carbs:</p>
-                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.carbs}</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.carbs} g</p>
                         </div>
                         <div class="row">
                             <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Sodium:</p>
-                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.sodium}</p>
+                            <p class="ml-3 lead" style={this.styles.text}>{this.state.dict.sodium} mg</p>
                         </div>
                         <div class="row">
                             <p class="ml-5 font-weight-bold lead" style={this.styles.text}>Calories:</p>

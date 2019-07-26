@@ -10,30 +10,38 @@ import { Element } from "react-faux-dom";
 import BarChart from "../components/BarChart"
 
 export default class Visualizations extends Component {
+   constructor(props)
+  {
+    super(props);
+    this.state = {
+        foods: []
+    };
+  }
+
    render() {
 
       return (
         <div>
         <p />
         <Container>
-        <h3>Food vs Calories</h3>
+        <h3>Calories in foods</h3>
         <BarChart
             data={{
-               AL: 45,
-               CA: 50,
-               CT: 31,
-               FL: 24,
-               GA: 45,
-               LA: 40,
-               MD: 37,
-               MA: 32,
-               NM: 30,
-               NY: 44,
-               NC: 33,
-               OH: 38,
-               PA: 41,
-               SC: 30,
-               TX: 42,
+               Blueberry: 57,
+               Cranberry: 46,
+               Blackberry: 43,
+               Raspberry: 53,
+               Apple: 52,
+               Orange: 47,
+               Papaya: 39,
+               Avocado: 160,
+               Beet: 43,
+               Flaxseed: 55,
+               Salmon: 208,
+               Tuna: 144,
+               SeaBass: 97,
+               Garlic: 133,
+               Broccoli: 34,
             }}
             x="Foods"
             y="Calories"
@@ -41,13 +49,43 @@ export default class Visualizations extends Component {
       </Container>
       <p />
       <Container>
-      <h3>Number of illnesses and pollutants in each state</h3>
-
-      
+      <h3>Calories in foods</h3>
+        <BarChart
+            data={{
+               Blueberry: 57,
+               Cranberry: 46,
+               Blackberry: 43,
+               Raspberry: 53,
+               Apple: 52,
+               Orange: 47,
+               Papaya: 39,
+               Avocado: 160,
+               Beet: 43,
+               Flaxseed: 55,
+               Salmon: 208,
+               Tuna: 144,
+               SeaBass: 97,
+               Garlic: 133,
+               Broccoli: 34,
+            }}
+            x="Foods"
+            y="Calories"
+         />
 
       </Container>
       <Container>
-      <h3> Comparison of Pollutants With the Highest Concentration in our Air (ug/m3)  </h3>
+      <h3>Rating of Austin Yelp Restaurants by Price Range</h3>
+        <BarChart
+            data={{
+               3: 2,
+               3.5: 16,
+               4: 91,
+               4.5: 89,
+               5: 11
+            }}
+            x="Foods"
+            y="Calories"
+         />
       </Container>
       </div>
 
