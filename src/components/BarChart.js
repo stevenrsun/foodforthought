@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import * as d3 from "d3";
 import { Element } from "react-faux-dom";
 
-/* Source: Connect With air
-   https://gitlab.com/siweimao/connect-with-nature/blob/master/frontend/Components/BarChart.js */
 export default class BarChart extends Component {
   plot(chart, width, height) {
    var data = [];

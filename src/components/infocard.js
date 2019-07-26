@@ -17,10 +17,10 @@ export class FoodCard extends Component {
             <img class="card-img-top" src={this.props.info.images} style={this.state.style} alt="Card image cap"/>
             <div class="card-body">
                 <div class="list-group">
-                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Protein:</Text>&nbsp;{this.props.info.protein}</div>
-                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Fat:</Text>&nbsp;{this.props.info.fat}</div>
-                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Carbs:</Text>&nbsp;{this.props.info.carbs}</div>
-                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Sodium:</Text>&nbsp;{this.props.info.sodium}</div>
+                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Protein:</Text>&nbsp;{this.props.info.protein} g</div>
+                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Fat:</Text>&nbsp;{this.props.info.fat} g</div>
+                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Carbs:</Text>&nbsp;{this.props.info.carbs} g</div>
+                    <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Sodium:</Text>&nbsp;{this.props.info.sodium} mg</div>
                     <div class="list-group-item"><Text style={{fontSize: 17, fontWeight: 'bold'}}>Calories:</Text>&nbsp;{this.props.info.calories}</div>
                 </div>
                 <div class="card-text"><p></p></div>
