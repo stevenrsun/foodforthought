@@ -50,14 +50,6 @@ export default class Visualizations extends Component {
       <h3> Comparison of Pollutants With the Highest Concentration in our Air (ug/m3)  </h3>
       </Container>
       </div>
-<<<<<<< HEAD
-    );
-  }
-
-
-
-=======
->>>>>>> 515170479e442cc6a7cc38c0d2315f3bde3213a1
 
       );
   }
