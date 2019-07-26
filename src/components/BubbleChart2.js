@@ -45,7 +45,6 @@ class App extends Component {
             { label: 'Transportation', value: 78900 },
             { label: 'Visual Arts', value: 63800 },
 
-
           ]}
         />
       </div>

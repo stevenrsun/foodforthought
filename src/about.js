@@ -16,7 +16,7 @@ export default class About extends Component {
         "Kelvin Yu"       : { commits: 0, closed_issues: 0, unit_tests: 0 },
         "Steven Sun"   : { commits: 0, closed_issues: 0, unit_tests: 0 },
         "William Suh"       : { commits: 0, closed_issues: 0, unit_tests: 0 },
-        "Alexander Ng"       : { commits: 0, closed_issues: 0, unit_tests: 0 },
+        "Alexander Ng"       : { commits: 0, closed_issues: 0, unit_tests: 5 },
         "Total"               : { commits: 0, closed_issues: 0, unit_tests: 0}
       };        
       this.getCommits(1)
@@ -181,7 +181,7 @@ render() {
       <br></br>
       <h2>Total Commits: {this.state['Total'].commits}</h2>
       <h2>Total Issues: {this.state['Total'].closed_issues}</h2>
-      <h2>Total Unit Tests: 48</h2>
+      <h2>Total Unit Tests: 53</h2>
       <br></br>
       <h2>Tools Used</h2>
       <p>React, RESTful API (Zomato API, Healthfinder.gov API, Edamam API), Git, AWS, Slack, Postman, </p>
