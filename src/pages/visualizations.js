@@ -84,11 +84,13 @@ export default class Visualizations extends Component {
                <h3>Median Age in Cities</h3>
                <BarChart
                      data={{
-                        '3.0': 2,
-                        '3.5': 16,
-                        '4.0': 91,
-                        '4.5': 89,
-                        '5.0': 11
+                        '20-25': 28,
+                        '25-30': 75,
+                        '30-35': 320,
+                        '35-40': 407,
+                        '40-45': 123,
+                        '45-50': 27,
+                        '50-55': 4
                      }}
                      x="Median Age"
                      y="Number of Cities"
