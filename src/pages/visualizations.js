@@ -56,7 +56,7 @@ export default class Visualizations extends Component {
 
       </Container>
       <Container>
-      <h3>Rating of Austin Yelp Restaurants by Price Range</h3>
+      <h3>Rating of Austin Yelp Restaurants</h3>
         <BarChart
             data={{
                3: 2,
@@ -65,8 +65,8 @@ export default class Visualizations extends Component {
                4.5: 89,
                5: 11
             }}
-            x="Foods"
-            y="Calories"
+            x="Yelp Rating"
+            y="Number of Restaurants in Austin"
          />
       </Container>
       </div>
