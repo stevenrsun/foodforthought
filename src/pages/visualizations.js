@@ -10,7 +10,7 @@ import { Element } from "react-faux-dom";
 
 import BarChart from "../components/BarChart"
 import BubbleChart from "../components/BubbleChart"
-import BubbleChart2 from "../components/BubbleChart"
+import BubbleChart2 from "../components/BubbleChart2"
 
 export default class Visualizations extends Component {
    constructor(props)
