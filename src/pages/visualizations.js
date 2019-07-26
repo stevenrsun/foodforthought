@@ -31,8 +31,8 @@ export default class Visualizations extends Component {
 
       return (
          <Tabs className="tab" activeKey={this.state.activeTab} onSelect={this.handleSelect}>
-            <Tab className="tabBackground" eventKey="foodKey" title="Our visualizations">
-                     <div>
+            <Tab className="tabBackground" eventKey="food" title="Our visualizations">
+               <div>
                <p />
                <Container>
                <h3>Calories in foods</h3>
@@ -79,7 +79,27 @@ export default class Visualizations extends Component {
                </Container>
                </div>
             </Tab>
+            <Tab className="tabBackground" eventKey="degree" title="DegreeForMe Visualizations">
+            <Container>
+               <h3>Median Age in Cities</h3>
+               <BarChart
+                     data={{
+                        '3.0': 2,
+                        '3.5': 16,
+                        '4.0': 91,
+                        '4.5': 89,
+                        '5.0': 11
+                     }}
+                     x="Median Age"
+                     y="Number of Cities"
+                  />
+               </Container>
+               <Container>
+               <h3>Bubble</h3>
+               </Container>
+            </Tab>
          </Tabs>
+
 
         
 
