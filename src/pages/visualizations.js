@@ -127,10 +127,6 @@ export default class Visualizations extends Component {
                </Container>
             </Tab>
          </Tabs>
-
-
-
-
       );
   }
 }
