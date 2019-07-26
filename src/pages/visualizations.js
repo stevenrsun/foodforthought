@@ -10,6 +10,7 @@ import { Element } from "react-faux-dom";
 
 import BarChart from "../components/BarChart"
 import BubbleChart from "../components/BubbleChart"
+import BubbleChart2 from "../components/BubbleChart"
 
 export default class Visualizations extends Component {
    constructor(props)
@@ -95,7 +96,8 @@ export default class Visualizations extends Component {
                   />
                </Container>
                <Container>
-               <h3>Bubble</h3>
+                  <h3>Estimated Mid-level salary for a given degree</h3>
+                  <BubbleChart2/>
                </Container>
             </Tab>
          </Tabs>
