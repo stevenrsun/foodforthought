@@ -99,12 +99,9 @@ export class Home extends Component {
           <div class="row">
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
             <div className="ml-4">
-            <Form inline>
-              <FormControl onChange={this.handleChange} name="searchParams" value={this.state.searchParams} type="text" placeholder="Search for foods, restaurants, or diseases" className="mr-sm-2" style={{width: '350px'}} />
-              <Link to={{pathname: '/SearchResults', state: {params: this.state.searchParams}}}>
-                <Button style={{color: 'black'}} variant="warning" onSubmit={this.search(this.state.searchParams)}>Search</Button>
+              <Link to={{pathname: '/Food', state: {params: this.state.searchParams}}}>
+                <Button style={{color: 'black'}} variant="warning" onSubmit={this.search(this.state.searchParams)}>Explore food</Button>
               </Link>
-            </Form>
             <p>{this.state.workInProgress}</p>
             </div>
           </div>
