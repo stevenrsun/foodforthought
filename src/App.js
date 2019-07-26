@@ -99,8 +99,11 @@ export class Home extends Component {
           <div class="row">
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
             <div className="ml-4">
-              <Link to={{pathname: '/Food', state: {params: this.state.searchParams}}}>
-                <Button style={{color: 'black'}} variant="warning" onSubmit={this.search(this.state.searchParams)}>Explore food</Button>
+              <Link class='mr-4' to={{pathname: '/Food', state: {params: this.state.searchParams}}}>
+                <Button style={{color: 'black'}} variant="warning" onSubmit={this.search(this.state.searchParams)}>Explore Foods</Button>
+              </Link>
+              <Link to={{pathname: '/Restaurant', state: {params: this.state.searchParams}}}>
+                <Button style={{color: 'black'}} variant="warning" onSubmit={this.search(this.state.searchParams)}>Explore Restaurants</Button>
               </Link>
             <p>{this.state.workInProgress}</p>
             </div>

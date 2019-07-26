@@ -112,7 +112,9 @@ render() {
             <td>Alex Ng</td>
             <td>Enjoys working out and T22</td>
             <td>Phase 1: user stories, techincal paper, and planning out the project <br></br>
-                Phase 2: collecting data
+                Phase 2: collecting data <br></br>
+                Phase 3: scrape data <br></br>
+                Phase 4: refactoring<br></br>
             </td>
             <td>{this.state['Alexander Ng'].commits}</td>
             <td>{this.state['Alexander Ng'].closed_issues}</td>
@@ -123,50 +125,63 @@ render() {
             <td>Kelvin Yu</td>
             <td>Enjoys playing tennis and piano</td>
             <td>Phase 1: front end <br></br>
-                Phase 2: uml diagram, mocha tests
+                Phase 2: uml diagram, mocha tests<br></br>
+                Phase 3: unit tests<br></br>
+                Phase 4: visualizations<br></br>
             </td>
             <td>{this.state['Kelvin Yu'].commits}</td>
-            <td>{this.state['Kelvin Yu'].closed_issues}</td>
-            <td>{this.state['Kelvin Yu'].unit_tests}</td>
+            {/* <td>{this.state['Kelvin Yu'].closed_issues}</td> */}
+            <td>5</td>
+            <td>25</td>
           </tr>
           <tr>
             <td><img src={Murray} alt="Photo" height="150" /></td>
             <td>Murray Lee</td>
             <td>Enjoys snowboarding</td>
             <td>Phase 1: front end <br></br>
-                Phase 2: api calls, frontend, gui tests
+                Phase 2: api calls, frontend, gui tests <br></br>
+                Phase 3: sorting, searching, sorting<br></br>
+                Phase 4: visualizations<br></br>
             </td>
             <td>{this.state['Murray Lee'].commits}</td>
             <td>{this.state['Murray Lee'].closed_issues}</td>
-            <td>{this.state['Murray Lee'].unit_tests}</td>
+            {/* <td>{this.state['Murray Lee'].unit_tests}</td> */}
+            <td>10</td>
           </tr>
           <tr>
             <td><img src={Steven} alt="Photo" height="150" /></td>
             <td>Steven Sun</td>
             <td>Enjoys playing video games</td>
             <td>Phase 1: front end <br></br>
-                Phase 2: pagination, frontend
+                Phase 2: pagination, frontend<br></br>
+                Phase 3: filtering, searching, sorting<br></br>
+                Phase 4: refactoring<br></br>
             </td>
             <td>{this.state['Steven Sun'].commits}</td>
             <td>{this.state['Steven Sun'].closed_issues}</td>
-            <td>{this.state['Steven Sun'].unit_tests}</td>
+            {/* <td>{this.state['Steven Sun'].unit_tests}</td> */}
+            <td>8</td>
           </tr>
           <tr>
             <td><img src={William} alt="Photo" height="150" /></td>
             <td>William Suh</td>
             <td>Enjoys riding the bus to class everyday</td>
             <td>Phase 1: AWS and API <br></br>
-                Phase 2: backend
+                Phase 2: backend<br></br>
+                Phase 3: backend search<br></br>
+                Phase 4: presentation, refactoring<br></br>
             </td>
             <td>{this.state['William Suh'].commits}</td>
             <td>{this.state['William Suh'].closed_issues}</td>
-            <td>{this.state['William Suh'].unit_tests}</td>
+            {/* <td>{this.state['William Suh'].unit_tests}</td> */}
+            <td>5</td>
           </tr>
         </tbody>
       </Table>
       <br></br>
       <h2>Total Commits: {this.state['Total'].commits}</h2>
       <h2>Total Issues: {this.state['Total'].closed_issues}</h2>
+      <h2>Total Unit Tests: 48</h2>
       <br></br>
       <h2>Tools Used</h2>
       <p>React, RESTful API (Zomato API, Healthfinder.gov API, Edamam API), Git, AWS, Slack, Postman, </p>
