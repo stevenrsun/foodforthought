@@ -1,71 +1,57 @@
-import React, { Component } from 'react';
-import {Tabs, Tab} from "react-bootstrap";
-import * as d3 from 'd3';
-import BarChart from '../components/BarChart'
+import React, { Component, useState, useEffect } from 'react';
+import ReactDOM from "react-dom";
+import { Jumbotron, Container, Card, Button, CardImg, CardTitle, CardText, CardHeader,
+         CardDeck, CardColumns, CardSubtitle, CardBody , NavLink, UncontrolledCarousel,
+         Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import {Col, Row, Pagination, DropdownButton, Dropdown, Table} from 'react-bootstrap';
+import * as d3 from "d3";
+import { Element } from "react-faux-dom";
 
-export class Visualizations extends Component
-{
-  constructor(props)
-  {
-    super();
-    this.state = {
-        activeTab: "foodKey",
-        foodData: [],
-        foodBarDataLoaded: false
-    }
-    this.handleSelect = this.handleSelect.bind(this);
-  }
+import BarChart from "../components/BarChart"
 
-  handleSelect(selectedTab)
-  {
-    this.setState({
-      activeTab: selectedTab
-    });
-  }
+export default class Visualizations extends Component {
+   render() {
 
-  // food
-  foodBar ()
-  {
-    return (
-      <div>
-        <div className="pageBox" align="center">
-          <br />
-          <h2><b>Food</b></h2>
-          <br />
-          <BarChart data = {this.state.foodData}  isLoaded = {this.state.foodBarDataLoaded}  x = "Food" y = "Calories" label = "FoodChart"/>
-          <br />
-        </div>
+      return (
+        <div>
+        <p />
+        <Container>
+        <h3>Food vs Calories</h3>
+        <BarChart
+            data={{
+               AL: 45,
+               CA: 50,
+               CT: 31,
+               FL: 24,
+               GA: 45,
+               LA: 40,
+               MD: 37,
+               MA: 32,
+               NM: 30,
+               NY: 44,
+               NC: 33,
+               OH: 38,
+               PA: 41,
+               SC: 30,
+               TX: 42,
+            }}
+            x="Foods"
+            y="Calories"
+         />
+      </Container>
+      <p />
+      <Container>
+      <h3>Number of illnesses and pollutants in each state</h3>
+
+      
+
+      </Container>
+      <Container>
+      <h3> Comparison of Pollutants With the Highest Concentration in our Air (ug/m3)  </h3>
+      </Container>
       </div>
-    );
-  }
 
-  async componentDidMount()
-  {
-    let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/food';
-
-    fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      this.setState({
-          foodData: data,
-          foodBarDataLoaded : true});
-    })
-}
-
-
-
-
-  render (){
-    return (
-        <Tabs className="tab" activeKey={this.state.activeTab} onSelect={this.handleSelect}>
-            <Tab className="tabBackground" eventKey="foodKey" title="Food title">
-            <br/>
-                {/* {this.foodBar()} */}
-                <BarChart />
-            <br/>
-            </Tab>
-        </Tabs>
-    );
+      );
   }
 }
 

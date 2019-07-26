@@ -1,75 +1,146 @@
 import React, { Component } from 'react';
 import * as d3 from "d3";
-import d3Tip  from "d3-tip";
+import { Element } from "react-faux-dom";
 
+/* Source: Connect With air
+   https://gitlab.com/siweimao/connect-with-nature/blob/master/frontend/Components/BarChart.js */
+export default class BarChart extends Component {
+  plot(chart, width, height) {
+   var data = [];
+   var temp = this.props.data;
 
+   var x = this.props.x;
+   var y = this.props.y;
 
-//This code is modified from Simple d3.js bar chart D3: http://bl.ocks.org/d3noob/8952219#bar-data.csv
-//with rainbow function from this codepen: https://codepen.io/chadoh/pen/NRXpKw
+   for (const [key, value] of Object.entries(temp)) {
+      var tempDict = {};
+      tempDict["statename"] = key;
+      tempDict["value"] = value;
+      data.push(tempDict);
+   }
+   // create scales!
+   var barOuterPad = 0.2;
+   var barPad = 0.1;
+   const xScale = d3
+      .scaleBand()
+      .domain(data.map(d => d.statename))
+      .range([0, width])
+      .paddingInner(barPad)
+      .paddingOuter(barOuterPad);
+   const yScale = d3
+      .scaleLinear()
+      .domain([0, d3.max(data, d => d.value)])
+      .range([height, 0]);
+   const colorScale = d3.scaleSequential(d3.interpolateBlues);
 
-class BarChart extends Component
-{
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoaded: false,
-      bottomText: "Loading...",
-      data: []
-    };
+   chart
+      .selectAll(".bar-label")
+      .data(data)
+      .enter()
+      .append("text")
+      .classed("bar-label", true)
+      .attr("x", d => xScale(d.statename) + xScale.bandwidth() / 2)
+      .attr("dx", 0)
+      .attr("y", d => yScale(d.value))
+      .attr("dy", -6)
+
+   const xAxis = d3.axisBottom().scale(xScale);
+
+   chart
+      .append("g")
+      .classed("x axis", true)
+      .attr("transform", `translate(0,${height})`)
+      .call(xAxis);
+
+   const yAxis = d3
+      .axisLeft()
+      .ticks(5)
+      .scale(yScale);
+
+   chart
+      .append("g")
+      .classed("y axis", true)
+      .attr("transform", "translate(0,0)")
+      .call(yAxis);
+
+   chart
+      .select(".x.axis")
+      .append("text")
+      .attr("x", width / 2)
+      .attr("y", 60)
+      .attr("fill", "#000")
+      .style("font-size", "20px")
+      .style("text-anchor", "middle")
+      .text(x);
+
+   chart
+      .select(".y.axis")
+      .append("text")
+      .attr("x", 0)
+      .attr("y", 0)
+      .attr("transform", `translate(-50, ${height / 2}) rotate(-90)`)
+      .attr("fill", "#000")
+      .style("font-size", "20px")
+      .style("text-anchor", "middle")
+      .text(y);
+
+   const yGridlines = d3
+      .axisLeft()
+      .scale(yScale)
+      .ticks(5)
+      .tickSize(-width, 0, 0)
+      .tickFormat("");
+
+   chart
+      .append("g")
+      .call(yGridlines)
+      .classed("gridline", true);
+
+      chart
+       .selectAll(".bar")
+       .data(data)
+       .enter()
+       .append("rect")
+       .classed("bar", true)
+       .attr("x", d => xScale(d.statename))
+       .attr("y", d => yScale(d.value))
+       .attr("height", d => height - yScale(d.value))
+       .attr("width", d => xScale.bandwidth())
+       .style("fill", (d, i) => colorScale(0.6));
   }
 
-  async componentDidMount() {
-    try {
-      // call API
-      let url = 'https://cors-anywhere.herokuapp.com/http://api.foodforthoughtt.me/food';
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw Error(response.statusText);
-      }
-      const json = await response.json();
-      this.setState({ data: json });
-    } catch (error) {
-      console.log(error);
-    }
+  drawChart() {
+   const width = 1200;
+   const height = 600;
 
-    var arr = []
-    for (let i=0; i < this.state.data.length; i++) {
-      const it = parseInt(this.state.data[i]['calories']);
-      arr.push(it)
-    }
+   const el = new Element("div");
+   const svg = d3
+      .select(el)
+      .append("svg")
+      .attr("id", "chart")
+      .attr("width", width)
+      .attr("height", height);
 
-    this.drawBarChart(arr);
+   const margin = {
+      top: 60,
+      bottom: 100,
+      left: 80,
+      right: 40
+   };
+
+   const chart = svg
+      .append("g")
+      .classed("display", true)
+      .attr("transform", `translate(${margin.left},${margin.top})`);
+
+   const chartWidth = width - margin.left - margin.right;
+   const chartHeight = height - margin.top - margin.bottom;
+   this.plot(chart, chartWidth, chartHeight);
+
+   return el.toReact();
   }
 
-  drawBarChart(data)  {
-    const canvasHeight = 400
-    const canvasWidth = 600
-    const scale = 5
-    const svgCanvas = d3.select(this.refs.canvas)
-        .append("svg")
-        .attr("width", canvasWidth)
-        .attr("height", canvasHeight)
-        .style("border", "1px solid black")
-    svgCanvas.selectAll("rect")
-        .data(data).enter()
-            .append("rect")
-            .attr("width", 40)
-            .attr("height", (datapoint) => datapoint * scale)
-            .attr("fill", "orange")
-            .attr("x", (datapoint, iteration) => iteration * 45)
-            .attr("y", (datapoint) => canvasHeight - datapoint * scale)
-    
-    svgCanvas.selectAll("text")
-      .data(data).enter()
-          .append("text")
-          .attr("x", (dataPoint, i) => i * 45 + 10)
-          .attr("y", (dataPoint, i) => canvasHeight - dataPoint * scale - 10)
-          .text(dataPoint => dataPoint)
-  }
-
-  render() { 
-    return <div ref="canvas"></div> 
+  render() {
+   return this.drawChart();
   }
 }
-
-export default BarChart;
