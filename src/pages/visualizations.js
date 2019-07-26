@@ -8,6 +8,7 @@ import * as d3 from "d3";
 import { Element } from "react-faux-dom";
 
 import BarChart from "../components/BarChart"
+import BubbleChart from "../components/BubbleChart"
 
 export default class Visualizations extends Component {
    render() {
@@ -41,8 +42,8 @@ export default class Visualizations extends Component {
       </Container>
       <p />
       <Container>
-      <h3>Number of illnesses and pollutants in each state</h3>
-
+      <h3>Estimated number of people diagnosed with a disease per year </h3>
+      <BubbleChart/>
       
 
       </Container>
