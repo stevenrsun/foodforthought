@@ -6,7 +6,7 @@ import Restaurant from './pages/restaurant';
 import {FoodPage} from './pages/foodPages';
 import {DiseasePage} from './pages/diseasePages';
 import {RestaurantPage} from './pages/restaurantPages'
-import {Visualizations} from './pages/visualizations'
+import Visualizations from './pages/visualizations'
 import logo from './photos/home_image.jpg';
 import './App.css';
 import {Form,Button, FormControl} from 'react-bootstrap';
