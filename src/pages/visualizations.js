@@ -84,7 +84,7 @@ export default class Visualizations extends Component {
             </Tab>
             <Tab className="tabBackground" eventKey="degree" title="DegreeForMe Visualizations">
             <Container>
-               <h3>Median Age in Cities</h3>
+               <h3>Number of Cities by Median Age</h3>
                <BarChart
                      data={{
                         '20-25': 28,
@@ -104,11 +104,32 @@ export default class Visualizations extends Component {
                   <h3>Estimated Mid-level salary for a given degree</h3>
                   <BubbleChart2/>
                </Container>
+               <Container>
+                  <h3>Number of Cities by Yearly Housing Costs</h3>
+                  <BarChart
+                     data={{
+                        '0-10k': 119,
+                        '10-20k': 350,
+                        '20-30k': 217,
+                        '30-40k': 98,
+                        '40-50k': 64,
+                        '50-60k': 43,
+                        '60-70k': 34,
+                        '70-80k': 18,
+                        '80-90k': 14,
+                        '90-100k': 13,
+                        '100-150k+': 24
+                     }}
+                     x="Median Age"
+                     y="Number of Cities"
+                     color={d3.interpolateBlues}
+                  />
+               </Container>
             </Tab>
          </Tabs>
 
 
-        
+
 
       );
   }
