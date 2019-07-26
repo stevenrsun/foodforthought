@@ -10,7 +10,7 @@ import { Element } from "react-faux-dom";
 
 import BarChart from "../components/BarChart"
 import BubbleChart from "../components/BubbleChart"
-import BubbleChart2 from "../components/BubbleChart"
+import BubbleChart2 from "../components/BubbleChart2"
 
 export default class Visualizations extends Component {
    constructor(props)
@@ -57,6 +57,7 @@ export default class Visualizations extends Component {
                      }}
                      x="Foods"
                      y="Calories"
+                     color={d3.interpolateOranges}
                   />
                </Container>
                <p />
@@ -76,6 +77,7 @@ export default class Visualizations extends Component {
                      }}
                      x="Yelp Rating"
                      y="Number of Restaurants in Austin"
+                     color={d3.interpolateOranges}
                   />
                </Container>
                </div>
@@ -95,6 +97,7 @@ export default class Visualizations extends Component {
                      }}
                      x="Median Age"
                      y="Number of Cities"
+                     color={d3.interpolateBlues}
                   />
                </Container>
                <Container>

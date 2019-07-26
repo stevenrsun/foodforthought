@@ -9,6 +9,7 @@ export default class BarChart extends Component {
 
    var x = this.props.x;
    var y = this.props.y;
+   var color = this.props.color;
 
    for (const [key, value] of Object.entries(temp)) {
       var tempDict = {};
@@ -29,7 +30,9 @@ export default class BarChart extends Component {
       .scaleLinear()
       .domain([0, d3.max(data, d => d.value)])
       .range([height, 0]);
-   const colorScale = d3.scaleSequential(d3.interpolateOranges);
+   
+   
+   const colorScale = d3.scaleSequential(color);
 
    chart
       .selectAll(".bar-label")
