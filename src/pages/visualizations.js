@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect } from 'react';
+import {Tabs, Tab} from "react-bootstrap";
 import ReactDOM from "react-dom";
 import { Jumbotron, Container, Card, Button, CardImg, CardTitle, CardText, CardHeader,
          CardDeck, CardColumns, CardSubtitle, CardBody , NavLink, UncontrolledCarousel,
@@ -15,61 +16,72 @@ export default class Visualizations extends Component {
   {
     super(props);
     this.state = {
-        foods: []
     };
+    this.handleSelect = this.handleSelect.bind(this);
+  }
+
+  handleSelect(selectedTab)
+  {
+    this.setState({
+      activeTab: selectedTab
+    });
   }
 
    render() {
 
       return (
-        <div>
-        <p />
-        <Container>
-        <h3>Calories in foods</h3>
-        <BarChart
-            data={{
-               Blueberry: 57,
-               Cranberry: 46,
-               Blackberry: 43,
-               Raspberry: 53,
-               Apple: 52,
-               Orange: 47,
-               Papaya: 39,
-               Avocado: 160,
-               Beet: 43,
-               Flaxseed: 55,
-               Salmon: 208,
-               Tuna: 144,
-               SeaBass: 97,
-               Garlic: 133,
-               Broccoli: 34,
-            }}
-            x="Foods"
-            y="Calories"
-         />
-      </Container>
-      <p />
-      <Container>
-      <h3>Estimated number of people diagnosed with a disease per year </h3>
-      <BubbleChart/>
-      
+         <Tabs className="tab" activeKey={this.state.activeTab} onSelect={this.handleSelect}>
+            <Tab className="tabBackground" eventKey="foodKey" title="Our visualizations">
+                     <div>
+               <p />
+               <Container>
+               <h3>Calories in foods</h3>
+               <BarChart
+                     data={{
+                        Blueberry: 57,
+                        Cranberry: 46,
+                        Blackberry: 43,
+                        Raspberry: 53,
+                        Apple: 52,
+                        Orange: 47,
+                        Papaya: 39,
+                        Avocado: 160,
+                        Beet: 43,
+                        Flaxseed: 55,
+                        Salmon: 208,
+                        Tuna: 144,
+                        SeaBass: 97,
+                        Garlic: 133,
+                        Broccoli: 34,
+                     }}
+                     x="Foods"
+                     y="Calories"
+                  />
+               </Container>
+               <p />
+               <Container>
+               <h3>Estimated number of people diagnosed with a disease per year </h3>
+               <BubbleChart/>
+               </Container>
+               <Container>
+               <h3>Rating of Austin Yelp Restaurants</h3>
+               <BarChart
+                     data={{
+                        '3.0': 2,
+                        '3.5': 16,
+                        '4.0': 91,
+                        '4.5': 89,
+                        '5.0': 11
+                     }}
+                     x="Yelp Rating"
+                     y="Number of Restaurants in Austin"
+                  />
+               </Container>
+               </div>
+            </Tab>
+         </Tabs>
 
-      </Container>
-      <Container>
-      <h3>Rating of Austin Yelp Restaurants</h3>
-        <BarChart
-            data={{
-               3: 2,
-               3.5: 16,
-               4: 91,
-               4.5: 89,
-               5: 11
-            }}
-            x="Yelp Rating"
-            y="Number of Restaurants in Austin"
-         />
-      </Container>
-      </div>
+        
 
       );
   }

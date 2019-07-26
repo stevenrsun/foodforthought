@@ -29,7 +29,7 @@ export default class BarChart extends Component {
       .scaleLinear()
       .domain([0, d3.max(data, d => d.value)])
       .range([height, 0]);
-   const colorScale = d3.scaleSequential(d3.interpolateBlues);
+   const colorScale = d3.scaleSequential(d3.interpolateOranges);
 
    chart
       .selectAll(".bar-label")
