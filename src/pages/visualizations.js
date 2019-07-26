@@ -8,6 +8,7 @@ import * as d3 from "d3";
 import { Element } from "react-faux-dom";
 
 import BarChart from "../components/BarChart"
+import BubbleChart from "../components/BubbleChart"
 
 export default class Visualizations extends Component {
    constructor(props)
@@ -49,28 +50,9 @@ export default class Visualizations extends Component {
       </Container>
       <p />
       <Container>
-      <h3>Calories in foods</h3>
-        <BarChart
-            data={{
-               Blueberry: 57,
-               Cranberry: 46,
-               Blackberry: 43,
-               Raspberry: 53,
-               Apple: 52,
-               Orange: 47,
-               Papaya: 39,
-               Avocado: 160,
-               Beet: 43,
-               Flaxseed: 55,
-               Salmon: 208,
-               Tuna: 144,
-               SeaBass: 97,
-               Garlic: 133,
-               Broccoli: 34,
-            }}
-            x="Foods"
-            y="Calories"
-         />
+      <h3>Estimated number of people diagnosed with a disease per year </h3>
+      <BubbleChart/>
+      
 
       </Container>
       <Container>
